@@ -1,0 +1,43 @@
+plugins {
+    id "org.openapi.generator" version "6.6.0"
+}
+
+bootJar {
+    enabled = true
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.1.0'
+
+    implementation project(':todo-app-domain')
+    implementation group: 'org.openapitools', name: 'jackson-databind-nullable', version: '0.2.6'
+}
+
+openApiGenerate {
+    generatorName = "spring"
+    inputSpec = "$rootDir/api-definition/openapi.yml".toString()
+    outputDir = "$buildDir/generated"
+    apiPackage = "com.example.todoapp.api"
+    invokerPackage = "com.example.todoapp.invoker"
+    modelPackage = "com.example.todoapp.model"
+    generateModelTests = false
+    generateApiTests = false
+    generateModelDocumentation = false
+    generateApiDocumentation = false
+    configOptions = [
+            useSpringBoot3: "true",
+            interfaceOnly : "true",
+            cleanStubs    : "true",
+    ]
+}
+
+sourceSets {
+    main {
+        java {
+            srcDirs "${openApiGenerate.outputDir.get()}/src/main/java"
+        }
+    }
+}
+
+compileJava.dependsOn tasks.openApiGenerate
