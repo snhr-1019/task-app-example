@@ -6,7 +6,14 @@ import com.example.todoapp.domain.vo.Code;
 import com.example.todoapp.domain.vo.Status;
 import com.example.todoapp.domain.vo.Title;
 
+import java.util.List;
+
 public class TodoRepositoryDb implements TodoRepository {
+    @Override
+    public List<TodoEntity> fetch() {
+        return null;
+    }
+
     @Override
     public TodoEntity fetchByCode(Code code) {
         var entity = new TodoEntity(

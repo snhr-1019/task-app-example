@@ -7,14 +7,16 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @RequiredArgsConstructor
 @Service
-public class ListTodo {
+public class ListTodoUseCase {
 
     @Autowired
     private final TodoRepository todoRepository;
 
-    public TodoEntity fetchByCode(Code code) {
-        return todoRepository.fetchByCode(code);
+    public List<TodoEntity> fetch() {
+        return todoRepository.fetch();
     }
 }
