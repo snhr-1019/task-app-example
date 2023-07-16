@@ -1,0 +1,120 @@
+openapi: 3.0.3
+info:
+  title: Todo App for Educational purpose
+  description: |-
+    This is a sample Todo app for Educational purpose.
+  version: 0.0.1
+servers:
+  - url: http://localhost:8080
+    description: local env
+tags:
+  - name: todo
+    description: Todo operations
+paths:
+  /todo:
+    get:
+      tags:
+        - todo
+      summary: List todos
+      operationId: listTodos
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TodoResponse'
+    post:
+      tags:
+        - todo
+      summary: Create Todo
+      operationId: createTodo
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TodoRequest'
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+  /todo/{code}:
+    get:
+      tags:
+        - todo
+      summary: Get todo by code
+      operationId: getTodo
+      parameters:
+        - name: code
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TodoResponse'
+    delete:
+      tags:
+        - todo
+      summary: Delete todo by code
+      operationId: deleteTodo
+      parameters:
+        - name: code
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+components:
+  schemas:
+    TodoRequest:
+      required:
+        - code
+        - title
+        - status
+      type: object
+      properties:
+        code:
+          type: string
+          example: ABC123
+        title:
+          type: string
+          example: 牛乳を買う
+        status:
+          type: string
+          enum:
+            - TODO
+            - DOING
+            - DONE
+          example: TODO
+    TodoResponse:
+      type: object
+      properties:
+        code:
+          type: string
+          example: ABC123
+        title:
+          type: string
+          example: 牛乳を買う
+        status:
+          type: string
+          enum:
+            - TODO
+            - DOING
+            - DONE
+          example: TODO
