@@ -1,57 +1,8 @@
-plugins {
-    id 'nu.studer.jooq' version '8.2'
-    id "org.flywaydb.flyway" version "8.2.0"
-}
-
 repositories {
     mavenCentral()
 }
 
 dependencies {
     implementation project(':todo-app-domain')
-    implementation 'org.flywaydb:flyway-core:8.2.0'
-    implementation "mysql:mysql-connector-java:8.0.33"
-    jooqGenerator 'mysql:mysql-connector-java:8.0.33'
-}
-
-jooq {
-    configurations {
-        main {
-            generationTool {
-                logging = org.jooq.meta.jaxb.Logging.WARN
-                jdbc {
-                    driver = 'com.mysql.cj.jdbc.Driver'
-                    url = 'jdbc:mysql://localhost/todoapp'
-                    user = 'root'
-                    password = 'root'
-                }
-                generator {
-                    name = 'org.jooq.codegen.DefaultGenerator'
-                    database {
-                        name = 'org.jooq.meta.mysql.MySQLDatabase'
-                        includes = 'todoapp.*'
-                        excludes = 'flyway_schema_history'
-                    }
-                    target {
-                        packageName = 'org.jooq'
-                        directory = 'build/generated/src/main/java'
-                    }
-                }
-            }
-        }
-    }
-}
-
-flyway {
-    url = "jdbc:mysql://127.0.0.1:3306/todoapp"
-    user = "root"
-    password = "root"
-}
-
-sourceSets {
-    main {
-        java {
-            srcDirs "$projectDir/build/generated/src/main/java"
-        }
-    }
+    implementation project(':todo-app-infrastructure-rdb')
 }

@@ -2,5 +2,6 @@ rootProject.name = 'todoapp'
 
 include(":todo-app-presentation")
 include(":todo-app-infrastructure")
+include(":todo-app-infrastructure-rdb")
 include(":todo-app-usecase")
 include(":todo-app-domain")
