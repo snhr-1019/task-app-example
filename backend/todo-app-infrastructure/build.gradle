@@ -3,6 +3,7 @@ repositories {
 }
 
 dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-jooq'
     implementation project(':todo-app-domain')
     implementation project(':todo-app-infrastructure-rdb')
 }

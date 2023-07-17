@@ -21,3 +21,9 @@ create table todoapp.todo
 
 create index todo_app_user_uuid_fk
     on todoapp.todo (app_user_uuid);
+
+
+INSERT INTO todoapp.todo (uuid, app_user_uuid, code, title, status)
+VALUES ('ABCD', '123A', 'ABC123', '牛乳を買う', 'TODO');
+INSERT INTO todoapp.todo (uuid, app_user_uuid, code, title, status)
+VALUES ('EFGH', '123A', '789EFG', '掃除をする', 'DOING');
