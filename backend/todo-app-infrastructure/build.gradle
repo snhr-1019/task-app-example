@@ -33,8 +33,8 @@ jooq {
                         excludes = 'flyway_schema_history'
                     }
                     target {
-                        packageName = 'nu.studer.sample'
-                        directory = 'src/main/java'
+                        packageName = 'org.jooq'
+                        directory = 'build/generated/src/main/java'
                     }
                 }
             }
@@ -46,4 +46,12 @@ flyway {
     url = "jdbc:mysql://127.0.0.1:3306/todoapp"
     user = "root"
     password = "root"
+}
+
+sourceSets {
+    main {
+        java {
+            srcDirs "$projectDir/build/generated/src/main/java"
+        }
+    }
 }
