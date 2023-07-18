@@ -1,3 +1,4 @@
 dependencies {
     implementation project(':todo-app-domain')
+    implementation project(':todo-app-infrastructure')
 }

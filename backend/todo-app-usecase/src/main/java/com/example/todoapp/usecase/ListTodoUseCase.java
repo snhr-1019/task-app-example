@@ -13,7 +13,6 @@ import java.util.List;
 @Service
 public class ListTodoUseCase {
 
-    @Autowired
     private final TodoRepository todoRepository;
 
     public List<TodoEntity> fetch() {
