@@ -1,4 +1,4 @@
 dependencies {
     implementation project(':todo-app-domain')
-    implementation project(':todo-app-infrastructure')
+    runtimeOnly project(':todo-app-infrastructure')
 }
