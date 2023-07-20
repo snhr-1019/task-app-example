@@ -22,10 +22,6 @@ import static org.jooq.SQLDialect.MYSQL;
 public class TodoRepositoryDb implements TodoRepository {
     @Override
     public List<TodoEntity> fetch() {
-        return null;
-    }
-
-    public static void main(String[] args) {
         String userName = "root";
         String password = "root";
         String url = "jdbc:mysql://localhost:3306/todoapp";
@@ -40,8 +36,14 @@ public class TodoRepositoryDb implements TodoRepository {
                 System.out.println("Status: " + r.getValue(TODO.STATUS));
             }
 
+            var todo = new TodoEntity(
+                    new Code("ABC123"),
+                    new Title("牛乳を買う"),
+                    Status.TODO
+            );
+            return List.of(todo);
         } catch (Exception e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
     }
 
