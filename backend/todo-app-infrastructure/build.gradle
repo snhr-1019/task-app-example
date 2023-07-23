@@ -1,9 +1,11 @@
-repositories {
-    mavenCentral()
-}
-
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-jooq'
     implementation project(':todo-app-domain')
     implementation project(':todo-app-infrastructure-rdb')
+
+    testImplementation 'org.flywaydb:flyway-mysql'
+    testImplementation "org.testcontainers:junit-jupiter:1.18.3"
+    testImplementation "org.testcontainers:testcontainers:1.18.3"
+    testImplementation "org.testcontainers:mysql:1.18.3"
+    testRuntimeOnly 'mysql:mysql-connector-java:8.0.33'
 }

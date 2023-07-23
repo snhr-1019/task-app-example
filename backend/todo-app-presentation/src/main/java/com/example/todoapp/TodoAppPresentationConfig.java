@@ -1,9 +1,10 @@
 package com.example.todoapp;
 
+import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
-@Configuration
+@SpringBootConfiguration
 @ComponentScan
 public class TodoAppPresentationConfig {
 }
