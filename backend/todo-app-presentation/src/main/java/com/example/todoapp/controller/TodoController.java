@@ -30,9 +30,9 @@ public class TodoController implements TodoApi {
 
     public TodoResponse fromTodoEntity(TodoEntity todoEntity) {
         var response = new TodoResponse();
-        response.setCode(todoEntity.getCode().value());
-        response.setTitle(todoEntity.getTitle().toString());
-        response.setStatus(TodoResponse.StatusEnum.fromValue(todoEntity.getStatus().name()));
+        response.setCode(todoEntity.code().value());
+        response.setTitle(todoEntity.title().toString());
+        response.setStatus(TodoResponse.StatusEnum.fromValue(todoEntity.status().name()));
         return response;
     }
 }

@@ -9,15 +9,11 @@ import lombok.RequiredArgsConstructor;
 import org.jooq.DSLContext;
 import org.jooq.Record;
 import org.jooq.Result;
-import org.jooq.impl.DSL;
 import org.springframework.stereotype.Repository;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.util.List;
 
 import static gen.jooq.todoapp.Tables.TODO;
-import static org.jooq.SQLDialect.MYSQL;
 
 @Repository
 @RequiredArgsConstructor
