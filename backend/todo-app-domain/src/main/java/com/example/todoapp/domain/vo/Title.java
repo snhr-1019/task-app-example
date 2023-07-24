@@ -1,4 +1,4 @@
 package com.example.todoapp.domain.vo;
 
-public record Title(String title) {
+public record Title(String value) {
 }

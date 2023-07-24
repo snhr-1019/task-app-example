@@ -24,19 +24,15 @@ public class TodoRepositoryDb implements TodoRepository {
     @Override
     public List<TodoEntity> fetch() {
         Result<Record> result = dsl.select().from(TODO).fetch();
+        return result.stream().map(this::fromRecord).toList();
+    }
 
-        for (Record r : result) {
-            System.out.println("Code: " + r.getValue(TODO.CODE));
-            System.out.println("Title: " + r.getValue(TODO.TITLE));
-            System.out.println("Status: " + r.getValue(TODO.STATUS));
-        }
-
-        var todo = new TodoEntity(
-                new Code("ABC123"),
-                new Title("牛乳を買う"),
-                Status.TODO
+    private TodoEntity fromRecord(Record record) {
+        return new TodoEntity(
+                new Code(record.get(TODO.CODE)),
+                new Title(record.get(TODO.TITLE)),
+                Status.valueOf(record.get(TODO.STATUS))
         );
-        return List.of(todo);
     }
 
     @Override
