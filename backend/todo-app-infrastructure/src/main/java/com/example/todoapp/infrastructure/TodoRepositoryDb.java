@@ -13,6 +13,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 import static gen.jooq.todoapp.Tables.TODO;
 
@@ -39,8 +40,21 @@ public class TodoRepositoryDb implements TodoRepository {
         }
     }
 
+    @Override
+    public void save(TodoEntity entity) {
+        dsl.insertInto(TODO)
+                .set(TODO.UUID, entity.uuid().toString())
+                .set(TODO.APP_USER_UUID, entity.appUserUuid().toString())
+                .set(TODO.CODE, entity.code().value())
+                .set(TODO.TITLE, entity.title().value())
+                .set(TODO.STATUS, entity.status().name())
+                .execute();
+    }
+
     private TodoEntity fromRecord(Record record) {
         return new TodoEntity(
+                UUID.fromString(record.get(TODO.UUID)),
+                UUID.fromString(record.get(TODO.APP_USER_UUID)),
                 new Code(record.get(TODO.CODE)),
                 new Title(record.get(TODO.TITLE)),
                 Status.valueOf(record.get(TODO.STATUS))

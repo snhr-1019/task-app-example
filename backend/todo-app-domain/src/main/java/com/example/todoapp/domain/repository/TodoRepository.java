@@ -14,7 +14,7 @@ public interface TodoRepository {
 
     public Optional<TodoEntity> fetchByCode(Code code);
 
-//    public void save(TodoEntity entity);
+    public void save(TodoEntity entity);
 //
 //    public void deleteByCode(Code code);
 }
