@@ -5,11 +5,16 @@ import com.example.todoapp.domain.vo.Code;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface TodoRepository {
 
-    List<TodoEntity> fetch();
+    public List<TodoEntity> fetch();
 
-    TodoEntity fetchByCode(Code code);
+    public Optional<TodoEntity> fetchByCode(Code code);
+
+//    public void save(TodoEntity entity);
+//
+//    public void deleteByCode(Code code);
 }

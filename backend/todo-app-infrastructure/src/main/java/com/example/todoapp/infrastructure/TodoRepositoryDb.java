@@ -12,6 +12,7 @@ import org.jooq.Result;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import static gen.jooq.todoapp.Tables.TODO;
 
@@ -27,21 +28,22 @@ public class TodoRepositoryDb implements TodoRepository {
         return result.stream().map(this::fromRecord).toList();
     }
 
+    @Override
+    public Optional<TodoEntity> fetchByCode(Code code) {
+        Record record = dsl.select().from(TODO).where(TODO.CODE.eq(code.value())).fetchOne();
+
+        if (record == null) {
+            return Optional.empty();
+        } else {
+            return Optional.of(fromRecord(record));
+        }
+    }
+
     private TodoEntity fromRecord(Record record) {
         return new TodoEntity(
                 new Code(record.get(TODO.CODE)),
                 new Title(record.get(TODO.TITLE)),
                 Status.valueOf(record.get(TODO.STATUS))
         );
-    }
-
-    @Override
-    public TodoEntity fetchByCode(Code code) {
-        var entity = new TodoEntity(
-                new Code("ABC123"),
-                new Title("牛乳を買う"),
-                Status.TODO
-        );
-        return entity;
     }
 }
