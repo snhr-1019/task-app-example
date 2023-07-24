@@ -18,16 +18,13 @@ import org.testcontainers.utility.DockerImageName;
 import java.sql.SQLException;
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
-public class ContainerTest {
+public abstract class RepositoryTestSupport {
 
     @Autowired
     private Flyway flyway;
-
-    @Autowired
-    private TodoRepositoryDb sut;
 
     static final DockerImageName MYSQL_IMAGE_NAME = DockerImageName
             .parse("mysql")
@@ -53,31 +50,5 @@ public class ContainerTest {
         registry.add("spring.datasource.username", MYSQL_CONTAINER::getUsername);
         registry.add("spring.datasource.password", MYSQL_CONTAINER::getPassword);
         registry.add("spring.datasource.driver-class-name", MYSQL_CONTAINER::getDriverClassName);
-    }
-
-    @Test
-    public void testFetch() {
-        // given
-
-        // when
-        List<TodoEntity> ret = sut.fetch();
-
-        // then
-        var t1 = new TodoEntity(
-                new Code("ABC123"),
-                new Title("牛乳を買う"),
-                Status.TODO
-        );
-
-        var t2 = new TodoEntity(
-                new Code("789EFG"),
-                new Title("掃除をする"),
-                Status.DOING
-        );
-
-        assertThat(ret.size()).isEqualTo(2);
-        
-        assertThat(ret.get(0)).isEqualTo(t1);
-        assertThat(ret.get(1)).isEqualTo(t2);
     }
 }
