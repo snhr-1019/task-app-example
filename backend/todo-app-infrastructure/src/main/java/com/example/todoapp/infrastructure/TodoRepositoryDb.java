@@ -51,6 +51,11 @@ public class TodoRepositoryDb implements TodoRepository {
                 .execute();
     }
 
+    @Override
+    public void deleteByCode(Code code) {
+        dsl.deleteFrom(TODO).where(TODO.CODE.eq(code.value())).execute();
+    }
+
     private TodoEntity fromRecord(Record record) {
         return new TodoEntity(
                 UUID.fromString(record.get(TODO.UUID)),

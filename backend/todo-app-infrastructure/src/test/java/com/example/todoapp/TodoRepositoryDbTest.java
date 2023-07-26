@@ -138,4 +138,24 @@ public class TodoRepositoryDbTest extends RepositoryTestSupport {
             assertThat(record.get(TODO.STATUS)).isEqualTo(statusStr);
         }
     }
+
+    @Nested
+    class DeleteTest {
+        @Test
+        @Transactional // test data will be rolled back
+        public void testDelete() {
+            // given
+            String codeStr = "ABC123";
+
+            Record recordBefore = dsl.select().from(TODO).where(TODO.CODE.eq(codeStr)).fetchOne();
+            assertThat(recordBefore).isNotNull();
+
+            // when
+            sut.deleteByCode(new Code(codeStr));
+
+            // then
+            Record recordAfter = dsl.select().from(TODO).where(TODO.CODE.eq(codeStr)).fetchOne();
+            assertThat(recordAfter  ).isNull();
+        }
+    }
 }
