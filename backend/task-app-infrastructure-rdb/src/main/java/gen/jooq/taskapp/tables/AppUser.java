@@ -101,7 +101,7 @@ public class AppUser extends TableImpl<AppUserRecord> {
 
     @Override
     public Schema getSchema() {
-        return aliased() ? null : Taskapp.TODOAPP;
+        return aliased() ? null : Taskapp.TASKAPP;
     }
 
     @Override

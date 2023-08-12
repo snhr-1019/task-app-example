@@ -22,5 +22,5 @@ public class Tables {
     /**
      * The table <code>taskapp.task</code>.
      */
-    public static final Task TODO = Task.TODO;
+    public static final Task TASK = Task.TASK;
 }

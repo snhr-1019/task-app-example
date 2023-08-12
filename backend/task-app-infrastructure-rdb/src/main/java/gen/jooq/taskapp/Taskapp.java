@@ -27,7 +27,7 @@ public class Taskapp extends SchemaImpl {
     /**
      * The reference instance of <code>taskapp</code>
      */
-    public static final Taskapp TODOAPP = new Taskapp();
+    public static final Taskapp TASKAPP = new Taskapp();
 
     /**
      * The table <code>taskapp.app_user</code>.
@@ -37,7 +37,7 @@ public class Taskapp extends SchemaImpl {
     /**
      * The table <code>taskapp.task</code>.
      */
-    public final Task TODO = Task.TODO;
+    public final Task TASK = Task.TASK;
 
     /**
      * No further instances allowed
@@ -56,7 +56,7 @@ public class Taskapp extends SchemaImpl {
     public final List<Table<?>> getTables() {
         return Arrays.asList(
             AppUser.APP_USER,
-            Task.TODO
+            Task.TASK
         );
     }
 }

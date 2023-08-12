@@ -116,27 +116,27 @@ public class TaskRecord extends UpdatableRecordImpl<TaskRecord> implements Recor
 
     @Override
     public Field<String> field1() {
-        return Task.TODO.UUID;
+        return Task.TASK.UUID;
     }
 
     @Override
     public Field<String> field2() {
-        return Task.TODO.APP_USER_UUID;
+        return Task.TASK.APP_USER_UUID;
     }
 
     @Override
     public Field<String> field3() {
-        return Task.TODO.CODE;
+        return Task.TASK.CODE;
     }
 
     @Override
     public Field<String> field4() {
-        return Task.TODO.TITLE;
+        return Task.TASK.TITLE;
     }
 
     @Override
     public Field<String> field5() {
-        return Task.TODO.STATUS;
+        return Task.TASK.STATUS;
     }
 
     @Override
@@ -237,14 +237,14 @@ public class TaskRecord extends UpdatableRecordImpl<TaskRecord> implements Recor
      * Create a detached TaskRecord
      */
     public TaskRecord() {
-        super(Task.TODO);
+        super(Task.TASK);
     }
 
     /**
      * Create a detached, initialised TaskRecord
      */
     public TaskRecord(String uuid, String appUserUuid, String code, String title, String status) {
-        super(Task.TODO);
+        super(Task.TASK);
 
         setUuid(uuid);
         setAppUserUuid(appUserUuid);

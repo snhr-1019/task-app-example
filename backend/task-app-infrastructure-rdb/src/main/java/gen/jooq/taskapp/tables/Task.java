@@ -43,7 +43,7 @@ public class Task extends TableImpl<TaskRecord> {
     /**
      * The reference instance of <code>taskapp.task</code>
      */
-    public static final Task TODO = new Task();
+    public static final Task TASK = new Task();
 
     /**
      * The class holding records for this type
@@ -90,14 +90,14 @@ public class Task extends TableImpl<TaskRecord> {
      * Create an aliased <code>taskapp.task</code> table reference
      */
     public Task(String alias) {
-        this(DSL.name(alias), TODO);
+        this(DSL.name(alias), TASK);
     }
 
     /**
      * Create an aliased <code>taskapp.task</code> table reference
      */
     public Task(Name alias) {
-        this(alias, TODO);
+        this(alias, TASK);
     }
 
     /**
@@ -108,22 +108,22 @@ public class Task extends TableImpl<TaskRecord> {
     }
 
     public <O extends Record> Task(Table<O> child, ForeignKey<O, TaskRecord> key) {
-        super(child, key, TODO);
+        super(child, key, TASK);
     }
 
     @Override
     public Schema getSchema() {
-        return aliased() ? null : Taskapp.TODOAPP;
+        return aliased() ? null : Taskapp.TASKAPP;
     }
 
     @Override
     public List<Index> getIndexes() {
-        return Arrays.asList(Indexes.TODO_TODO_APP_USER_UUID_FK);
+        return Arrays.asList(Indexes.TASK_TASK_APP_USER_UUID_FK);
     }
 
     @Override
     public UniqueKey<TaskRecord> getPrimaryKey() {
-        return Keys.KEY_TODO_PRIMARY;
+        return Keys.KEY_TASK_PRIMARY;
     }
 
     @Override

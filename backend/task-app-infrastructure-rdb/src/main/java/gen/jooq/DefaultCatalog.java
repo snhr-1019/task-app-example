@@ -30,7 +30,7 @@ public class DefaultCatalog extends CatalogImpl {
     /**
      * The schema <code>taskapp</code>.
      */
-    public final Taskapp TODOAPP = Taskapp.TODOAPP;
+    public final Taskapp TASKAPP = Taskapp.TASKAPP;
 
     /**
      * No further instances allowed
@@ -42,7 +42,7 @@ public class DefaultCatalog extends CatalogImpl {
     @Override
     public final List<Schema> getSchemas() {
         return Arrays.asList(
-            Taskapp.TODOAPP
+            Taskapp.TASKAPP
         );
     }
 

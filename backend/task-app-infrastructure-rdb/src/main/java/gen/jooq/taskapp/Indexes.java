@@ -22,5 +22,5 @@ public class Indexes {
     // INDEX definitions
     // -------------------------------------------------------------------------
 
-    public static final Index TODO_TODO_APP_USER_UUID_FK = Internal.createIndex(DSL.name("task_app_user_uuid_fk"), Task.TODO, new OrderField[] { Task.TODO.APP_USER_UUID }, false);
+    public static final Index TASK_TASK_APP_USER_UUID_FK = Internal.createIndex(DSL.name("task_app_user_uuid_fk"), Task.TASK, new OrderField[] { Task.TASK.APP_USER_UUID }, false);
 }
