@@ -1,4 +1,4 @@
-package com.example.todoapp.domain.vo;
+package com.example.taskapp.domain.vo;
 
 public record Code(String value) {
 }

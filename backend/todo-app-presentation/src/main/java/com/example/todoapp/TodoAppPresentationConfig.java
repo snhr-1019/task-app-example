@@ -1,4 +1,4 @@
-package com.example.todoapp;
+package com.example.taskapp;
 
 import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.context.annotation.ComponentScan;

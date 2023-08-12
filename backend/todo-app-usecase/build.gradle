@@ -1,4 +1,4 @@
 dependencies {
-    implementation project(':todo-app-domain')
-    runtimeOnly project(':todo-app-infrastructure')
+    implementation project(':task-app-domain')
+    runtimeOnly project(':task-app-infrastructure')
 }

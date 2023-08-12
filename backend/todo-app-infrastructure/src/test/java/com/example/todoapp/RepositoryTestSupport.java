@@ -1,4 +1,4 @@
-package com.example.todoapp;
+package com.example.taskapp;
 
 import org.flywaydb.core.Flyway;
 import org.junit.jupiter.api.BeforeEach;
@@ -23,7 +23,7 @@ public abstract class RepositoryTestSupport {
             .withTag("8.0.33");
 
     static final MySQLContainer<?> MYSQL_CONTAINER = new MySQLContainer<>(MYSQL_IMAGE_NAME)
-            .withDatabaseName("todoapp")
+            .withDatabaseName("taskapp")
             .withUsername("root")
             .withPassword("root");
 

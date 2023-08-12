@@ -17,7 +17,7 @@ jooq {
                 logging = org.jooq.meta.jaxb.Logging.WARN
                 jdbc {
                     driver = 'com.mysql.cj.jdbc.Driver'
-                    url = 'jdbc:mysql://localhost/todoapp'
+                    url = 'jdbc:mysql://localhost/taskapp'
                     user = 'root'
                     password = 'root'
                 }
@@ -25,7 +25,7 @@ jooq {
                     name = 'org.jooq.codegen.DefaultGenerator'
                     database {
                         name = 'org.jooq.meta.mysql.MySQLDatabase'
-                        includes = 'todoapp.*'
+                        includes = 'taskapp.*'
                         excludes = 'flyway_schema_history'
                     }
                     target {
@@ -39,7 +39,7 @@ jooq {
 }
 
 flyway {
-    url = "jdbc:mysql://127.0.0.1:3306/todoapp"
+    url = "jdbc:mysql://127.0.0.1:3306/taskapp"
     user = "root"
     password = "root"
     cleanDisabled = false

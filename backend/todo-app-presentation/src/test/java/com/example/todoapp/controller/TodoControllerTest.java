@@ -1,6 +1,6 @@
-package com.example.todoapp.controller;
+package com.example.taskapp.controller;
 
-import com.example.todoapp.TodoAppPresentationConfig;
+import com.example.taskapp.TodoAppPresentationConfig;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -23,7 +23,7 @@ public class TodoControllerTest {
     @Test
     public void testListTodos() throws Exception {
         mockMvc.perform(
-                        get("/todo")
+                        get("/task")
                                 .accept(MediaType.APPLICATION_JSON)
                 )
                 .andExpect(status().isOk())

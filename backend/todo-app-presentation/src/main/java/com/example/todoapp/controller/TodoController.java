@@ -1,9 +1,9 @@
-package com.example.todoapp.controller;
+package com.example.taskapp.controller;
 
-import com.example.todoapp.api.TodoApi;
-import com.example.todoapp.domain.entity.TodoEntity;
-import com.example.todoapp.model.TodoResponse;
-import com.example.todoapp.usecase.ListTodoUseCase;
+import com.example.taskapp.api.TodoApi;
+import com.example.taskapp.domain.entity.TodoEntity;
+import com.example.taskapp.model.TodoResponse;
+import com.example.taskapp.usecase.ListTodoUseCase;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -20,19 +20,19 @@ public class TodoController implements TodoApi {
 
     @Override
     public ResponseEntity<List<TodoResponse>> listTodos() {
-        var todoList = listTodo.fetch();
+        var taskList = listTodo.fetch();
         return ResponseEntity.ok(
-                todoList.stream()
+                taskList.stream()
                         .map(this::fromTodoEntity)
                         .toList()
         );
     }
 
-    public TodoResponse fromTodoEntity(TodoEntity todoEntity) {
+    public TodoResponse fromTodoEntity(TodoEntity taskEntity) {
         var response = new TodoResponse();
-        response.setCode(todoEntity.code().value());
-        response.setTitle(todoEntity.title().toString());
-        response.setStatus(TodoResponse.StatusEnum.fromValue(todoEntity.status().name()));
+        response.setCode(taskEntity.code().value());
+        response.setTitle(taskEntity.title().toString());
+        response.setStatus(TodoResponse.StatusEnum.fromValue(taskEntity.status().name()));
         return response;
     }
 }

@@ -1,4 +1,4 @@
-package com.example.todoapp.model;
+package com.example.taskapp.model;
 
 import java.net.URI;
 import java.util.Objects;
@@ -133,10 +133,10 @@ public class TodoResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    TodoResponse todoResponse = (TodoResponse) o;
-    return Objects.equals(this.code, todoResponse.code) &&
-        Objects.equals(this.title, todoResponse.title) &&
-        Objects.equals(this.status, todoResponse.status);
+    TodoResponse taskResponse = (TodoResponse) o;
+    return Objects.equals(this.code, taskResponse.code) &&
+        Objects.equals(this.title, taskResponse.title) &&
+        Objects.equals(this.status, taskResponse.status);
   }
 
   @Override

@@ -1,8 +1,8 @@
-rootProject.name = 'todoapp'
+rootProject.name = 'taskapp'
 
-include(":todo-app-presentation")
-include(":todo-app-presentation-openapi")
-include(":todo-app-infrastructure")
-include(":todo-app-infrastructure-rdb")
-include(":todo-app-usecase")
-include(":todo-app-domain")
+include(":task-app-presentation")
+include(":task-app-presentation-openapi")
+include(":task-app-infrastructure")
+include(":task-app-infrastructure-rdb")
+include(":task-app-usecase")
+include(":task-app-domain")

@@ -1,8 +1,8 @@
-package com.example.todoapp.domain.entity;
+package com.example.taskapp.domain.entity;
 
-import com.example.todoapp.domain.vo.Code;
-import com.example.todoapp.domain.vo.Status;
-import com.example.todoapp.domain.vo.Title;
+import com.example.taskapp.domain.vo.Code;
+import com.example.taskapp.domain.vo.Status;
+import com.example.taskapp.domain.vo.Title;
 
 import java.util.UUID;
 

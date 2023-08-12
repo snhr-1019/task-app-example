@@ -4,7 +4,7 @@
 package gen.jooq;
 
 
-import gen.jooq.todoapp.Todoapp;
+import gen.jooq.taskapp.Todoapp;
 
 import java.util.Arrays;
 import java.util.List;
@@ -28,7 +28,7 @@ public class DefaultCatalog extends CatalogImpl {
     public static final DefaultCatalog DEFAULT_CATALOG = new DefaultCatalog();
 
     /**
-     * The schema <code>todoapp</code>.
+     * The schema <code>taskapp</code>.
      */
     public final Todoapp TODOAPP = Todoapp.TODOAPP;
 

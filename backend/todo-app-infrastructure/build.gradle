@@ -1,7 +1,7 @@
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-jooq'
-    implementation project(':todo-app-domain')
-    implementation project(':todo-app-infrastructure-rdb')
+    implementation project(':task-app-domain')
+    implementation project(':task-app-infrastructure-rdb')
 
     testImplementation 'org.flywaydb:flyway-mysql'
     testImplementation "org.testcontainers:junit-jupiter:1.18.3"

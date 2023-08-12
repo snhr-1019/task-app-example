@@ -1,7 +1,7 @@
-package com.example.todoapp.domain.repository;
+package com.example.taskapp.domain.repository;
 
-import com.example.todoapp.domain.entity.TodoEntity;
-import com.example.todoapp.domain.vo.Code;
+import com.example.taskapp.domain.entity.taskEntity;
+import com.example.taskapp.domain.vo.Code;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

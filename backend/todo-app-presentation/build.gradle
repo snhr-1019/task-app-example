@@ -6,7 +6,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.flywaydb:flyway-mysql'
 
-    implementation project(':todo-app-presentation-openapi')
-    implementation project(':todo-app-domain')
-    implementation project(':todo-app-usecase')
+    implementation project(':task-app-presentation-openapi')
+    implementation project(':task-app-domain')
+    implementation project(':task-app-usecase')
 }

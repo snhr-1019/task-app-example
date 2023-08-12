@@ -4,7 +4,7 @@ spring:
       enabled: ALWAYS
 
   datasource:
-    url: jdbc:mysql://127.0.0.1:3306/todoapp?characterEncoding=utf8
+    url: jdbc:mysql://127.0.0.1:3306/taskapp?characterEncoding=utf8
     username: root
     password: root
     driverClassName: com.mysql.cj.jdbc.Driver

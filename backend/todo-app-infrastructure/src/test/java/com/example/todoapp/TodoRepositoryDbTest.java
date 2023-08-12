@@ -1,10 +1,10 @@
-package com.example.todoapp;
+package com.example.taskapp;
 
-import com.example.todoapp.domain.entity.TodoEntity;
-import com.example.todoapp.domain.vo.Code;
-import com.example.todoapp.domain.vo.Status;
-import com.example.todoapp.domain.vo.Title;
-import com.example.todoapp.infrastructure.TodoRepositoryDb;
+import com.example.taskapp.domain.entity.TodoEntity;
+import com.example.taskapp.domain.vo.Code;
+import com.example.taskapp.domain.vo.Status;
+import com.example.taskapp.domain.vo.Title;
+import com.example.taskapp.infrastructure.TodoRepositoryDb;
 import org.jooq.DSLContext;
 import org.jooq.Record;
 import org.junit.jupiter.api.Nested;
@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-import static gen.jooq.todoapp.Tables.TODO;
+import static gen.jooq.taskapp.Tables.TODO;
 import static org.assertj.core.api.Assertions.*;
 
 public class TodoRepositoryDbTest extends RepositoryTestSupport {
@@ -69,7 +69,7 @@ public class TodoRepositoryDbTest extends RepositoryTestSupport {
                 "9DA58AE2-96C4-44D0-9FC6-FBBB757C0F76, 74B2DDEB-5513-4820-82F5-F40BB41251E2, ABC123, 牛乳を買う, TODO",
                 "B92C0397-70D4-4F19-A98B-73B14C498EDF, 74B2DDEB-5513-4820-82F5-F40BB41251E2, 789EFG, 掃除をする, DOING"
         })
-        public void testFetchByCode(String todoUuidStr, String appUserUuidStr, String codeStr, String titleStr, String statusStr) {
+        public void testFetchByCode(String taskUuidStr, String appUserUuidStr, String codeStr, String titleStr, String statusStr) {
             // given
             var code = new Code(codeStr);
 
@@ -78,7 +78,7 @@ public class TodoRepositoryDbTest extends RepositoryTestSupport {
 
             // then
             var expected = new TodoEntity(
-                    UUID.fromString(todoUuidStr),
+                    UUID.fromString(taskUuidStr),
                     UUID.fromString(appUserUuidStr),
                     new Code(codeStr),
                     new Title(titleStr),
@@ -86,7 +86,7 @@ public class TodoRepositoryDbTest extends RepositoryTestSupport {
             );
 
             ret.ifPresentOrElse(
-                    todoEntity -> assertThat(todoEntity).isEqualTo(expected),
+                    taskEntity -> assertThat(taskEntity).isEqualTo(expected),
                     () -> fail("Not found")
             );
         }
@@ -101,7 +101,7 @@ public class TodoRepositoryDbTest extends RepositoryTestSupport {
 
             // then
             ret.ifPresentOrElse(
-                    todoEntity -> fail("Found"),
+                    taskEntity -> fail("Found"),
                     () -> assertThat(true).isTrue()
             );
         }
@@ -113,14 +113,14 @@ public class TodoRepositoryDbTest extends RepositoryTestSupport {
         @Transactional // test data will be rolled back
         public void testSave() {
             // given
-            String todoUuidStr = "2A080A9B-BA02-4407-B149-90E3531C9AA8";
+            String taskUuidStr = "2A080A9B-BA02-4407-B149-90E3531C9AA8";
             String appUserUuidStr = "74B2DDEB-5513-4820-82F5-F40BB41251E2";
             String codeStr = "NEW_CODE";
             String titleStr = "new task";
             String statusStr = "DOING";
 
             var entity = new TodoEntity(
-                    UUID.fromString(todoUuidStr),
+                    UUID.fromString(taskUuidStr),
                     UUID.fromString(appUserUuidStr),
                     new Code(codeStr),
                     new Title(titleStr),

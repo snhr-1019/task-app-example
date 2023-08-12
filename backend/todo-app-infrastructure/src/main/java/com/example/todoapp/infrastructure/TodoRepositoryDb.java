@@ -1,10 +1,10 @@
-package com.example.todoapp.infrastructure;
+package com.example.taskapp.infrastructure;
 
-import com.example.todoapp.domain.entity.TodoEntity;
-import com.example.todoapp.domain.repository.TodoRepository;
-import com.example.todoapp.domain.vo.Code;
-import com.example.todoapp.domain.vo.Status;
-import com.example.todoapp.domain.vo.Title;
+import com.example.taskapp.domain.entity.TodoEntity;
+import com.example.taskapp.domain.repository.TodoRepository;
+import com.example.taskapp.domain.vo.Code;
+import com.example.taskapp.domain.vo.Status;
+import com.example.taskapp.domain.vo.Title;
 import lombok.RequiredArgsConstructor;
 import org.jooq.DSLContext;
 import org.jooq.Record;
@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-import static gen.jooq.todoapp.Tables.TODO;
+import static gen.jooq.taskapp.Tables.TODO;
 
 @Repository
 @RequiredArgsConstructor

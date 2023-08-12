@@ -1,8 +1,8 @@
-package com.example.todoapp.usecase;
+package com.example.taskapp.usecase;
 
-import com.example.todoapp.domain.entity.TodoEntity;
-import com.example.todoapp.domain.repository.TodoRepository;
-import com.example.todoapp.domain.vo.Code;
+import com.example.taskapp.domain.entity.TodoEntity;
+import com.example.taskapp.domain.repository.TodoRepository;
+import com.example.taskapp.domain.vo.Code;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,9 +13,9 @@ import java.util.List;
 @Service
 public class ListTodoUseCase {
 
-    private final TodoRepository todoRepository;
+    private final TodoRepository taskRepository;
 
     public List<TodoEntity> fetch() {
-        return todoRepository.fetch();
+        return taskRepository.fetch();
     }
 }

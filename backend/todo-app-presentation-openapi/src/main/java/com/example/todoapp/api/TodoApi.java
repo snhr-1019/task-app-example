@@ -3,10 +3,10 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-package com.example.todoapp.api;
+package com.example.taskapp.api;
 
-import com.example.todoapp.model.TodoRequest;
-import com.example.todoapp.model.TodoResponse;
+import com.example.taskapp.model.TodoRequest;
+import com.example.taskapp.model.TodoResponse;
 import io.swagger.v3.oas.annotations.ExternalDocumentation;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -35,7 +35,7 @@ import jakarta.annotation.Generated;
 
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-07-18T22:24:37.824749244+09:00[Asia/Tokyo]")
 @Validated
-@Tag(name = "todo", description = "Todo operations")
+@Tag(name = "task", description = "Todo operations")
 public interface TodoApi {
 
     default Optional<NativeWebRequest> getRequest() {
@@ -43,15 +43,15 @@ public interface TodoApi {
     }
 
     /**
-     * POST /todo : Create Todo
+     * POST /task : Create Todo
      *
-     * @param todoRequest  (optional)
+     * @param taskRequest  (optional)
      * @return OK (status code 200)
      */
     @Operation(
         operationId = "createTodo",
         summary = "Create Todo",
-        tags = { "todo" },
+        tags = { "task" },
         responses = {
             @ApiResponse(responseCode = "200", description = "OK", content = {
                 @Content(mediaType = "application/json", schema = @Schema(implementation = Object.class))
@@ -60,12 +60,12 @@ public interface TodoApi {
     )
     @RequestMapping(
         method = RequestMethod.POST,
-        value = "/todo",
+        value = "/task",
         produces = { "application/json" },
         consumes = { "application/json" }
     )
     default ResponseEntity<Object> createTodo(
-        @Parameter(name = "TodoRequest", description = "") @Valid @RequestBody(required = false) TodoRequest todoRequest
+        @Parameter(name = "TodoRequest", description = "") @Valid @RequestBody(required = false) TodoRequest taskRequest
     ) {
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
 
@@ -73,15 +73,15 @@ public interface TodoApi {
 
 
     /**
-     * DELETE /todo/{code} : Delete todo by code
+     * DELETE /task/{code} : Delete task by code
      *
      * @param code  (required)
      * @return OK (status code 200)
      */
     @Operation(
         operationId = "deleteTodo",
-        summary = "Delete todo by code",
-        tags = { "todo" },
+        summary = "Delete task by code",
+        tags = { "task" },
         responses = {
             @ApiResponse(responseCode = "200", description = "OK", content = {
                 @Content(mediaType = "application/json", schema = @Schema(implementation = Object.class))
@@ -90,7 +90,7 @@ public interface TodoApi {
     )
     @RequestMapping(
         method = RequestMethod.DELETE,
-        value = "/todo/{code}",
+        value = "/task/{code}",
         produces = { "application/json" }
     )
     default ResponseEntity<Object> deleteTodo(
@@ -102,15 +102,15 @@ public interface TodoApi {
 
 
     /**
-     * GET /todo/{code} : Get todo by code
+     * GET /task/{code} : Get task by code
      *
      * @param code  (required)
      * @return OK (status code 200)
      */
     @Operation(
         operationId = "getTodo",
-        summary = "Get todo by code",
-        tags = { "todo" },
+        summary = "Get task by code",
+        tags = { "task" },
         responses = {
             @ApiResponse(responseCode = "200", description = "OK", content = {
                 @Content(mediaType = "application/json", schema = @Schema(implementation = TodoResponse.class))
@@ -119,7 +119,7 @@ public interface TodoApi {
     )
     @RequestMapping(
         method = RequestMethod.GET,
-        value = "/todo/{code}",
+        value = "/task/{code}",
         produces = { "application/json" }
     )
     default ResponseEntity<TodoResponse> getTodo(
@@ -140,14 +140,14 @@ public interface TodoApi {
 
 
     /**
-     * GET /todo : List todos
+     * GET /task : List tasks
      *
      * @return OK (status code 200)
      */
     @Operation(
         operationId = "listTodos",
-        summary = "List todos",
-        tags = { "todo" },
+        summary = "List tasks",
+        tags = { "task" },
         responses = {
             @ApiResponse(responseCode = "200", description = "OK", content = {
                 @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = TodoResponse.class)))
@@ -156,7 +156,7 @@ public interface TodoApi {
     )
     @RequestMapping(
         method = RequestMethod.GET,
-        value = "/todo",
+        value = "/task",
         produces = { "application/json" }
     )
     default ResponseEntity<List<TodoResponse>> listTodos(
