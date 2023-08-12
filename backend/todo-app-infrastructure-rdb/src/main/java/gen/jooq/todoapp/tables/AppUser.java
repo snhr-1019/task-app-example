@@ -5,7 +5,7 @@ package gen.jooq.taskapp.tables;
 
 
 import gen.jooq.taskapp.Keys;
-import gen.jooq.taskapp.Todoapp;
+import gen.jooq.taskapp.Taskapp;
 import gen.jooq.taskapp.tables.records.AppUserRecord;
 
 import java.util.Arrays;
@@ -101,7 +101,7 @@ public class AppUser extends TableImpl<AppUserRecord> {
 
     @Override
     public Schema getSchema() {
-        return aliased() ? null : Todoapp.TODOAPP;
+        return aliased() ? null : Taskapp.TODOAPP;
     }
 
     @Override

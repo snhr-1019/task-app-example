@@ -16,11 +16,11 @@ import java.util.*;
 import jakarta.annotation.Generated;
 
 /**
- * TodoResponse
+ * TaskResponse
  */
 
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-07-18T22:24:37.824749244+09:00[Asia/Tokyo]")
-public class TodoResponse {
+public class TaskResponse {
 
   private String code;
 
@@ -65,7 +65,7 @@ public class TodoResponse {
 
   private StatusEnum status;
 
-  public TodoResponse code(String code) {
+  public TaskResponse code(String code) {
     this.code = code;
     return this;
   }
@@ -85,7 +85,7 @@ public class TodoResponse {
     this.code = code;
   }
 
-  public TodoResponse title(String title) {
+  public TaskResponse title(String title) {
     this.title = title;
     return this;
   }
@@ -105,7 +105,7 @@ public class TodoResponse {
     this.title = title;
   }
 
-  public TodoResponse status(StatusEnum status) {
+  public TaskResponse status(StatusEnum status) {
     this.status = status;
     return this;
   }
@@ -133,7 +133,7 @@ public class TodoResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    TodoResponse taskResponse = (TodoResponse) o;
+    TaskResponse taskResponse = (TaskResponse) o;
     return Objects.equals(this.code, taskResponse.code) &&
         Objects.equals(this.title, taskResponse.title) &&
         Objects.equals(this.status, taskResponse.status);
@@ -147,7 +147,7 @@ public class TodoResponse {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class TodoResponse {\n");
+    sb.append("class TaskResponse {\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");

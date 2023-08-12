@@ -5,9 +5,9 @@ package gen.jooq.taskapp;
 
 
 import gen.jooq.taskapp.tables.AppUser;
-import gen.jooq.taskapp.tables.Todo;
+import gen.jooq.taskapp.tables.Task;
 import gen.jooq.taskapp.tables.records.AppUserRecord;
-import gen.jooq.taskapp.tables.records.TodoRecord;
+import gen.jooq.taskapp.tables.records.TaskRecord;
 
 import org.jooq.TableField;
 import org.jooq.UniqueKey;
@@ -28,5 +28,5 @@ public class Keys {
 
     public static final UniqueKey<AppUserRecord> KEY_APP_USER_APP_USER_PK = Internal.createUniqueKey(AppUser.APP_USER, DSL.name("KEY_app_user_app_user_pk"), new TableField[] { AppUser.APP_USER.UUID }, true);
     public static final UniqueKey<AppUserRecord> KEY_APP_USER_PRIMARY = Internal.createUniqueKey(AppUser.APP_USER, DSL.name("KEY_app_user_PRIMARY"), new TableField[] { AppUser.APP_USER.UUID }, true);
-    public static final UniqueKey<TodoRecord> KEY_TODO_PRIMARY = Internal.createUniqueKey(Todo.TODO, DSL.name("KEY_task_PRIMARY"), new TableField[] { Todo.TODO.UUID }, true);
+    public static final UniqueKey<TaskRecord> KEY_TODO_PRIMARY = Internal.createUniqueKey(Task.TODO, DSL.name("KEY_task_PRIMARY"), new TableField[] { Task.TODO.UUID }, true);
 }

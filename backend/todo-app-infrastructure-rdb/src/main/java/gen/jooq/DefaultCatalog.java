@@ -4,7 +4,7 @@
 package gen.jooq;
 
 
-import gen.jooq.taskapp.Todoapp;
+import gen.jooq.taskapp.Taskapp;
 
 import java.util.Arrays;
 import java.util.List;
@@ -30,7 +30,7 @@ public class DefaultCatalog extends CatalogImpl {
     /**
      * The schema <code>taskapp</code>.
      */
-    public final Todoapp TODOAPP = Todoapp.TODOAPP;
+    public final Taskapp TODOAPP = Taskapp.TODOAPP;
 
     /**
      * No further instances allowed
@@ -42,7 +42,7 @@ public class DefaultCatalog extends CatalogImpl {
     @Override
     public final List<Schema> getSchemas() {
         return Arrays.asList(
-            Todoapp.TODOAPP
+            Taskapp.TODOAPP
         );
     }
 

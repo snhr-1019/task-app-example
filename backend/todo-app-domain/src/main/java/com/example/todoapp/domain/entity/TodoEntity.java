@@ -6,5 +6,5 @@ import com.example.taskapp.domain.vo.Title;
 
 import java.util.UUID;
 
-public record TodoEntity(UUID uuid, UUID appUserUuid, Code code, Title title, Status status) {
+public record TaskEntity(UUID uuid, UUID appUserUuid, Code code, Title title, Status status) {
 }

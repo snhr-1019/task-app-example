@@ -6,5 +6,5 @@ import org.springframework.context.annotation.Configuration;
 
 @SpringBootConfiguration
 @ComponentScan
-public class TodoAppPresentationConfig {
+public class TaskAppPresentationConfig {
 }

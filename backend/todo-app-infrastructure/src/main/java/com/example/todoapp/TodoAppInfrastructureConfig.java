@@ -8,5 +8,5 @@ import org.springframework.context.annotation.ComponentScan;
 @SpringBootConfiguration
 @ComponentScan
 @EnableAutoConfiguration
-public class TodoAppInfrastructureConfig {
+public class TaskAppInfrastructureConfig {
 }

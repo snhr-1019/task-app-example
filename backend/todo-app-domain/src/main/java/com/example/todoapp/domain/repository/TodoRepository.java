@@ -8,13 +8,13 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface TodoRepository {
+public interface TaskRepository {
 
-    public List<TodoEntity> fetch();
+    public List<TaskEntity> fetch();
 
-    public Optional<TodoEntity> fetchByCode(Code code);
+    public Optional<TaskEntity> fetchByCode(Code code);
 
-    public void save(TodoEntity entity);
+    public void save(TaskEntity entity);
 
     public void deleteByCode(Code code);
 }

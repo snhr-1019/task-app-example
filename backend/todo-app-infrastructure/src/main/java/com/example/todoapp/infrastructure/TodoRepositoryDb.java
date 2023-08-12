@@ -1,7 +1,7 @@
 package com.example.taskapp.infrastructure;
 
-import com.example.taskapp.domain.entity.TodoEntity;
-import com.example.taskapp.domain.repository.TodoRepository;
+import com.example.taskapp.domain.entity.TaskEntity;
+import com.example.taskapp.domain.repository.TaskRepository;
 import com.example.taskapp.domain.vo.Code;
 import com.example.taskapp.domain.vo.Status;
 import com.example.taskapp.domain.vo.Title;
@@ -19,18 +19,18 @@ import static gen.jooq.taskapp.Tables.TODO;
 
 @Repository
 @RequiredArgsConstructor
-public class TodoRepositoryDb implements TodoRepository {
+public class TaskRepositoryDb implements TaskRepository {
 
     private final DSLContext dsl;
 
     @Override
-    public List<TodoEntity> fetch() {
+    public List<TaskEntity> fetch() {
         Result<Record> result = dsl.select().from(TODO).fetch();
         return result.stream().map(this::fromRecord).toList();
     }
 
     @Override
-    public Optional<TodoEntity> fetchByCode(Code code) {
+    public Optional<TaskEntity> fetchByCode(Code code) {
         Record record = dsl.select().from(TODO).where(TODO.CODE.eq(code.value())).fetchOne();
 
         if (record == null) {
@@ -41,7 +41,7 @@ public class TodoRepositoryDb implements TodoRepository {
     }
 
     @Override
-    public void save(TodoEntity entity) {
+    public void save(TaskEntity entity) {
         dsl.insertInto(TODO)
                 .set(TODO.UUID, entity.uuid().toString())
                 .set(TODO.APP_USER_UUID, entity.appUserUuid().toString())
@@ -56,8 +56,8 @@ public class TodoRepositoryDb implements TodoRepository {
         dsl.deleteFrom(TODO).where(TODO.CODE.eq(code.value())).execute();
     }
 
-    private TodoEntity fromRecord(Record record) {
-        return new TodoEntity(
+    private TaskEntity fromRecord(Record record) {
+        return new TaskEntity(
                 UUID.fromString(record.get(TODO.UUID)),
                 UUID.fromString(record.get(TODO.APP_USER_UUID)),
                 new Code(record.get(TODO.CODE)),

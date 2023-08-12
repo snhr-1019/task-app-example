@@ -1,6 +1,6 @@
 package com.example.taskapp.controller;
 
-import com.example.taskapp.TodoAppPresentationConfig;
+import com.example.taskapp.TaskAppPresentationConfig;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -13,15 +13,15 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@SpringBootTest(classes = TodoAppPresentationConfig.class)
+@SpringBootTest(classes = TaskAppPresentationConfig.class)
 @AutoConfigureMockMvc
-public class TodoControllerTest {
+public class TaskControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
 
     @Test
-    public void testListTodos() throws Exception {
+    public void testListTasks() throws Exception {
         mockMvc.perform(
                         get("/task")
                                 .accept(MediaType.APPLICATION_JSON)

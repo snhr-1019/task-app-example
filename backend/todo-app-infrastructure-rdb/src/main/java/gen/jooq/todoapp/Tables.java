@@ -5,7 +5,7 @@ package gen.jooq.taskapp;
 
 
 import gen.jooq.taskapp.tables.AppUser;
-import gen.jooq.taskapp.tables.Todo;
+import gen.jooq.taskapp.tables.Task;
 
 
 /**
@@ -22,5 +22,5 @@ public class Tables {
     /**
      * The table <code>taskapp.task</code>.
      */
-    public static final Todo TODO = Todo.TODO;
+    public static final Task TODO = Task.TODO;
 }

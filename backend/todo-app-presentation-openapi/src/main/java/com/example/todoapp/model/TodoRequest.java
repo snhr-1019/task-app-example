@@ -16,11 +16,11 @@ import java.util.*;
 import jakarta.annotation.Generated;
 
 /**
- * TodoRequest
+ * TaskRequest
  */
 
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-07-18T22:24:37.824749244+09:00[Asia/Tokyo]")
-public class TodoRequest {
+public class TaskRequest {
 
   private String code;
 
@@ -67,23 +67,23 @@ public class TodoRequest {
 
   /**
    * Default constructor
-   * @deprecated Use {@link TodoRequest#TodoRequest(String, String, StatusEnum)}
+   * @deprecated Use {@link TaskRequest#TaskRequest(String, String, StatusEnum)}
    */
   @Deprecated
-  public TodoRequest() {
+  public TaskRequest() {
     super();
   }
 
   /**
    * Constructor with only required parameters
    */
-  public TodoRequest(String code, String title, StatusEnum status) {
+  public TaskRequest(String code, String title, StatusEnum status) {
     this.code = code;
     this.title = title;
     this.status = status;
   }
 
-  public TodoRequest code(String code) {
+  public TaskRequest code(String code) {
     this.code = code;
     return this;
   }
@@ -103,7 +103,7 @@ public class TodoRequest {
     this.code = code;
   }
 
-  public TodoRequest title(String title) {
+  public TaskRequest title(String title) {
     this.title = title;
     return this;
   }
@@ -123,7 +123,7 @@ public class TodoRequest {
     this.title = title;
   }
 
-  public TodoRequest status(StatusEnum status) {
+  public TaskRequest status(StatusEnum status) {
     this.status = status;
     return this;
   }
@@ -151,7 +151,7 @@ public class TodoRequest {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    TodoRequest taskRequest = (TodoRequest) o;
+    TaskRequest taskRequest = (TaskRequest) o;
     return Objects.equals(this.code, taskRequest.code) &&
         Objects.equals(this.title, taskRequest.title) &&
         Objects.equals(this.status, taskRequest.status);
@@ -165,7 +165,7 @@ public class TodoRequest {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class TodoRequest {\n");
+    sb.append("class TaskRequest {\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");

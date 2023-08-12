@@ -6,5 +6,5 @@ import org.springframework.context.annotation.Import;
 
 @Configuration
 @ComponentScan
-public class TodoAppUseCaseConfig {
+public class TaskAppUseCaseConfig {
 }

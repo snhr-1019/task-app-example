@@ -2,6 +2,6 @@
 README.md
 pom.xml
 src/main/java/com/example/taskapp/api/ApiUtil.java
-src/main/java/com/example/taskapp/api/TodoApi.java
-src/main/java/com/example/taskapp/model/TodoRequest.java
-src/main/java/com/example/taskapp/model/TodoResponse.java
+src/main/java/com/example/taskapp/api/TaskApi.java
+src/main/java/com/example/taskapp/model/TaskRequest.java
+src/main/java/com/example/taskapp/model/TaskResponse.java
