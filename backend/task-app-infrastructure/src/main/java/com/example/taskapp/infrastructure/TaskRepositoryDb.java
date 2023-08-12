@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-import static gen.jooq.taskapp.Tables.TODO;
+import static gen.jooq.taskapp.Tables.TASK;
 
 @Repository
 @RequiredArgsConstructor
@@ -25,13 +25,13 @@ public class TaskRepositoryDb implements TaskRepository {
 
     @Override
     public List<TaskEntity> fetch() {
-        Result<Record> result = dsl.select().from(TODO).fetch();
+        Result<Record> result = dsl.select().from(TASK).fetch();
         return result.stream().map(this::fromRecord).toList();
     }
 
     @Override
     public Optional<TaskEntity> fetchByCode(Code code) {
-        Record record = dsl.select().from(TODO).where(TODO.CODE.eq(code.value())).fetchOne();
+        Record record = dsl.select().from(TASK).where(TASK.CODE.eq(code.value())).fetchOne();
 
         if (record == null) {
             return Optional.empty();
@@ -42,27 +42,27 @@ public class TaskRepositoryDb implements TaskRepository {
 
     @Override
     public void save(TaskEntity entity) {
-        dsl.insertInto(TODO)
-                .set(TODO.UUID, entity.uuid().toString())
-                .set(TODO.APP_USER_UUID, entity.appUserUuid().toString())
-                .set(TODO.CODE, entity.code().value())
-                .set(TODO.TITLE, entity.title().value())
-                .set(TODO.STATUS, entity.status().name())
+        dsl.insertInto(TASK)
+                .set(TASK.UUID, entity.uuid().toString())
+                .set(TASK.APP_USER_UUID, entity.appUserUuid().toString())
+                .set(TASK.CODE, entity.code().value())
+                .set(TASK.TITLE, entity.title().value())
+                .set(TASK.STATUS, entity.status().name())
                 .execute();
     }
 
     @Override
     public void deleteByCode(Code code) {
-        dsl.deleteFrom(TODO).where(TODO.CODE.eq(code.value())).execute();
+        dsl.deleteFrom(TASK).where(TASK.CODE.eq(code.value())).execute();
     }
 
     private TaskEntity fromRecord(Record record) {
         return new TaskEntity(
-                UUID.fromString(record.get(TODO.UUID)),
-                UUID.fromString(record.get(TODO.APP_USER_UUID)),
-                new Code(record.get(TODO.CODE)),
-                new Title(record.get(TODO.TITLE)),
-                Status.valueOf(record.get(TODO.STATUS))
+                UUID.fromString(record.get(TASK.UUID)),
+                UUID.fromString(record.get(TASK.APP_USER_UUID)),
+                new Code(record.get(TASK.CODE)),
+                new Title(record.get(TASK.TITLE)),
+                Status.valueOf(record.get(TASK.STATUS))
         );
     }
 }

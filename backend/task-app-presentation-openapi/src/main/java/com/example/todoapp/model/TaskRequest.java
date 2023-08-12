@@ -16,11 +16,11 @@ import java.util.*;
 import jakarta.annotation.Generated;
 
 /**
- * TaskResponse
+ * TaskRequest
  */
 
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-07-18T22:24:37.824749244+09:00[Asia/Tokyo]")
-public class TaskResponse {
+public class TaskRequest {
 
   private String code;
 
@@ -30,7 +30,7 @@ public class TaskResponse {
    * Gets or Sets status
    */
   public enum StatusEnum {
-    TODO("TODO"),
+    TASK("TASK"),
     
     DOING("DOING"),
     
@@ -65,7 +65,25 @@ public class TaskResponse {
 
   private StatusEnum status;
 
-  public TaskResponse code(String code) {
+  /**
+   * Default constructor
+   * @deprecated Use {@link TaskRequest#TaskRequest(String, String, StatusEnum)}
+   */
+  @Deprecated
+  public TaskRequest() {
+    super();
+  }
+
+  /**
+   * Constructor with only required parameters
+   */
+  public TaskRequest(String code, String title, StatusEnum status) {
+    this.code = code;
+    this.title = title;
+    this.status = status;
+  }
+
+  public TaskRequest code(String code) {
     this.code = code;
     return this;
   }
@@ -74,8 +92,8 @@ public class TaskResponse {
    * Get code
    * @return code
   */
-  
-  @Schema(name = "code", example = "ABC123", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @NotNull 
+  @Schema(name = "code", example = "ABC123", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("code")
   public String getCode() {
     return code;
@@ -85,7 +103,7 @@ public class TaskResponse {
     this.code = code;
   }
 
-  public TaskResponse title(String title) {
+  public TaskRequest title(String title) {
     this.title = title;
     return this;
   }
@@ -94,8 +112,8 @@ public class TaskResponse {
    * Get title
    * @return title
   */
-  
-  @Schema(name = "title", example = "牛乳を買う", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @NotNull 
+  @Schema(name = "title", example = "牛乳を買う", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("title")
   public String getTitle() {
     return title;
@@ -105,7 +123,7 @@ public class TaskResponse {
     this.title = title;
   }
 
-  public TaskResponse status(StatusEnum status) {
+  public TaskRequest status(StatusEnum status) {
     this.status = status;
     return this;
   }
@@ -114,8 +132,8 @@ public class TaskResponse {
    * Get status
    * @return status
   */
-  
-  @Schema(name = "status", example = "TODO", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @NotNull 
+  @Schema(name = "status", example = "TASK", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("status")
   public StatusEnum getStatus() {
     return status;
@@ -133,10 +151,10 @@ public class TaskResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    TaskResponse taskResponse = (TaskResponse) o;
-    return Objects.equals(this.code, taskResponse.code) &&
-        Objects.equals(this.title, taskResponse.title) &&
-        Objects.equals(this.status, taskResponse.status);
+    TaskRequest taskRequest = (TaskRequest) o;
+    return Objects.equals(this.code, taskRequest.code) &&
+        Objects.equals(this.title, taskRequest.title) &&
+        Objects.equals(this.status, taskRequest.status);
   }
 
   @Override
@@ -147,7 +165,7 @@ public class TaskResponse {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class TaskResponse {\n");
+    sb.append("class TaskRequest {\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");

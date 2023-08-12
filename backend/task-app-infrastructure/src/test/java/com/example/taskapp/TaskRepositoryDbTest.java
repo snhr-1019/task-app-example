@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-import static gen.jooq.taskapp.Tables.TODO;
+import static gen.jooq.taskapp.Tables.TASK;
 import static org.assertj.core.api.Assertions.*;
 
 public class TaskRepositoryDbTest extends RepositoryTestSupport {
@@ -66,7 +66,7 @@ public class TaskRepositoryDbTest extends RepositoryTestSupport {
     class TestFetchByCode {
         @ParameterizedTest
         @CsvSource({
-                "9DA58AE2-96C4-44D0-9FC6-FBBB757C0F76, 74B2DDEB-5513-4820-82F5-F40BB41251E2, ABC123, 牛乳を買う, TODO",
+                "9DA58AE2-96C4-44D0-9FC6-FBBB757C0F76, 74B2DDEB-5513-4820-82F5-F40BB41251E2, ABC123, 牛乳を買う, TASK",
                 "B92C0397-70D4-4F19-A98B-73B14C498EDF, 74B2DDEB-5513-4820-82F5-F40BB41251E2, 789EFG, 掃除をする, DOING"
         })
         public void testFetchByCode(String taskUuidStr, String appUserUuidStr, String codeStr, String titleStr, String statusStr) {
@@ -131,11 +131,11 @@ public class TaskRepositoryDbTest extends RepositoryTestSupport {
             sut.save(entity);
 
             // then
-            Record record = dsl.select().from(TODO).where(TODO.CODE.eq(codeStr)).fetchOne();
+            Record record = dsl.select().from(TASK).where(TASK.CODE.eq(codeStr)).fetchOne();
             assert record != null;
-            assertThat(record.get(TODO.CODE)).isEqualTo(codeStr);
-            assertThat(record.get(TODO.TITLE)).isEqualTo(titleStr);
-            assertThat(record.get(TODO.STATUS)).isEqualTo(statusStr);
+            assertThat(record.get(TASK.CODE)).isEqualTo(codeStr);
+            assertThat(record.get(TASK.TITLE)).isEqualTo(titleStr);
+            assertThat(record.get(TASK.STATUS)).isEqualTo(statusStr);
         }
     }
 
@@ -147,14 +147,14 @@ public class TaskRepositoryDbTest extends RepositoryTestSupport {
             // given
             String codeStr = "ABC123";
 
-            Record recordBefore = dsl.select().from(TODO).where(TODO.CODE.eq(codeStr)).fetchOne();
+            Record recordBefore = dsl.select().from(TASK).where(TASK.CODE.eq(codeStr)).fetchOne();
             assertThat(recordBefore).isNotNull();
 
             // when
             sut.deleteByCode(new Code(codeStr));
 
             // then
-            Record recordAfter = dsl.select().from(TODO).where(TODO.CODE.eq(codeStr)).fetchOne();
+            Record recordAfter = dsl.select().from(TASK).where(TASK.CODE.eq(codeStr)).fetchOne();
             assertThat(recordAfter  ).isNull();
         }
     }

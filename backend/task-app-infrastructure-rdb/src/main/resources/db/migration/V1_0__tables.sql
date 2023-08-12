@@ -24,6 +24,6 @@ create index task_app_user_uuid_fk
 
 
 INSERT INTO taskapp.task (uuid, app_user_uuid, code, title, status)
-VALUES ('9DA58AE2-96C4-44D0-9FC6-FBBB757C0F76', '74B2DDEB-5513-4820-82F5-F40BB41251E2', 'ABC123', '牛乳を買う', 'TODO');
+VALUES ('9DA58AE2-96C4-44D0-9FC6-FBBB757C0F76', '74B2DDEB-5513-4820-82F5-F40BB41251E2', 'ABC123', '牛乳を買う', 'TASK');
 INSERT INTO taskapp.task (uuid, app_user_uuid, code, title, status)
 VALUES ('B92C0397-70D4-4F19-A98B-73B14C498EDF', '74B2DDEB-5513-4820-82F5-F40BB41251E2', '789EFG', '掃除をする', 'DOING');

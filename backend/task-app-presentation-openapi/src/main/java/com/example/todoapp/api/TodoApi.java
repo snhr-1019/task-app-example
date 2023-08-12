@@ -128,7 +128,7 @@ public interface TaskApi {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"code\" : \"ABC123\", \"title\" : \"牛乳を買う\", \"status\" : \"TODO\" }";
+                    String exampleString = "{ \"code\" : \"ABC123\", \"title\" : \"牛乳を買う\", \"status\" : \"TASK\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
@@ -165,7 +165,7 @@ public interface TaskApi {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "[ { \"code\" : \"ABC123\", \"title\" : \"牛乳を買う\", \"status\" : \"TODO\" }, { \"code\" : \"ABC123\", \"title\" : \"牛乳を買う\", \"status\" : \"TODO\" } ]";
+                    String exampleString = "[ { \"code\" : \"ABC123\", \"title\" : \"牛乳を買う\", \"status\" : \"TASK\" }, { \"code\" : \"ABC123\", \"title\" : \"牛乳を買う\", \"status\" : \"TASK\" } ]";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }

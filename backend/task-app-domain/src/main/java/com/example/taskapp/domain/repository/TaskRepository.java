@@ -1,6 +1,6 @@
 package com.example.taskapp.domain.repository;
 
-import com.example.taskapp.domain.entity.taskEntity;
+import com.example.taskapp.domain.entity.TaskEntity;
 import com.example.taskapp.domain.vo.Code;
 import org.springframework.stereotype.Repository;
 
