@@ -7,9 +7,9 @@ tags:
   - name: tasks
     description: タスクに関するAPI
 servers:
-  - url: 'http://localhost:8080'
+  - url: 'http://localhost:8080/api'
 paths:
-  '/api/tasks':
+  '/tasks':
     get:
       summary: タスク一覧の取得
       tags:
@@ -31,7 +31,7 @@ paths:
                   value:
                     - id: 2001
                       title: 牛乳を買う
-                      status: TODO
+                      status: TASK
                     - id: 2002
                       title: 手紙を出す
                       completed: false
@@ -76,7 +76,7 @@ paths:
           description: Bad Request
         '403':
           description: Forbidden
-  '/api/tasks/{taskId}':
+  '/tasks/{taskId}':
     parameters:
       - name: taskId
         in: path
