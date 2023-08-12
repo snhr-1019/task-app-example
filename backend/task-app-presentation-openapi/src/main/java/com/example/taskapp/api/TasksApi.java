@@ -35,17 +35,17 @@ import java.util.Map;
 import java.util.Optional;
 import jakarta.annotation.Generated;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-08-12T23:15:33.528403225+09:00[Asia/Tokyo]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-08-12T23:31:03.184108087+09:00[Asia/Tokyo]")
 @Validated
 @Tag(name = "tasks", description = "タスクに関するAPI")
-public interface ApiApi {
+public interface TasksApi {
 
     default Optional<NativeWebRequest> getRequest() {
         return Optional.empty();
     }
 
     /**
-     * DELETE /api/tasks/{taskId} : タスクの削除
+     * DELETE /tasks/{taskId} : タスクの削除
      * 登録しているタスクを削除する。 
      *
      * @param taskId TaskID (required)
@@ -62,7 +62,7 @@ public interface ApiApi {
     )
     @RequestMapping(
         method = RequestMethod.DELETE,
-        value = "/api/tasks/{taskId}"
+        value = "/tasks/{taskId}"
     )
     default ResponseEntity<Void> deleteTask(
         @Parameter(name = "taskId", description = "TaskID", required = true, in = ParameterIn.PATH) @PathVariable("taskId") BigDecimal taskId
@@ -73,7 +73,7 @@ public interface ApiApi {
 
 
     /**
-     * GET /api/tasks : タスク一覧の取得
+     * GET /tasks : タスク一覧の取得
      * 登録しているタスクをすべて取得する 
      *
      * @return OK (status code 200)
@@ -91,7 +91,7 @@ public interface ApiApi {
     )
     @RequestMapping(
         method = RequestMethod.GET,
-        value = "/api/tasks",
+        value = "/tasks",
         produces = { "application/json" }
     )
     default ResponseEntity<List<Task>> getTasks(
@@ -112,7 +112,7 @@ public interface ApiApi {
 
 
     /**
-     * POST /api/tasks : タスクの登録
+     * POST /tasks : タスクの登録
      * タスクを登録する 
      *
      * @param postTaskRequest  (required)
@@ -135,7 +135,7 @@ public interface ApiApi {
     )
     @RequestMapping(
         method = RequestMethod.POST,
-        value = "/api/tasks",
+        value = "/tasks",
         produces = { "application/json" },
         consumes = { "application/json" }
     )
@@ -157,7 +157,7 @@ public interface ApiApi {
 
 
     /**
-     * PUT /api/tasks/{taskId} : Taskステータスの更新
+     * PUT /tasks/{taskId} : Taskステータスの更新
      * タスクのステータスを更新する。 
      *
      * @param taskId TaskID (required)
@@ -179,7 +179,7 @@ public interface ApiApi {
     )
     @RequestMapping(
         method = RequestMethod.PUT,
-        value = "/api/tasks/{taskId}",
+        value = "/tasks/{taskId}",
         produces = { "application/json" },
         consumes = { "application/json" }
     )

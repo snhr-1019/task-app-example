@@ -1,7 +1,7 @@
 README.md
 pom.xml
-src/main/java/com/example/taskapp/api/ApiApi.java
 src/main/java/com/example/taskapp/api/ApiUtil.java
+src/main/java/com/example/taskapp/api/TasksApi.java
 src/main/java/com/example/taskapp/model/PostTaskRequest.java
 src/main/java/com/example/taskapp/model/PutTaskRequest.java
 src/main/java/com/example/taskapp/model/Task.java
