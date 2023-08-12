@@ -4,6 +4,7 @@ import com.example.taskapp.TaskAppPresentationConfig;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
 import org.springframework.http.MediaType;
@@ -15,7 +16,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest(classes = TaskAppPresentationConfig.class)
 @AutoConfigureMockMvc
-public class TaskControllerTest {
+public class TasksControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
@@ -23,11 +24,11 @@ public class TaskControllerTest {
     @Test
     public void testListTasks() throws Exception {
         mockMvc.perform(
-                        get("/task")
+                        get("/api/tasks")
                                 .accept(MediaType.APPLICATION_JSON)
                 )
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$[0].code").value("ABC123"))
+                .andExpect(jsonPath("$[0].id").value("1"))
         ;
     }
 }

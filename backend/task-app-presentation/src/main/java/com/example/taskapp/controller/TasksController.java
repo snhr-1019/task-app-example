@@ -18,7 +18,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/")
-public class TaskController implements TasksApi {
+public class TasksController implements TasksApi {
 
     @NonNull
     private final ListTaskUseCase listTask;
