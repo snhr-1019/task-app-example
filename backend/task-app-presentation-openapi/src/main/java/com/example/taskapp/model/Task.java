@@ -19,7 +19,7 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "Task", description = "タスク情報")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-08-12T23:31:03.184108087+09:00[Asia/Tokyo]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-08-13T01:01:01.528731012+09:00[Asia/Tokyo]")
 public class Task {
 
   private Integer id;

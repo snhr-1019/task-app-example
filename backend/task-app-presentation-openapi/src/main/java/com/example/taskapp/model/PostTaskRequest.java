@@ -19,8 +19,8 @@ import jakarta.annotation.Generated;
  * PostTaskRequest
  */
 
-@JsonTypeName("postTask_request")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-08-12T23:31:03.184108087+09:00[Asia/Tokyo]")
+@JsonTypeName("postTaskRequest")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-08-13T01:01:01.528731012+09:00[Asia/Tokyo]")
 public class PostTaskRequest {
 
   private String title;

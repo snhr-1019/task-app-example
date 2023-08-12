@@ -35,9 +35,9 @@ import java.util.Map;
 import java.util.Optional;
 import jakarta.annotation.Generated;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-08-12T23:31:03.184108087+09:00[Asia/Tokyo]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-08-13T01:01:01.528731012+09:00[Asia/Tokyo]")
 @Validated
-@Tag(name = "tasks", description = "タスクに関するAPI")
+@Tag(name = "task", description = "the task API")
 public interface TasksApi {
 
     default Optional<NativeWebRequest> getRequest() {
@@ -55,7 +55,7 @@ public interface TasksApi {
         operationId = "deleteTask",
         summary = "タスクの削除",
         description = "登録しているタスクを削除する。 ",
-        tags = { "tasks" },
+        tags = { "task" },
         responses = {
             @ApiResponse(responseCode = "204", description = "No Content")
         }
@@ -82,7 +82,7 @@ public interface TasksApi {
         operationId = "getTasks",
         summary = "タスク一覧の取得",
         description = "登録しているタスクをすべて取得する ",
-        tags = { "tasks" },
+        tags = { "task" },
         responses = {
             @ApiResponse(responseCode = "200", description = "OK", content = {
                 @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = Task.class)))
@@ -124,7 +124,7 @@ public interface TasksApi {
         operationId = "postTask",
         summary = "タスクの登録",
         description = "タスクを登録する ",
-        tags = { "tasks" },
+        tags = { "task" },
         responses = {
             @ApiResponse(responseCode = "200", description = "OK", content = {
                 @Content(mediaType = "application/json", schema = @Schema(implementation = Task.class))
@@ -157,7 +157,7 @@ public interface TasksApi {
 
 
     /**
-     * PUT /tasks/{taskId} : Taskステータスの更新
+     * PUT /tasks/{taskId} : タスクステータスの更新
      * タスクのステータスを更新する。 
      *
      * @param taskId TaskID (required)
@@ -167,9 +167,9 @@ public interface TasksApi {
      */
     @Operation(
         operationId = "putTask",
-        summary = "Taskステータスの更新",
+        summary = "タスクステータスの更新",
         description = "タスクのステータスを更新する。 ",
-        tags = { "tasks" },
+        tags = { "task" },
         responses = {
             @ApiResponse(responseCode = "200", description = "OK", content = {
                 @Content(mediaType = "application/json", schema = @Schema(implementation = Task.class))
