@@ -4,10 +4,8 @@
 package gen.jooq.taskapp;
 
 
-import gen.jooq.taskapp.tables.AppUser;
-import gen.jooq.taskapp.tables.Task;
-import gen.jooq.taskapp.tables.records.AppUserRecord;
-import gen.jooq.taskapp.tables.records.TaskRecord;
+import gen.jooq.taskapp.tables.Tasks;
+import gen.jooq.taskapp.tables.records.TasksRecord;
 
 import org.jooq.TableField;
 import org.jooq.UniqueKey;
@@ -26,7 +24,5 @@ public class Keys {
     // UNIQUE and PRIMARY KEY definitions
     // -------------------------------------------------------------------------
 
-    public static final UniqueKey<AppUserRecord> KEY_APP_USER_APP_USER_PK = Internal.createUniqueKey(AppUser.APP_USER, DSL.name("KEY_app_user_app_user_pk"), new TableField[] { AppUser.APP_USER.UUID }, true);
-    public static final UniqueKey<AppUserRecord> KEY_APP_USER_PRIMARY = Internal.createUniqueKey(AppUser.APP_USER, DSL.name("KEY_app_user_PRIMARY"), new TableField[] { AppUser.APP_USER.UUID }, true);
-    public static final UniqueKey<TaskRecord> KEY_TASK_PRIMARY = Internal.createUniqueKey(Task.TASK, DSL.name("KEY_task_PRIMARY"), new TableField[] { Task.TASK.UUID }, true);
+    public static final UniqueKey<TasksRecord> KEY_TASKS_PRIMARY = Internal.createUniqueKey(Tasks.TASKS, DSL.name("KEY_tasks_PRIMARY"), new TableField[] { Tasks.TASKS.ID }, true);
 }
