@@ -9,23 +9,21 @@ tags:
 servers:
   - url: 'http://localhost:8080/api'
 paths:
-  '/tasks':
+  /tasks:
     get:
       summary: タスク一覧の取得
       tags:
-        - tasks
+        - task
       description: >
         登録しているタスクをすべて取得する
       operationId: getTasks
       responses:
-        '200':
+        200:
           description: OK
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Task'
+                $ref: '#/components/schemas/getTasksResponse'
               examples:
                 example:
                   value:
@@ -38,7 +36,7 @@ paths:
     post:
       summary: タスクの登録
       tags:
-        - tasks
+        - task
       description: >
         タスクを登録する
       operationId: postTask
@@ -47,20 +45,13 @@ paths:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                title:
-                  type: string
-                  description: タスクのタイトル
-              required:
-                - text
-              additionalProperties: false
+              $ref: '#/components/schemas/postTaskRequest'
             examples:
               example:
                 value:
                   title: 牛乳を買う
       responses:
-        '200':
+        200:
           description: OK
           content:
             application/json:
@@ -72,11 +63,11 @@ paths:
                     id: 2003
                     title: やること３
                     completed: false
-        '400':
+        400:
           description: Bad Request
-        '403':
+        403:
           description: Forbidden
-  '/tasks/{taskId}':
+  /tasks/{taskId}:
     parameters:
       - name: taskId
         in: path
@@ -86,11 +77,11 @@ paths:
           type: number
         example: '2002'
     put:
-      summary: Taskステータスの更新
+      summary: タスクステータスの更新
       description: >
         タスクのステータスを更新する。
       tags:
-        - tasks
+        - task
       operationId: putTask
       requestBody:
         required: true
@@ -129,7 +120,7 @@ paths:
       description: >
         登録しているタスクを削除する。
       tags:
-        - tasks
+        - task
       operationId: deleteTask
       responses:
         '204':
@@ -153,4 +144,18 @@ components:
         - id
         - title
         - completed
+      additionalProperties: false
+    getTasksResponse:
+      type: array
+      items:
+        $ref: '#/components/schemas/Task'
+
+    postTaskRequest:
+      type: object
+      properties:
+        title:
+          type: string
+          description: タスクのタイトル
+      required:
+        - text
       additionalProperties: false
