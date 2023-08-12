@@ -9,6 +9,4 @@ create table taskapp.tasks
 INSERT INTO taskapp.tasks (id, title, completed)
 VALUES (1, '牛乳を買う', false);
 INSERT INTO taskapp.tasks (id, title, completed)
-VALUES (2, '掃除をする', false);
-INSERT INTO taskapp.tasks (id, title, completed)
-VALUES (3, '手紙を書く', true);
+VALUES (2, '掃除をする', true);
