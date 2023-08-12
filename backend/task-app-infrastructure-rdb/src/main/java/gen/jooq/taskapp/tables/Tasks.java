@@ -60,9 +60,9 @@ public class Tasks extends TableImpl<TasksRecord> {
     public final TableField<TasksRecord, String> TITLE = createField(DSL.name("title"), SQLDataType.VARCHAR(255).nullable(false), this, "");
 
     /**
-     * The column <code>taskapp.tasks.status</code>.
+     * The column <code>taskapp.tasks.completed</code>.
      */
-    public final TableField<TasksRecord, String> STATUS = createField(DSL.name("status"), SQLDataType.VARCHAR(255).nullable(false), this, "");
+    public final TableField<TasksRecord, Byte> COMPLETED = createField(DSL.name("completed"), SQLDataType.TINYINT.nullable(false), this, "");
 
     private Tasks(Name alias, Table<TasksRecord> aliased) {
         this(alias, aliased, null);
@@ -151,14 +151,14 @@ public class Tasks extends TableImpl<TasksRecord> {
     // -------------------------------------------------------------------------
 
     @Override
-    public Row3<Integer, String, String> fieldsRow() {
+    public Row3<Integer, String, Byte> fieldsRow() {
         return (Row3) super.fieldsRow();
     }
 
     /**
      * Convenience mapping calling {@link SelectField#convertFrom(Function)}.
      */
-    public <U> SelectField<U> mapping(Function3<? super Integer, ? super String, ? super String, ? extends U> from) {
+    public <U> SelectField<U> mapping(Function3<? super Integer, ? super String, ? super Byte, ? extends U> from) {
         return convertFrom(Records.mapping(from));
     }
 
@@ -166,7 +166,7 @@ public class Tasks extends TableImpl<TasksRecord> {
      * Convenience mapping calling {@link SelectField#convertFrom(Class,
      * Function)}.
      */
-    public <U> SelectField<U> mapping(Class<U> toType, Function3<? super Integer, ? super String, ? super String, ? extends U> from) {
+    public <U> SelectField<U> mapping(Class<U> toType, Function3<? super Integer, ? super String, ? super Byte, ? extends U> from) {
         return convertFrom(toType, Records.mapping(from));
     }
 }
