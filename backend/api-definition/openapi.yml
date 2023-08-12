@@ -1,120 +1,156 @@
 openapi: 3.0.3
 info:
-  title: Todo App for Educational purpose
-  description: |-
-    This is a sample Todo app for Educational purpose.
-  version: 0.0.1
-servers:
-  - url: http://localhost:8080
-    description: local env
+  title: Task App REST API
+  version: '1.0.0'
+  description: Task App for Educational Purpose
 tags:
-  - name: todo
-    description: Todo operations
+  - name: tasks
+    description: タスクに関するAPI
+servers:
+  - url: 'http://localhost:8080'
 paths:
-  /todo:
+  '/api/tasks':
     get:
+      summary: タスク一覧の取得
       tags:
-        - todo
-      summary: List todos
-      operationId: listTodos
+        - tasks
+      description: >
+        登録しているタスクをすべて取得する
+      operationId: getTasks
       responses:
-        "200":
+        '200':
           description: OK
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/TodoResponse'
+                  $ref: '#/components/schemas/Task'
+              examples:
+                example:
+                  value:
+                    - id: 2001
+                      title: 牛乳を買う
+                      status: TODO
+                    - id: 2002
+                      title: 手紙を出す
+                      completed: false
     post:
+      summary: タスクの登録
       tags:
-        - todo
-      summary: Create Todo
-      operationId: createTodo
+        - tasks
+      description: >
+        タスクを登録する
+      operationId: postTask
       requestBody:
+        required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/TodoRequest'
+              type: object
+              properties:
+                title:
+                  type: string
+                  description: タスクのタイトル
+              required:
+                - text
+              additionalProperties: false
+            examples:
+              example:
+                value:
+                  title: 牛乳を買う
       responses:
-        "200":
+        '200':
           description: OK
           content:
             application/json:
               schema:
-                type: object
-  /todo/{code}:
-    get:
+                $ref: '#/components/schemas/Task'
+              examples:
+                example:
+                  value:
+                    id: 2003
+                    title: やること３
+                    completed: false
+        '400':
+          description: Bad Request
+        '403':
+          description: Forbidden
+  '/api/tasks/{taskId}':
+    parameters:
+      - name: taskId
+        in: path
+        description: TaskID
+        required: true
+        schema:
+          type: number
+        example: '2002'
+    put:
+      summary: Taskステータスの更新
+      description: >
+        タスクのステータスを更新する。
       tags:
-        - todo
-      summary: Get todo by code
-      operationId: getTodo
-      parameters:
-        - name: code
-          in: path
-          required: true
-          schema:
-            type: string
+        - tasks
+      operationId: putTask
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                completed:
+                  type: boolean
+                  description: タスクのステータス
+              required:
+                - completed
+              additionalProperties: false
+            examples:
+              example:
+                value:
+                  completed: true
       responses:
-        "200":
+        '200':
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/TodoResponse'
+                $ref: '#/components/schemas/Task'
+              examples:
+                example:
+                  value:
+                    id: 2002
+                    title: やること２
+                    completed: true
+        '400':
+          description: Bad Request
     delete:
+      summary: タスクの削除
+      description: >
+        登録しているタスクを削除する。
       tags:
-        - todo
-      summary: Delete todo by code
-      operationId: deleteTodo
-      parameters:
-        - name: code
-          in: path
-          required: true
-          schema:
-            type: string
+        - tasks
+      operationId: deleteTask
       responses:
-        "200":
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: object
+        '204':
+          description: No Content
 components:
   schemas:
-    TodoRequest:
+    Task:
+      type: object
+      description: タスク情報
+      properties:
+        id:
+          type: integer
+          description: タスクのID
+        title:
+          type: string
+          description: タスクのタイトル
+        completed:
+          type: boolean
+          description: タスクのステータス
       required:
-        - code
+        - id
         - title
-        - status
-      type: object
-      properties:
-        code:
-          type: string
-          example: ABC123
-        title:
-          type: string
-          example: 牛乳を買う
-        status:
-          type: string
-          enum:
-            - TODO
-            - DOING
-            - DONE
-          example: TODO
-    TodoResponse:
-      type: object
-      properties:
-        code:
-          type: string
-          example: ABC123
-        title:
-          type: string
-          example: 牛乳を買う
-        status:
-          type: string
-          enum:
-            - TODO
-            - DOING
-            - DONE
-          example: TODO
+        - completed
+      additionalProperties: false
