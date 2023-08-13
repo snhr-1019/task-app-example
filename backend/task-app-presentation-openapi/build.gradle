@@ -10,7 +10,7 @@ dependencies {
 
 openApiGenerate {
     generatorName = "spring"
-    inputSpec = "$rootDir/api-specification.yml".toString()
+    inputSpec = "$rootDir/api-specification/api-specification.yml".toString()
     outputDir = "$projectDir"
     apiPackage = "com.example.taskapp.api"
     invokerPackage = "com.example.taskapp.invoker"
