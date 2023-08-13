@@ -2,9 +2,11 @@ package com.example.taskapp.model;
 
 import java.net.URI;
 import java.util.Objects;
+import com.example.taskapp.model.Task;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonTypeName;
+import java.util.ArrayList;
+import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
 import jakarta.validation.Valid;
@@ -16,49 +18,42 @@ import java.util.*;
 import jakarta.annotation.Generated;
 
 /**
- * PutTaskRequest
+ * タスク一覧の取得レスポンス
  */
 
-@JsonTypeName("putTask_request")
+@Schema(name = "GetTasksResponse", description = "タスク一覧の取得レスポンス")
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-08-13T11:18:25.506930936+09:00[Asia/Tokyo]")
-public class PutTaskRequest {
+public class GetTasksResponse {
 
-  private Boolean completed;
+  @Valid
+  private List<@Valid Task> tasks;
 
-  /**
-   * Default constructor
-   * @deprecated Use {@link PutTaskRequest#PutTaskRequest(Boolean)}
-   */
-  @Deprecated
-  public PutTaskRequest() {
-    super();
+  public GetTasksResponse tasks(List<@Valid Task> tasks) {
+    this.tasks = tasks;
+    return this;
   }
 
-  /**
-   * Constructor with only required parameters
-   */
-  public PutTaskRequest(Boolean completed) {
-    this.completed = completed;
-  }
-
-  public PutTaskRequest completed(Boolean completed) {
-    this.completed = completed;
+  public GetTasksResponse addTasksItem(Task tasksItem) {
+    if (this.tasks == null) {
+      this.tasks = new ArrayList<>();
+    }
+    this.tasks.add(tasksItem);
     return this;
   }
 
   /**
-   * タスクのステータス
-   * @return completed
+   * タスク一覧
+   * @return tasks
   */
-  @NotNull 
-  @Schema(name = "completed", description = "タスクのステータス", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("completed")
-  public Boolean getCompleted() {
-    return completed;
+  @Valid 
+  @Schema(name = "tasks", description = "タスク一覧", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("tasks")
+  public List<@Valid Task> getTasks() {
+    return tasks;
   }
 
-  public void setCompleted(Boolean completed) {
-    this.completed = completed;
+  public void setTasks(List<@Valid Task> tasks) {
+    this.tasks = tasks;
   }
 
   @Override
@@ -69,20 +64,20 @@ public class PutTaskRequest {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    PutTaskRequest putTaskRequest = (PutTaskRequest) o;
-    return Objects.equals(this.completed, putTaskRequest.completed);
+    GetTasksResponse getTasksResponse = (GetTasksResponse) o;
+    return Objects.equals(this.tasks, getTasksResponse.tasks);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(completed);
+    return Objects.hash(tasks);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class PutTaskRequest {\n");
-    sb.append("    completed: ").append(toIndentedString(completed)).append("\n");
+    sb.append("class GetTasksResponse {\n");
+    sb.append("    tasks: ").append(toIndentedString(tasks)).append("\n");
     sb.append("}");
     return sb.toString();
   }

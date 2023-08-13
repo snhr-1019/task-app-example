@@ -6,7 +6,7 @@
 package com.example.taskapp.api;
 
 import java.math.BigDecimal;
-import com.example.taskapp.model.PostTaskRequest;
+import com.example.taskapp.model.GetTasksResponse;
 import com.example.taskapp.model.PutTaskRequest;
 import com.example.taskapp.model.Task;
 import io.swagger.v3.oas.annotations.ExternalDocumentation;
@@ -35,7 +35,7 @@ import java.util.Map;
 import java.util.Optional;
 import jakarta.annotation.Generated;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-08-13T01:01:01.528731012+09:00[Asia/Tokyo]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-08-13T11:18:25.506930936+09:00[Asia/Tokyo]")
 @Validated
 @Tag(name = "task", description = "the task API")
 public interface TasksApi {
@@ -48,7 +48,7 @@ public interface TasksApi {
      * DELETE /tasks/{taskId} : タスクの削除
      * 登録しているタスクを削除する。 
      *
-     * @param taskId TaskID (required)
+     * @param taskId タスクID (required)
      * @return No Content (status code 204)
      */
     @Operation(
@@ -65,7 +65,7 @@ public interface TasksApi {
         value = "/tasks/{taskId}"
     )
     default ResponseEntity<Void> deleteTask(
-        @Parameter(name = "taskId", description = "TaskID", required = true, in = ParameterIn.PATH) @PathVariable("taskId") BigDecimal taskId
+        @Parameter(name = "taskId", description = "タスクID", required = true, in = ParameterIn.PATH) @PathVariable("taskId") BigDecimal taskId
     ) {
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
 
@@ -85,7 +85,7 @@ public interface TasksApi {
         tags = { "task" },
         responses = {
             @ApiResponse(responseCode = "200", description = "OK", content = {
-                @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = Task.class)))
+                @Content(mediaType = "application/json", schema = @Schema(implementation = GetTasksResponse.class))
             })
         }
     )
@@ -94,13 +94,13 @@ public interface TasksApi {
         value = "/tasks",
         produces = { "application/json" }
     )
-    default ResponseEntity<List<Task>> getTasks(
+    default ResponseEntity<GetTasksResponse> getTasks(
         
     ) {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "[ { \"id\" : 0, \"completed\" : true, \"title\" : \"title\" }, { \"id\" : 0, \"completed\" : true, \"title\" : \"title\" } ]";
+                    String exampleString = "{ \"tasks\" : [ { \"id\" : 0, \"completed\" : true, \"title\" : \"title\" }, { \"id\" : 0, \"completed\" : true, \"title\" : \"title\" } ] }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
@@ -115,7 +115,7 @@ public interface TasksApi {
      * POST /tasks : タスクの登録
      * タスクを登録する 
      *
-     * @param postTaskRequest  (required)
+     * @param task  (required)
      * @return OK (status code 200)
      *         or Bad Request (status code 400)
      *         or Forbidden (status code 403)
@@ -140,7 +140,7 @@ public interface TasksApi {
         consumes = { "application/json" }
     )
     default ResponseEntity<Task> postTask(
-        @Parameter(name = "PostTaskRequest", description = "", required = true) @Valid @RequestBody PostTaskRequest postTaskRequest
+        @Parameter(name = "Task", description = "", required = true) @Valid @RequestBody Task task
     ) {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
@@ -160,7 +160,7 @@ public interface TasksApi {
      * PUT /tasks/{taskId} : タスクステータスの更新
      * タスクのステータスを更新する。 
      *
-     * @param taskId TaskID (required)
+     * @param taskId タスクID (required)
      * @param putTaskRequest  (required)
      * @return OK (status code 200)
      *         or Bad Request (status code 400)
@@ -184,7 +184,7 @@ public interface TasksApi {
         consumes = { "application/json" }
     )
     default ResponseEntity<Task> putTask(
-        @Parameter(name = "taskId", description = "TaskID", required = true, in = ParameterIn.PATH) @PathVariable("taskId") BigDecimal taskId,
+        @Parameter(name = "taskId", description = "タスクID", required = true, in = ParameterIn.PATH) @PathVariable("taskId") BigDecimal taskId,
         @Parameter(name = "PutTaskRequest", description = "", required = true) @Valid @RequestBody PutTaskRequest putTaskRequest
     ) {
         getRequest().ifPresent(request -> {
