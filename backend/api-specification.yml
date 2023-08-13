@@ -23,13 +23,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/getTasksResponse'
+                $ref: '#/components/schemas/GetTasksResponse'
               examples:
                 example:
                   value:
                     - id: 2001
                       title: 牛乳を買う
-                      status: TASK
+                      completed: false
                     - id: 2002
                       title: 手紙を出す
                       completed: false
@@ -45,11 +45,11 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/postTaskRequest'
+              $ref: '#/components/schemas/Task'
             examples:
               example:
                 value:
-                  title: 牛乳を買う
+                  title:
       responses:
         200:
           description: OK
@@ -61,7 +61,7 @@ paths:
                 example:
                   value:
                     id: 2003
-                    title: やること３
+                    title: プログラミングを勉強する
                     completed: false
         400:
           description: Bad Request
@@ -71,7 +71,7 @@ paths:
     parameters:
       - name: taskId
         in: path
-        description: TaskID
+        description: タスクID
         required: true
         schema:
           type: number
@@ -145,17 +145,12 @@ components:
         - title
         - completed
       additionalProperties: false
-    getTasksResponse:
-      type: array
-      items:
-        $ref: '#/components/schemas/Task'
-
-    postTaskRequest:
+    GetTasksResponse:
       type: object
+      description: タスク一覧の取得レスポンス
       properties:
-        title:
-          type: string
-          description: タスクのタイトル
-      required:
-        - text
-      additionalProperties: false
+        tasks:
+          type: array
+          description: タスク一覧
+          items:
+            $ref: '#/components/schemas/Task'
