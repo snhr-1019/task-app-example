@@ -5,19 +5,12 @@ import com.example.taskapp.domain.vo.Id;
 import com.example.taskapp.domain.vo.Title;
 import com.example.taskapp.infrastructure.TaskRepositoryDb;
 import org.jooq.DSLContext;
-import org.jooq.Record;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
 
-import static gen.jooq.taskapp.Tables.TASKS;
 import static org.assertj.core.api.Assertions.*;
 
 public class TaskRepositoryDbTest extends RepositoryTestSupport {

@@ -28,7 +28,7 @@ public class TasksControllerTest {
                                 .accept(MediaType.APPLICATION_JSON)
                 )
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$[0].id").value("1"))
+                .andExpect(jsonPath("$.tasks[0].id").value("1"))
         ;
     }
 }

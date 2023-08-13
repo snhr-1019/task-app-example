@@ -2,6 +2,7 @@ package com.example.taskapp.controller;
 
 import com.example.taskapp.api.TasksApi;
 import com.example.taskapp.domain.entity.TaskEntity;
+import com.example.taskapp.model.GetTasksResponse;
 import com.example.taskapp.model.PostTaskRequest;
 import com.example.taskapp.model.PutTaskRequest;
 import com.example.taskapp.model.Task;
@@ -24,24 +25,27 @@ public class TasksController implements TasksApi {
     private final ListTaskUseCase listTask;
 
     @Override
-    public ResponseEntity<List<Task>> getTasks() {
+    public ResponseEntity<GetTasksResponse> getTasks() {
         var taskList = listTask.fetch();
         return ResponseEntity.ok(
-                taskList.stream()
-                        .map(this::fromTaskEntity)
-                        .toList()
+                new GetTasksResponse().tasks(
+                        taskList.stream()
+                                .map(this::fromTaskEntity)
+                                .toList()
+                )
         );
     }
 
     @Override
-    public ResponseEntity<Task> postTask(PostTaskRequest postTaskRequest) {
-        return TasksApi.super.postTask(postTaskRequest);
+    public ResponseEntity<Task> postTask(Task task) {
+        return TasksApi.super.postTask(task);
     }
 
     @Override
     public ResponseEntity<Task> putTask(BigDecimal taskId, PutTaskRequest putTaskRequest) {
         return TasksApi.super.putTask(taskId, putTaskRequest);
     }
+
     @Override
     public ResponseEntity<Void> deleteTask(BigDecimal taskId) {
         return TasksApi.super.deleteTask(taskId);
