@@ -22,7 +22,7 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "GetTasksResponse", description = "タスク一覧の取得レスポンス")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-08-13T11:18:25.506930936+09:00[Asia/Tokyo]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-08-20T22:49:20.781740613+09:00[Asia/Tokyo]")
 public class GetTasksResponse {
 
   @Valid
