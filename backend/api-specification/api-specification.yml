@@ -6,6 +6,8 @@ info:
 tags:
   - name: task
     description: タスクに関するAPI
+  - name: user
+    description: ユーザに関するAPI
 servers:
   - url: 'http://localhost:8080/api'
 paths:
@@ -28,12 +30,12 @@ paths:
                 example1:
                   value:
                     - tasks:
-                      - id: 1
-                        title: 牛乳を買う
-                        completed: false
-                      - id: 2
-                        title: 手紙を出す
-                        completed: false
+                        - id: 1
+                          title: 牛乳を買う
+                          completed: false
+                        - id: 2
+                          title: 手紙を出す
+                          completed: false
     post:
       summary: タスクの登録
       tags:
@@ -126,6 +128,32 @@ paths:
       responses:
         '204':
           description: No Content
+  /login:
+    post:
+      summary: ログイン
+      description: >
+        ユーザ情報で認証を行い、認証に成功した場合はログインする
+      tags:
+        - user
+      operationId: login
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginRequest'
+            examples:
+              example1:
+                value:
+                  username: tanaka
+                  password: 12345
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
 components:
   schemas:
     Task:
@@ -155,3 +183,14 @@ components:
           description: タスク一覧
           items:
             $ref: '#/components/schemas/Task'
+    LoginRequest:
+      type: object
+      description: ログインリクエスト
+      properties:
+        username:
+          type: string
+          description: ユーザ名
+        password:
+          type: string
+          description: パスワード
+      additionalProperties: false
