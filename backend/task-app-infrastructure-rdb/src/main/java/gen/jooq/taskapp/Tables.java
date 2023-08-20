@@ -5,6 +5,7 @@ package gen.jooq.taskapp;
 
 
 import gen.jooq.taskapp.tables.Tasks;
+import gen.jooq.taskapp.tables.Users;
 
 
 /**
@@ -17,4 +18,9 @@ public class Tables {
      * The table <code>taskapp.tasks</code>.
      */
     public static final Tasks TASKS = Tasks.TASKS;
+
+    /**
+     * The table <code>taskapp.users</code>.
+     */
+    public static final Users USERS = Users.USERS;
 }

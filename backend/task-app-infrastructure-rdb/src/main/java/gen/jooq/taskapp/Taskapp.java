@@ -6,6 +6,7 @@ package gen.jooq.taskapp;
 
 import gen.jooq.DefaultCatalog;
 import gen.jooq.taskapp.tables.Tasks;
+import gen.jooq.taskapp.tables.Users;
 
 import java.util.Arrays;
 import java.util.List;
@@ -34,6 +35,11 @@ public class Taskapp extends SchemaImpl {
     public final Tasks TASKS = Tasks.TASKS;
 
     /**
+     * The table <code>taskapp.users</code>.
+     */
+    public final Users USERS = Users.USERS;
+
+    /**
      * No further instances allowed
      */
     private Taskapp() {
@@ -49,7 +55,8 @@ public class Taskapp extends SchemaImpl {
     @Override
     public final List<Table<?>> getTables() {
         return Arrays.asList(
-            Tasks.TASKS
+            Tasks.TASKS,
+            Users.USERS
         );
     }
 }

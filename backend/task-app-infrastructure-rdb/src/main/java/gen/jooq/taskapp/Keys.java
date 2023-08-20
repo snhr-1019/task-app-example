@@ -5,7 +5,9 @@ package gen.jooq.taskapp;
 
 
 import gen.jooq.taskapp.tables.Tasks;
+import gen.jooq.taskapp.tables.Users;
 import gen.jooq.taskapp.tables.records.TasksRecord;
+import gen.jooq.taskapp.tables.records.UsersRecord;
 
 import org.jooq.TableField;
 import org.jooq.UniqueKey;
@@ -25,4 +27,5 @@ public class Keys {
     // -------------------------------------------------------------------------
 
     public static final UniqueKey<TasksRecord> KEY_TASKS_PRIMARY = Internal.createUniqueKey(Tasks.TASKS, DSL.name("KEY_tasks_PRIMARY"), new TableField[] { Tasks.TASKS.ID }, true);
+    public static final UniqueKey<UsersRecord> KEY_USERS_PRIMARY = Internal.createUniqueKey(Users.USERS, DSL.name("KEY_users_PRIMARY"), new TableField[] { Users.USERS.ID }, true);
 }
