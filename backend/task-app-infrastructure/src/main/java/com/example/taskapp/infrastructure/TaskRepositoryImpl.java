@@ -11,14 +11,12 @@ import org.jooq.Result;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
 
 import static gen.jooq.taskapp.Tables.TASKS;
 
 @Repository
 @RequiredArgsConstructor
-public class TaskRepositoryDb implements TaskRepository {
+public class TaskRepositoryImpl implements TaskRepository {
 
     private final DSLContext dsl;
 

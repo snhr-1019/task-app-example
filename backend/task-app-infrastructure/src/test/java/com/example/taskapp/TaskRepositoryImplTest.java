@@ -3,7 +3,7 @@ package com.example.taskapp;
 import com.example.taskapp.domain.entity.TaskEntity;
 import com.example.taskapp.domain.vo.Id;
 import com.example.taskapp.domain.vo.Title;
-import com.example.taskapp.infrastructure.TaskRepositoryDb;
+import com.example.taskapp.infrastructure.TaskRepositoryImpl;
 import org.jooq.DSLContext;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -13,10 +13,10 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
 
-public class TaskRepositoryDbTest extends RepositoryTestSupport {
+public class TaskRepositoryImplTest extends RepositoryTestSupport {
 
     @Autowired
-    private TaskRepositoryDb sut;
+    private TaskRepositoryImpl sut;
 
     @Autowired
     DSLContext dsl;
