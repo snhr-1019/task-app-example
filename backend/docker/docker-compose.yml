@@ -11,5 +11,3 @@ services:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: taskapp
       TZ: "Asia/Tokyo"
-    volumes:
-      - ./my.cnf:/etc/mysql/conf.d/my.cnf
