@@ -11,7 +11,7 @@ tags:
 servers:
   - url: 'http://localhost:8080/api'
 paths:
-  /tasks:
+  /task:
     get:
       summary: タスク一覧の取得
       tags:
@@ -36,88 +36,60 @@ paths:
                         - id: 2
                           title: 手紙を出す
                           completed: false
+        "400":
+          description: Bad Request
+        "403":
+          description: Forbidden
     post:
       summary: タスクの登録
       tags:
         - task
       description: >
         タスクを登録する
-      operationId: postTask
+      operationId: createTask
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Task'
+              $ref: '#/components/schemas/CreateTaskInput'
             examples:
               example1:
                 value:
                   title: プログラミングを勉強する
       responses:
-        "200":
+        "204":
           description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Task'
-              examples:
-                example1:
-                  value:
-                    id: 3
-                    title: プログラミングを勉強する
-                    completed: false
         "400":
           description: Bad Request
         "403":
           description: Forbidden
-  /tasks/{taskId}:
-    parameters:
-      - name: taskId
-        in: path
-        description: タスクID
-        required: true
-        schema:
-          type: number
-        example: 3
     put:
-      summary: タスクステータスの更新
+      summary: タスクの更新
       description: >
         タスクのステータスを更新する。
       tags:
         - task
-      operationId: putTask
+      operationId: updateTask
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                completed:
-                  type: boolean
-                  description: タスクのステータス
-              required:
-                - completed
-              additionalProperties: false
+              $ref: '#/components/schemas/UpdateTaskInput'
             examples:
               example1:
                 value:
+                  id: 2
+                  title: 手紙を出す（更新）
                   completed: true
       responses:
-        "200":
+        "204":
           description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Task'
-              examples:
-                example1:
-                  value:
-                    id: 3
-                    title: プログラミングを勉強する
-                    completed: true
         "400":
           description: Bad Request
+        "403":
+          description: Forbidden
     delete:
       summary: タスクの削除
       description: >
@@ -125,9 +97,23 @@ paths:
       tags:
         - task
       operationId: deleteTask
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeleteTaskInput'
+            examples:
+              example1:
+                value:
+                  id: 2
       responses:
-        '204':
-          description: No Content
+        "204":
+          description: OK
+        "400":
+          description: Bad Request
+        "403":
+          description: Forbidden
   /login:
     post:
       summary: ログイン
@@ -148,11 +134,11 @@ paths:
                   username: tanaka
                   password: 12345
       responses:
-        '204':
+        "204":
           description: No Content
-        '400':
+        "400":
           description: Bad Request
-        '401':
+        "401":
           description: Unauthorized
 components:
   schemas:
@@ -183,6 +169,42 @@ components:
           description: タスク一覧
           items:
             $ref: '#/components/schemas/Task'
+    CreateTaskInput:
+      type: object
+      description: タスク登録入力
+      properties:
+        title:
+          type: string
+          description: タスクのタイトル
+      required:
+        - title
+      additionalProperties: false
+    UpdateTaskInput:
+      type: object
+      description: タスク更新入力
+      properties:
+        id:
+          type: integer
+          description: タスクのID
+        title:
+          type: string
+          description: タスクのタイトル
+        completed:
+          type: boolean
+          description: タスクのステータス
+      required:
+        - id
+      additionalProperties: false
+    DeleteTaskInput:
+      type: object
+      description: タスク削除入力
+      properties:
+        id:
+          type: integer
+          description: タスクのID
+      required:
+        - id
+      additionalProperties: false
     LoginRequest:
       type: object
       description: ログインリクエスト
