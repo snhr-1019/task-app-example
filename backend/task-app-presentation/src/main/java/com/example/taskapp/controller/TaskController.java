@@ -3,8 +3,7 @@ package com.example.taskapp.controller;
 import com.example.taskapp.api.TaskApi;
 import com.example.taskapp.domain.entity.TaskEntity;
 import com.example.taskapp.model.*;
-import com.example.taskapp.usecase.ListTaskUseCase;
-import lombok.NonNull;
+import com.example.taskapp.usecase.GetTaskUseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,12 +14,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/")
 public class TaskController implements TaskApi {
 
-    @NonNull
-    private final ListTaskUseCase listTask;
+    private final GetTaskUseCase getTaskUseCase;
 
     @Override
     public ResponseEntity<GetTasksResponse> getTasks() {
-        var taskList = listTask.fetch();
+        var taskList = getTaskUseCase.fetch();
         return ResponseEntity.ok(
                 new GetTasksResponse().tasks(
                         taskList.stream()

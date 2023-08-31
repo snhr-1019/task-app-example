@@ -9,7 +9,7 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @Service
-public class ListTaskUseCase {
+public class GetTaskUseCase {
 
     private final TaskRepository taskRepository;
 
