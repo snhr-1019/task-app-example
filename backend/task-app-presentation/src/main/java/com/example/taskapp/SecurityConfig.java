@@ -1,5 +1,6 @@
 package com.example.taskapp;
 
+import com.example.taskapp.security.JwtAuthenticationEntryPoint;
 import com.example.taskapp.security.JwtAuthenticationFilter;
 import com.example.taskapp.security.JwtAuthorizationFilter;
 import org.springframework.context.annotation.Bean;
@@ -32,15 +33,13 @@ public class SecurityConfig {
                 )
                 .addFilter(new JwtAuthenticationFilter(authenticationManager))
                 .addFilterAfter(new JwtAuthorizationFilter(), JwtAuthenticationFilter.class)
-//        http.exceptionHandling()
-//                .accessDeniedHandler(new JwtAuthenticationEntryPoint())
-//        );
-
                 .sessionManagement(session -> session
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 )
-                .csrf(AbstractHttpConfigurer::disable);
-
+                .csrf(AbstractHttpConfigurer::disable)
+                .exceptionHandling(exceptionHandling -> exceptionHandling
+                        .authenticationEntryPoint(new JwtAuthenticationEntryPoint())
+                );
         return http.build();
     }
 
