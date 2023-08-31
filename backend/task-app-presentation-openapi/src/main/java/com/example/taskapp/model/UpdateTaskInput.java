@@ -15,12 +15,12 @@ import java.util.*;
 import jakarta.annotation.Generated;
 
 /**
- * タスク情報
+ * タスク更新入力
  */
 
-@Schema(name = "Task", description = "タスク情報")
+@Schema(name = "UpdateTaskInput", description = "タスク更新入力")
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-08-31T17:49:51.369224443+09:00[Asia/Tokyo]")
-public class Task {
+public class UpdateTaskInput {
 
   private Integer id;
 
@@ -30,23 +30,21 @@ public class Task {
 
   /**
    * Default constructor
-   * @deprecated Use {@link Task#Task(Integer, String, Boolean)}
+   * @deprecated Use {@link UpdateTaskInput#UpdateTaskInput(Integer)}
    */
   @Deprecated
-  public Task() {
+  public UpdateTaskInput() {
     super();
   }
 
   /**
    * Constructor with only required parameters
    */
-  public Task(Integer id, String title, Boolean completed) {
+  public UpdateTaskInput(Integer id) {
     this.id = id;
-    this.title = title;
-    this.completed = completed;
   }
 
-  public Task id(Integer id) {
+  public UpdateTaskInput id(Integer id) {
     this.id = id;
     return this;
   }
@@ -66,7 +64,7 @@ public class Task {
     this.id = id;
   }
 
-  public Task title(String title) {
+  public UpdateTaskInput title(String title) {
     this.title = title;
     return this;
   }
@@ -75,8 +73,8 @@ public class Task {
    * タスクのタイトル
    * @return title
   */
-  @NotNull 
-  @Schema(name = "title", description = "タスクのタイトル", requiredMode = Schema.RequiredMode.REQUIRED)
+  
+  @Schema(name = "title", description = "タスクのタイトル", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("title")
   public String getTitle() {
     return title;
@@ -86,7 +84,7 @@ public class Task {
     this.title = title;
   }
 
-  public Task completed(Boolean completed) {
+  public UpdateTaskInput completed(Boolean completed) {
     this.completed = completed;
     return this;
   }
@@ -95,8 +93,8 @@ public class Task {
    * タスクのステータス
    * @return completed
   */
-  @NotNull 
-  @Schema(name = "completed", description = "タスクのステータス", requiredMode = Schema.RequiredMode.REQUIRED)
+  
+  @Schema(name = "completed", description = "タスクのステータス", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("completed")
   public Boolean getCompleted() {
     return completed;
@@ -114,10 +112,10 @@ public class Task {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Task task = (Task) o;
-    return Objects.equals(this.id, task.id) &&
-        Objects.equals(this.title, task.title) &&
-        Objects.equals(this.completed, task.completed);
+    UpdateTaskInput updateTaskInput = (UpdateTaskInput) o;
+    return Objects.equals(this.id, updateTaskInput.id) &&
+        Objects.equals(this.title, updateTaskInput.title) &&
+        Objects.equals(this.completed, updateTaskInput.completed);
   }
 
   @Override
@@ -128,7 +126,7 @@ public class Task {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Task {\n");
+    sb.append("class UpdateTaskInput {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    completed: ").append(toIndentedString(completed)).append("\n");

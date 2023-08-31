@@ -4,7 +4,6 @@ import java.net.URI;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonTypeName;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
 import jakarta.validation.Valid;
@@ -16,49 +15,49 @@ import java.util.*;
 import jakarta.annotation.Generated;
 
 /**
- * PutTaskRequest
+ * タスク削除入力
  */
 
-@JsonTypeName("putTask_request")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-08-20T22:49:20.781740613+09:00[Asia/Tokyo]")
-public class PutTaskRequest {
+@Schema(name = "DeleteTaskInput", description = "タスク削除入力")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-08-31T17:49:51.369224443+09:00[Asia/Tokyo]")
+public class DeleteTaskInput {
 
-  private Boolean completed;
+  private Integer id;
 
   /**
    * Default constructor
-   * @deprecated Use {@link PutTaskRequest#PutTaskRequest(Boolean)}
+   * @deprecated Use {@link DeleteTaskInput#DeleteTaskInput(Integer)}
    */
   @Deprecated
-  public PutTaskRequest() {
+  public DeleteTaskInput() {
     super();
   }
 
   /**
    * Constructor with only required parameters
    */
-  public PutTaskRequest(Boolean completed) {
-    this.completed = completed;
+  public DeleteTaskInput(Integer id) {
+    this.id = id;
   }
 
-  public PutTaskRequest completed(Boolean completed) {
-    this.completed = completed;
+  public DeleteTaskInput id(Integer id) {
+    this.id = id;
     return this;
   }
 
   /**
-   * タスクのステータス
-   * @return completed
+   * タスクのID
+   * @return id
   */
   @NotNull 
-  @Schema(name = "completed", description = "タスクのステータス", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("completed")
-  public Boolean getCompleted() {
-    return completed;
+  @Schema(name = "id", description = "タスクのID", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("id")
+  public Integer getId() {
+    return id;
   }
 
-  public void setCompleted(Boolean completed) {
-    this.completed = completed;
+  public void setId(Integer id) {
+    this.id = id;
   }
 
   @Override
@@ -69,20 +68,20 @@ public class PutTaskRequest {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    PutTaskRequest putTaskRequest = (PutTaskRequest) o;
-    return Objects.equals(this.completed, putTaskRequest.completed);
+    DeleteTaskInput deleteTaskInput = (DeleteTaskInput) o;
+    return Objects.equals(this.id, deleteTaskInput.id);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(completed);
+    return Objects.hash(id);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class PutTaskRequest {\n");
-    sb.append("    completed: ").append(toIndentedString(completed)).append("\n");
+    sb.append("class DeleteTaskInput {\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("}");
     return sb.toString();
   }

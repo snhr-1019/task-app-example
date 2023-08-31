@@ -4,7 +4,6 @@ import java.net.URI;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonTypeName;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
 import jakarta.validation.Valid;
@@ -16,16 +15,32 @@ import java.util.*;
 import jakarta.annotation.Generated;
 
 /**
- * PostTaskRequest
+ * タスク登録入力
  */
 
-@JsonTypeName("postTaskRequest")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-08-13T01:01:01.528731012+09:00[Asia/Tokyo]")
-public class PostTaskRequest {
+@Schema(name = "CreateTaskInput", description = "タスク登録入力")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-08-31T17:49:51.369224443+09:00[Asia/Tokyo]")
+public class CreateTaskInput {
 
   private String title;
 
-  public PostTaskRequest title(String title) {
+  /**
+   * Default constructor
+   * @deprecated Use {@link CreateTaskInput#CreateTaskInput(String)}
+   */
+  @Deprecated
+  public CreateTaskInput() {
+    super();
+  }
+
+  /**
+   * Constructor with only required parameters
+   */
+  public CreateTaskInput(String title) {
+    this.title = title;
+  }
+
+  public CreateTaskInput title(String title) {
     this.title = title;
     return this;
   }
@@ -34,8 +49,8 @@ public class PostTaskRequest {
    * タスクのタイトル
    * @return title
   */
-  
-  @Schema(name = "title", description = "タスクのタイトル", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @NotNull 
+  @Schema(name = "title", description = "タスクのタイトル", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("title")
   public String getTitle() {
     return title;
@@ -53,8 +68,8 @@ public class PostTaskRequest {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    PostTaskRequest postTaskRequest = (PostTaskRequest) o;
-    return Objects.equals(this.title, postTaskRequest.title);
+    CreateTaskInput createTaskInput = (CreateTaskInput) o;
+    return Objects.equals(this.title, createTaskInput.title);
   }
 
   @Override
@@ -65,7 +80,7 @@ public class PostTaskRequest {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class PostTaskRequest {\n");
+    sb.append("class CreateTaskInput {\n");
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("}");
     return sb.toString();
