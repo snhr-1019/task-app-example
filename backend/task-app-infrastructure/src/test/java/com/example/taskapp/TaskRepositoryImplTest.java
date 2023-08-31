@@ -4,10 +4,12 @@ import com.example.taskapp.domain.entity.TaskEntity;
 import com.example.taskapp.domain.vo.Id;
 import com.example.taskapp.domain.vo.Title;
 import com.example.taskapp.infrastructure.TaskRepositoryImpl;
+import gen.jooq.taskapp.Tables;
 import org.jooq.DSLContext;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -47,6 +49,33 @@ public class TaskRepositoryImplTest extends RepositoryTestSupport {
 
             assertThat(ret.get(0)).isEqualTo(t1);
             assertThat(ret.get(1)).isEqualTo(t2);
+        }
+    }
+
+    @Nested
+    class SaveTest {
+        @Test
+        @Transactional // test data will be rolled back
+        public void testSave() {
+            // given
+            String title = "new task";
+            boolean completed = false;
+
+            var entity = new TaskEntity(
+                    null, // id
+                    new Title(title),
+                    completed
+            );
+
+            // when
+            sut.create(entity);
+
+            // then
+            Record record = dsl.select().from(Tables.TASKS).where(TASKS.CODE.eq(codeStr)).fetchOne();
+            assert record != null;
+            assertThat(record.get(TASKS.CODE)).isEqualTo(codeStr);
+            assertThat(record.get(TASKS.TITLE)).isEqualTo(titleStr);
+            assertThat(record.get(TASKS.STATUS)).isEqualTo(statusStr);
         }
     }
 
@@ -95,37 +124,6 @@ public class TaskRepositoryImplTest extends RepositoryTestSupport {
 //        }
 //    }
 //
-//    @Nested
-//    class SaveTest {
-//        @Test
-//        @Transactional // test data will be rolled back
-//        public void testSave() {
-//            // given
-//            String taskUuidStr = "2A080A9B-BA02-4407-B149-90E3531C9AA8";
-//            String appUserUuidStr = "74B2DDEB-5513-4820-82F5-F40BB41251E2";
-//            String codeStr = "NEW_CODE";
-//            String titleStr = "new task";
-//            String statusStr = "DOING";
-//
-//            var entity = new TaskEntity(
-//                    UUID.fromString(taskUuidStr),
-//                    UUID.fromString(appUserUuidStr),
-//                    new Code(codeStr),
-//                    new Title(titleStr),
-//                    Status.valueOf(statusStr)
-//            );
-//
-//            // when
-//            sut.save(entity);
-//
-//            // then
-//            Record record = dsl.select().from(TASKS).where(TASKS.CODE.eq(codeStr)).fetchOne();
-//            assert record != null;
-//            assertThat(record.get(TASKS.CODE)).isEqualTo(codeStr);
-//            assertThat(record.get(TASKS.TITLE)).isEqualTo(titleStr);
-//            assertThat(record.get(TASKS.STATUS)).isEqualTo(statusStr);
-//        }
-//    }
 //
 //    @Nested
 //    class DeleteTest {

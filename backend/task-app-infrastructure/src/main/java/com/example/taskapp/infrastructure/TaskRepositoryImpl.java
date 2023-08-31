@@ -29,7 +29,15 @@ public class TaskRepositoryImpl implements TaskRepository {
         return result.stream().map(this::fromRecord).toList();
     }
 
-//    @Override
+    @Override
+    public void create(TaskEntity taskEntity) {
+        dsl.insertInto(TASKS)
+                .set(TASKS.TITLE, taskEntity.title().value())
+                .set(TASKS.COMPLETED, (byte) (taskEntity.completed() ? 1 : 0))
+                .execute();
+    }
+
+    //    @Override
 //    public Optional<TaskEntity> fetchByCode(Code code) {
 //        Record record = dsl.select().from(TASKS).where(TASKS.CODE.eq(code.value())).fetchOne();
 //

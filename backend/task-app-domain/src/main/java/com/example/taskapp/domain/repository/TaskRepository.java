@@ -9,4 +9,6 @@ import java.util.List;
 public interface TaskRepository {
 
     public List<TaskEntity> fetch();
+
+    public void create(TaskEntity taskEntity);
 }
