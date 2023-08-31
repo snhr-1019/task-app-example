@@ -1,10 +1,8 @@
 package com.example.taskapp.controller;
 
-import com.example.taskapp.api.TasksApi;
+import com.example.taskapp.api.TaskApi;
 import com.example.taskapp.domain.entity.TaskEntity;
-import com.example.taskapp.model.GetTasksResponse;
-import com.example.taskapp.model.PutTaskRequest;
-import com.example.taskapp.model.Task;
+import com.example.taskapp.model.*;
 import com.example.taskapp.usecase.ListTaskUseCase;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
@@ -12,12 +10,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.math.BigDecimal;
-
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/")
-public class TaskController implements TasksApi {
+public class TaskController implements TaskApi {
 
     @NonNull
     private final ListTaskUseCase listTask;
@@ -35,19 +31,20 @@ public class TaskController implements TasksApi {
     }
 
     @Override
-    public ResponseEntity<Task> postTask(Task task) {
-        return TasksApi.super.postTask(task);
+    public ResponseEntity<Void> createTask(CreateTaskInput createTaskInput) {
+        return TaskApi.super.createTask(createTaskInput);
     }
 
     @Override
-    public ResponseEntity<Task> putTask(BigDecimal taskId, PutTaskRequest putTaskRequest) {
-        return TasksApi.super.putTask(taskId, putTaskRequest);
+    public ResponseEntity<Void> deleteTask(DeleteTaskInput deleteTaskInput) {
+        return TaskApi.super.deleteTask(deleteTaskInput);
     }
 
     @Override
-    public ResponseEntity<Void> deleteTask(BigDecimal taskId) {
-        return TasksApi.super.deleteTask(taskId);
+    public ResponseEntity<Void> updateTask(UpdateTaskInput updateTaskInput) {
+        return TaskApi.super.updateTask(updateTaskInput);
     }
+
 
     public Task fromTaskEntity(TaskEntity taskEntity) {
         var task = new Task();
