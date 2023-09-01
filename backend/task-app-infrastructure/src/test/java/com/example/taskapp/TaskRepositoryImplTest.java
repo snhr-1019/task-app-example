@@ -13,7 +13,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.hamcrest.CoreMatchers.*;
+import static org.hamcrest.MatcherAssert.*;
 
 public class TaskRepositoryImplTest extends RepositoryTestSupport {
 
@@ -45,10 +46,9 @@ public class TaskRepositoryImplTest extends RepositoryTestSupport {
                     true
             );
 
-            assertThat(ret.size()).isEqualTo(2);
-
-            assertThat(ret.get(0)).isEqualTo(t1);
-            assertThat(ret.get(1)).isEqualTo(t2);
+            assertThat(ret.size(), is(2));
+            assertThat(ret.get(0), is(t1));
+            assertThat(ret.get(1), is(t2));
         }
     }
 
