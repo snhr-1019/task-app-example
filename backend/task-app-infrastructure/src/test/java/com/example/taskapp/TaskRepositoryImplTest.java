@@ -4,8 +4,8 @@ import com.example.taskapp.domain.entity.TaskEntity;
 import com.example.taskapp.domain.vo.Id;
 import com.example.taskapp.domain.vo.Title;
 import com.example.taskapp.infrastructure.TaskRepositoryImpl;
-import gen.jooq.taskapp.Tables;
 import org.jooq.DSLContext;
+import org.jooq.Record;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,8 +13,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-import static org.hamcrest.CoreMatchers.*;
-import static org.hamcrest.MatcherAssert.*;
+import static gen.jooq.taskapp.Tables.TASKS;
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.notNullValue;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 public class TaskRepositoryImplTest extends RepositoryTestSupport {
 
@@ -59,23 +61,21 @@ public class TaskRepositoryImplTest extends RepositoryTestSupport {
         public void testSave() {
             // given
             String title = "new task";
-            boolean completed = false;
 
             var entity = new TaskEntity(
                     null, // id
                     new Title(title),
-                    completed
+                    true // TODO 使ってない。save用のクラスを作るべき
             );
 
             // when
             sut.create(entity);
 
             // then
-            Record record = dsl.select().from(Tables.TASKS).where(TASKS.CODE.eq(codeStr)).fetchOne();
-            assert record != null;
-            assertThat(record.get(TASKS.CODE)).isEqualTo(codeStr);
-            assertThat(record.get(TASKS.TITLE)).isEqualTo(titleStr);
-            assertThat(record.get(TASKS.STATUS)).isEqualTo(statusStr);
+            Record record = dsl.select().from(TASKS).where(TASKS.TITLE.eq(title)).fetchOne();
+            assertThat(record, is(notNullValue()));
+            assertThat(record, is(title));
+            assertThat(record, is(false));
         }
     }
 
