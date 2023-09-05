@@ -1,7 +1,6 @@
 rootProject.name = 'taskapp'
 
 include(":task-app-presentation")
-include(":task-app-presentation-openapi")
 include(":task-app-infrastructure")
 include(":task-app-usecase")
 include(":task-app-domain")
