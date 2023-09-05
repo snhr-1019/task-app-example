@@ -2,8 +2,8 @@ package com.example.taskapp.security;
 
 import com.example.taskapp.common.CommonConstants;
 import com.example.taskapp.domain.security.LoginUser;
-import com.example.taskapp.model.LoginRequest;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import gen.openapi.taskapp.model.LoginRequest;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 import jakarta.servlet.FilterChain;

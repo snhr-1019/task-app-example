@@ -1,9 +1,9 @@
 package com.example.taskapp.controller;
 
-import com.example.taskapp.api.TaskApi;
 import com.example.taskapp.domain.entity.TaskEntity;
-import com.example.taskapp.model.*;
 import com.example.taskapp.usecase.GetTaskUseCase;
+import gen.openapi.taskapp.api.TaskApi;
+import gen.openapi.taskapp.model.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
