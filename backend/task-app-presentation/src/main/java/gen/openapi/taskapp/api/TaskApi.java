@@ -3,12 +3,12 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-package com.example.taskapp.api;
+package gen.openapi.taskapp.api;
 
-import com.example.taskapp.model.CreateTaskInput;
-import com.example.taskapp.model.DeleteTaskInput;
-import com.example.taskapp.model.GetTasksResponse;
-import com.example.taskapp.model.UpdateTaskInput;
+import gen.openapi.taskapp.model.CreateTaskInput;
+import gen.openapi.taskapp.model.DeleteTaskInput;
+import gen.openapi.taskapp.model.GetTasksResponse;
+import gen.openapi.taskapp.model.UpdateTaskInput;
 import io.swagger.v3.oas.annotations.ExternalDocumentation;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -35,7 +35,7 @@ import java.util.Map;
 import java.util.Optional;
 import jakarta.annotation.Generated;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-08-31T17:49:51.369224443+09:00[Asia/Tokyo]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-09-05T15:57:01.381743194+09:00[Asia/Tokyo]")
 @Validated
 @Tag(name = "task", description = "タスクに関するAPI")
 public interface TaskApi {

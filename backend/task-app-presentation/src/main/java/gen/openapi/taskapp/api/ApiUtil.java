@@ -1,4 +1,4 @@
-package com.example.taskapp.api;
+package gen.openapi.taskapp.api;
 
 import org.springframework.web.context.request.NativeWebRequest;
 

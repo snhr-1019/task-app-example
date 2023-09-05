@@ -1,4 +1,4 @@
-package com.example.taskapp.model;
+package gen.openapi.taskapp.model;
 
 import java.net.URI;
 import java.util.Objects;
@@ -19,7 +19,7 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "LoginRequest", description = "ログインリクエスト")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-08-31T17:49:51.369224443+09:00[Asia/Tokyo]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-09-05T15:57:01.381743194+09:00[Asia/Tokyo]")
 public class LoginRequest {
 
   private String username;

@@ -1,10 +1,10 @@
-package com.example.taskapp.model;
+package gen.openapi.taskapp.model;
 
 import java.net.URI;
 import java.util.Objects;
-import com.example.taskapp.model.Task;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import gen.openapi.taskapp.model.Task;
 import java.util.ArrayList;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
@@ -22,7 +22,7 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "GetTasksResponse", description = "タスク一覧の取得レスポンス")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-08-31T17:49:51.369224443+09:00[Asia/Tokyo]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-09-05T15:57:01.381743194+09:00[Asia/Tokyo]")
 public class GetTasksResponse {
 
   @Valid
