@@ -8,3 +8,12 @@ spring:
     username: root
     password: root
     driverClassName: com.mysql.cj.jdbc.Driver
+
+# TODO separate to application-development.yml
+springdoc:
+  api-docs:
+    enabled: true
+    path: /v3/api-docs
+  swagger-ui:
+    enabled: true
+    path: /swagger-ui.html

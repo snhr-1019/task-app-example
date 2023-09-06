@@ -28,7 +28,9 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         var authenticationManager = authenticationManager(http.getSharedObject(AuthenticationConfiguration.class));
         http
-                .authorizeHttpRequests(authz -> authz
+                .authorizeHttpRequests(authorize -> authorize
+                        // for springdoc TODO separate to only development profile
+                        .requestMatchers("/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html").permitAll()
                         .anyRequest().authenticated()
                 )
                 .addFilter(new JwtAuthenticationFilter(authenticationManager))
