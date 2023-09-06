@@ -21,7 +21,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 public class TaskRepositoryImplTest extends RepositoryTestSupport {
 
     @Autowired
-    private TaskRepositoryImpl sut;
+    TaskRepositoryImpl sut;
 
     @Autowired
     DSLContext dsl;
