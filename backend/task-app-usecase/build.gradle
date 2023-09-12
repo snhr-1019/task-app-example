@@ -1,6 +1,6 @@
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation project(':task-app-domain')
-    implementation project(':task-app-infrastructure') // TODO: it should be 'runtimeOnly'
+    runtimeOnly project(':task-app-infrastructure')
     testImplementation 'org.springframework.security:spring-security-test'
 }
