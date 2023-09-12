@@ -1,8 +1,5 @@
 package com.example.taskapp;
 
-import org.flywaydb.core.Flyway;
-import org.junit.jupiter.api.BeforeEach;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jooq.JooqTest;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.DynamicPropertyRegistry;
@@ -10,15 +7,10 @@ import org.springframework.test.context.DynamicPropertySource;
 import org.testcontainers.containers.MySQLContainer;
 import org.testcontainers.utility.DockerImageName;
 
-import java.sql.SQLException;
-
 
 @JooqTest
 @ContextConfiguration(classes = TaskAppInfrastructureConfig.class)
 public abstract class RepositoryTestSupport {
-
-    @Autowired
-    private Flyway flyway;
 
     static final DockerImageName MYSQL_IMAGE_NAME = DockerImageName
             .parse("mysql")
@@ -31,11 +23,6 @@ public abstract class RepositoryTestSupport {
 
     static {
         MYSQL_CONTAINER.start();
-    }
-
-    @BeforeEach
-    void setUp() throws SQLException {
-        flyway.migrate();
     }
 
     @DynamicPropertySource

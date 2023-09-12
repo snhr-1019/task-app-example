@@ -1,15 +1,15 @@
 plugins {
     id 'nu.studer.jooq' version '8.2'
-    id "org.flywaydb.flyway" version "8.2.0"
+    id "org.flywaydb.flyway" version "8.5.13"
 }
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-jooq'
-    implementation 'org.flywaydb:flyway-core:8.2.0'
+    implementation 'org.flywaydb:flyway-core:8.5.13'
     implementation "mysql:mysql-connector-java:8.0.33"
     implementation project(':task-app-domain')
 
-    testImplementation 'org.flywaydb:flyway-mysql'
+    testImplementation 'org.flywaydb:flyway-mysql:8.5.13'
     testImplementation "org.testcontainers:junit-jupiter:1.18.3"
     testImplementation "org.testcontainers:testcontainers:1.18.3"
     testImplementation "org.testcontainers:mysql:1.18.3"

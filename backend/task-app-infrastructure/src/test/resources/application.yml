@@ -1,6 +1,0 @@
-spring:
-  flyway:
-    enabled: true
-    user: root
-    password: root
-    url: jdbc:mysql://127.0.0.1:3306/taskapp
