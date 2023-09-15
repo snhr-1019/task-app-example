@@ -18,6 +18,12 @@ dependencies {
     jooqGenerator 'mysql:mysql-connector-java:8.0.33'
 }
 
+sourceSets {
+    main {
+        java.srcDirs += "$projectDir/src/gen/jooq/java"
+    }
+}
+
 jooq {
     configurations {
         main {
@@ -39,7 +45,7 @@ jooq {
                     }
                     target {
                         packageName = 'gen.jooq'
-                        directory = 'src/main/java'
+                        directory = 'src/gen/java'
                     }
                 }
             }

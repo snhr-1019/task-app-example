@@ -13,6 +13,7 @@ import java.util.function.Function;
 import org.jooq.Field;
 import org.jooq.ForeignKey;
 import org.jooq.Function4;
+import org.jooq.Identity;
 import org.jooq.Name;
 import org.jooq.Record;
 import org.jooq.Records;
@@ -52,7 +53,7 @@ public class Users extends TableImpl<UsersRecord> {
     /**
      * The column <code>taskapp.users.id</code>.
      */
-    public final TableField<UsersRecord, Integer> ID = createField(DSL.name("id"), SQLDataType.INTEGER.nullable(false), this, "");
+    public final TableField<UsersRecord, Integer> ID = createField(DSL.name("id"), SQLDataType.INTEGER.nullable(false).identity(true), this, "");
 
     /**
      * The column <code>taskapp.users.username</code>.
@@ -105,6 +106,11 @@ public class Users extends TableImpl<UsersRecord> {
     @Override
     public Schema getSchema() {
         return aliased() ? null : Taskapp.TASKAPP;
+    }
+
+    @Override
+    public Identity<UsersRecord, Integer> getIdentity() {
+        return (Identity<UsersRecord, Integer>) super.getIdentity();
     }
 
     @Override

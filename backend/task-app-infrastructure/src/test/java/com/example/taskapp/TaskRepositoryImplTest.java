@@ -74,8 +74,8 @@ public class TaskRepositoryImplTest extends RepositoryTestSupport {
             // then
             Record record = dsl.select().from(TASKS).where(TASKS.TITLE.eq(title)).fetchOne();
             assertThat(record, is(notNullValue()));
-            assertThat(record, is(title));
-            assertThat(record, is(false));
+            assertThat(record.get(TASKS.TITLE), is(title));
+            assertThat(record.get(TASKS.COMPLETED), is((byte) 1));
         }
     }
 
