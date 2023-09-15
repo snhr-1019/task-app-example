@@ -24,7 +24,7 @@ public class TaskControllerTest {
     @Nested
     class GetTaskApi {
         @Test
-        void getTasksApiReturns401ResponseWithAnonymousUser() throws Exception {
+        void testGetTasksApiReturns401ResponseWithAnonymousUser() throws Exception {
             mockMvc.perform(
                             get("/api/task")
                                     .with(anonymous())
@@ -35,7 +35,7 @@ public class TaskControllerTest {
         }
 
         @Test
-        public void getTasksApiReturns200ResponseWithAuthenticatedUser() throws Exception {
+        public void testGetTasksApiReturns200ResponseWithAuthenticatedUser() throws Exception {
             mockMvc.perform(
                             get("/api/task")
                                     .with(user("some_user").roles("ANY_ROLE"))
