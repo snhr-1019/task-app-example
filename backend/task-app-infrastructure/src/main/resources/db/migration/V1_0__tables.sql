@@ -1,9 +1,9 @@
 create table tasks
 (
-    id        integer      not null
+    id        int auto_increment
         primary key,
     title     varchar(255) not null,
-    completed boolean      not null
+    completed tinyint(1)   not null
 );
 
 INSERT INTO tasks (id, title, completed)
@@ -13,7 +13,7 @@ VALUES (2, '掃除をする', true);
 
 create table users
 (
-    id       integer      not null
+    id       int auto_increment
         primary key,
     username varchar(255) not null,
     roles    varchar(255) not null,
