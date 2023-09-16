@@ -37,13 +37,14 @@ openApiGenerate {
             useSpringBoot3: "true",
             interfaceOnly : "true",
             cleanStubs    : "true",
+            sourceFolder  : "src/gen/java"
     ]
 }
 
 sourceSets {
     main {
         java {
-            srcDirs "${openApiGenerate.outputDir.get()}/src/main/java"
+            srcDirs "${openApiGenerate.outputDir.get()}/src/gen/java"
         }
     }
 }
