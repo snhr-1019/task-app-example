@@ -1,6 +1,6 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="TaskappApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
-    <module name="taskapp.task-app-presentation.main" />
+    <module name="taskapp.task-app-web.main" />
     <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.taskapp.TaskappApplication" />
     <method v="2">
       <option name="Make" enabled="true" />
