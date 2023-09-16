@@ -29,7 +29,7 @@ dependencies {
 
 sourceSets {
     main {
-        java.srcDirs += "$projectDir/src/gen/jooq/java"
+        java.srcDirs += "$projectDir/src/gen/java"
     }
 }
 
