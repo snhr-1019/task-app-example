@@ -1,4 +1,4 @@
-package com.example.taskapp;
+package com.example.taskapp.web;
 
 import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.context.annotation.ComponentScan;

@@ -1,6 +1,6 @@
-package com.example.taskapp.controller;
+package com.example.taskapp.web.controller;
 
-import com.example.taskapp.TaskAppPresentationConfig;
+import com.example.taskapp.web.TaskAppPresentationConfig;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,8 +1,8 @@
-package com.example.taskapp;
+package com.example.taskapp.web;
 
-import com.example.taskapp.security.JwtAuthenticationEntryPoint;
-import com.example.taskapp.security.JwtAuthenticationFilter;
-import com.example.taskapp.security.JwtAuthorizationFilter;
+import com.example.taskapp.web.security.JwtAuthenticationEntryPoint;
+import com.example.taskapp.web.security.JwtAuthenticationFilter;
+import com.example.taskapp.web.security.JwtAuthorizationFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;

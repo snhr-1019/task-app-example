@@ -1,4 +1,4 @@
-package com.example.taskapp.controller;
+package com.example.taskapp.web.controller;
 
 import com.example.taskapp.domain.entity.TaskEntity;
 import com.example.taskapp.usecase.GetTaskUseCase;

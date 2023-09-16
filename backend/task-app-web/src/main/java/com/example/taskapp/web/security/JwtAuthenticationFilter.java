@@ -1,6 +1,6 @@
-package com.example.taskapp.security;
+package com.example.taskapp.web.security;
 
-import com.example.taskapp.common.CommonConstants;
+import com.example.taskapp.web.common.CommonConstants;
 import com.example.taskapp.domain.security.LoginUser;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import gen.openapi.taskapp.model.LoginRequest;

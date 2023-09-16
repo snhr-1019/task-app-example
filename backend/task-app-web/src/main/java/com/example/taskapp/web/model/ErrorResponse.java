@@ -1,4 +1,4 @@
-package com.example.taskapp.model;
+package com.example.taskapp.web.model;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;

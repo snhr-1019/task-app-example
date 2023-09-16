@@ -1,6 +1,6 @@
-package com.example.taskapp.security;
+package com.example.taskapp.web.security;
 
-import com.example.taskapp.model.ErrorResponse;
+import com.example.taskapp.web.model.ErrorResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
