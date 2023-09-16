@@ -1,4 +1,4 @@
-package com.example.taskapp;
+package com.example.taskapp.infrastructure;
 
 import org.flywaydb.core.Flyway;
 import org.springframework.boot.autoconfigure.flyway.FlywayMigrationStrategy;

@@ -1,9 +1,8 @@
-package com.example.taskapp;
+package com.example.taskapp.infrastructure;
 
 import com.example.taskapp.domain.entity.TaskEntity;
 import com.example.taskapp.domain.vo.Id;
 import com.example.taskapp.domain.vo.Title;
-import com.example.taskapp.infrastructure.TaskRepositoryImpl;
 import org.jooq.DSLContext;
 import org.jooq.Record;
 import org.junit.jupiter.api.Nested;

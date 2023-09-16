@@ -1,5 +1,6 @@
-package com.example.taskapp;
+package com.example.taskapp.infrastructure;
 
+import com.example.taskapp.infrastructure.TaskAppInfrastructureConfig;
 import org.springframework.boot.test.autoconfigure.jooq.JooqTest;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.DynamicPropertyRegistry;
