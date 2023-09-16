@@ -1,6 +1,5 @@
 package com.example.taskapp.infrastructure;
 
-import com.example.taskapp.infrastructure.TaskAppInfrastructureConfig;
 import org.springframework.boot.test.autoconfigure.jooq.JooqTest;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.DynamicPropertyRegistry;
@@ -10,7 +9,7 @@ import org.testcontainers.utility.DockerImageName;
 
 
 @JooqTest
-@ContextConfiguration(classes = TaskAppInfrastructureConfig.class)
+@ContextConfiguration(classes = InfrastructureConfig.class)
 public abstract class RepositoryTestSupport {
 
     static final DockerImageName MYSQL_IMAGE_NAME = DockerImageName

@@ -5,5 +5,5 @@ import org.springframework.context.annotation.ComponentScan;
 
 @ComponentScan
 @EnableAutoConfiguration
-public class TaskAppInfrastructureConfig {
+public class InfrastructureConfig {
 }
