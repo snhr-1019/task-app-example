@@ -1,6 +1,6 @@
 package com.example.taskapp.web.controller;
 
-import com.example.taskapp.web.TaskAppPresentationConfig;
+import com.example.taskapp.TaskappApplication;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +14,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@SpringBootTest(classes = TaskAppPresentationConfig.class)
+@SpringBootTest(classes = TaskappApplication.class)
 @AutoConfigureMockMvc
 public class TaskControllerTest {
 
