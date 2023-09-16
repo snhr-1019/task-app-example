@@ -1,4 +1,4 @@
-package com.example.taskapp;
+package com.example.taskapp.usecase;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;

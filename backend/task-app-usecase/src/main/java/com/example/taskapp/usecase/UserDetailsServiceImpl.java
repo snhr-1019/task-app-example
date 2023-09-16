@@ -1,4 +1,4 @@
-package com.example.taskapp.service;
+package com.example.taskapp.usecase;
 
 import com.example.taskapp.domain.repository.UserRepository;
 import com.example.taskapp.domain.security.LoginUser;
