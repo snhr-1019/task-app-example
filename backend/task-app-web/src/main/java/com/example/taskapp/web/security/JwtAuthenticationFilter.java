@@ -1,7 +1,7 @@
 package com.example.taskapp.web.security;
 
-import com.example.taskapp.web.common.CommonConstants;
 import com.example.taskapp.domain.security.LoginUser;
+import com.example.taskapp.web.common.CommonConstants;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import gen.openapi.taskapp.model.LoginRequest;
 import io.jsonwebtoken.Jwts;
@@ -21,10 +21,6 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import java.io.IOException;
 import java.util.Date;
 
-/*
- * UsernamePasswordAuthenticationFilterはデフォルトでは
- * /loginへPOSTされると username,passwordのKeyでログイン認証を行う。
- */
 @Slf4j
 public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
     private final AuthenticationManager authenticationManager;
@@ -40,8 +36,10 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         setPasswordParameter(CommonConstants.PASSWORD);
     }
 
+    /**
+     * ログイン認証処理
+     */
     @Override
-    // ログイン認証処理
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
         try {
             LoginRequest loginRequest = new ObjectMapper().readValue(request.getInputStream(), LoginRequest.class);
@@ -57,16 +55,18 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         }
     }
 
+    /**
+     * ログイン成功後の処理
+     */
     @Override
-    // ログイン認証成功後の処理
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain,
                                             Authentication authResult) throws IOException, ServletException {
         String token = Jwts.builder()
-                .setSubject(((LoginUser) authResult.getPrincipal()).getUsername()) //id
-                .claim(CommonConstants.AUTHORITIES, authResult.getAuthorities()) //権限
-                .setIssuedAt(new Date()) //発行日
-                .setExpiration(new Date(System.currentTimeMillis() + 10 * 60 * 1000)) //有効期限
-                .signWith(Keys.hmacShaKeyFor(CommonConstants.SECRET_KEY.getBytes())) //暗号化key
+                .setSubject(((LoginUser) authResult.getPrincipal()).getUsername()) // id
+                .claim(CommonConstants.AUTHORITIES, authResult.getAuthorities()) // 権限
+                .setIssuedAt(new Date()) // 発行日
+                .setExpiration(new Date(System.currentTimeMillis() + 10 * 60 * 1000)) // 有効期限
+                .signWith(Keys.hmacShaKeyFor(CommonConstants.SECRET_KEY.getBytes())) // 暗号化key
                 .compact();
 
         response.addHeader(CommonConstants.AUTHORIZED_HEADER, CommonConstants.TOKEN_PREFIX + token);
