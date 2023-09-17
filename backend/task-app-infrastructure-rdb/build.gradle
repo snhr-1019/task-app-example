@@ -13,7 +13,7 @@ plugins {
 }
 
 dependencies {
-    implementation "mysql:mysql-connector-java:8.0.33"
+    testImplementation "mysql:mysql-connector-java:8.0.33"
 
     jooqGenerator 'mysql:mysql-connector-java:8.0.33'
 }
