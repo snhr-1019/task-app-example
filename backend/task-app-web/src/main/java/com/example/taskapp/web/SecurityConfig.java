@@ -31,7 +31,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(authorize -> authorize
                         // for springdoc TODO separate to only development profile
                         .requestMatchers("/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html").permitAll()
-                        .requestMatchers("/hello").permitAll() // "/hello"へのリクエストは認証なしで許可
+                        .requestMatchers("/hello").permitAll() // localhost:8080/api/helloへのリクエストは認証なしで許可
                         .anyRequest().authenticated()
                 )
                 .addFilter(new JwtAuthenticationFilter(authenticationManager))
