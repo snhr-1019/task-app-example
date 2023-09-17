@@ -8,7 +8,7 @@ import java.util.List;
 @Repository
 public interface TaskRepository {
 
-    public List<TaskEntity> fetch();
+    List<TaskEntity> fetch();
 
-    public void create(TaskEntity taskEntity);
+    void create(TaskEntity taskEntity);
 }

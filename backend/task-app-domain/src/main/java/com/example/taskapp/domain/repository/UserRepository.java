@@ -7,5 +7,5 @@ import java.util.Optional;
 
 @Repository
 public interface UserRepository {
-    public Optional<UserEntity> findByUsername(String username);
+    Optional<UserEntity> findByUsername(String username);
 }
