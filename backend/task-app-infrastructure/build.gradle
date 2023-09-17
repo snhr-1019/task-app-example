@@ -1,21 +1,8 @@
-buildscript {
-    repositories {
-        mavenCentral()
-    }
-    dependencies {
-        classpath 'org.flywaydb:flyway-mysql:9.16.3'
-    }
-}
-
-plugins {
-    id 'nu.studer.jooq' version '8.2'
-    id "org.flywaydb.flyway" version "9.16.3"
-}
-
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-jooq'
     implementation "mysql:mysql-connector-java:8.0.33"
     implementation project(':task-app-domain')
+    implementation project(':task-app-infrastructure-rdb')
 
     testImplementation 'org.flywaydb:flyway-core:9.16.3'
     testImplementation 'org.flywaydb:flyway-mysql:9.16.3'
@@ -23,49 +10,4 @@ dependencies {
     testImplementation "org.testcontainers:testcontainers:1.18.3"
     testImplementation "org.testcontainers:mysql:1.18.3"
     testRuntimeOnly 'mysql:mysql-connector-java:8.0.33'
-
-    jooqGenerator 'mysql:mysql-connector-java:8.0.33'
-}
-
-sourceSets {
-    main {
-        // generateJooqは実行時に出力先ディレクトリの中身をすべて削除する仕様のようなので、mainとはSourceSetごと分離する
-        java.srcDirs += "$projectDir/src/gen/java"
-    }
-}
-
-jooq {
-    configurations {
-        main {
-            generateSchemaSourceOnCompilation = false
-            generationTool {
-                logging = org.jooq.meta.jaxb.Logging.WARN
-                jdbc {
-                    driver = 'com.mysql.cj.jdbc.Driver'
-                    url = 'jdbc:mysql://localhost/taskapp'
-                    user = 'root'
-                    password = 'root'
-                }
-                generator {
-                    name = 'org.jooq.codegen.DefaultGenerator'
-                    database {
-                        name = 'org.jooq.meta.mysql.MySQLDatabase'
-                        includes = 'taskapp.*'
-                        excludes = 'flyway_schema_history'
-                    }
-                    target {
-                        packageName = 'gen.jooq'
-                        directory = 'src/gen/java'
-                    }
-                }
-            }
-        }
-    }
-}
-
-flyway {
-    url = "jdbc:mysql://127.0.0.1:3306/taskapp"
-    user = "root"
-    password = "root"
-    cleanDisabled = false
 }

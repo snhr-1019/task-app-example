@@ -1,0 +1,55 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'org.flywaydb:flyway-mysql:9.16.3'
+    }
+}
+
+plugins {
+    id 'nu.studer.jooq' version '8.2'
+    id "org.flywaydb.flyway" version "9.16.3"
+}
+
+dependencies {
+    implementation "mysql:mysql-connector-java:8.0.33"
+
+    jooqGenerator 'mysql:mysql-connector-java:8.0.33'
+}
+
+jooq {
+    configurations {
+        main {
+            generateSchemaSourceOnCompilation = false
+            generationTool {
+                logging = org.jooq.meta.jaxb.Logging.WARN
+                jdbc {
+                    driver = 'com.mysql.cj.jdbc.Driver'
+                    url = 'jdbc:mysql://localhost/taskapp'
+                    user = 'root'
+                    password = 'root'
+                }
+                generator {
+                    name = 'org.jooq.codegen.DefaultGenerator'
+                    database {
+                        name = 'org.jooq.meta.mysql.MySQLDatabase'
+                        includes = 'taskapp.*'
+                        excludes = 'flyway_schema_history'
+                    }
+                    target {
+                        packageName = 'gen.jooq'
+                        directory = 'src/main/java'
+                    }
+                }
+            }
+        }
+    }
+}
+
+flyway {
+    url = "jdbc:mysql://127.0.0.1:3306/taskapp"
+    user = "root"
+    password = "root"
+    cleanDisabled = false
+}
