@@ -32,7 +32,7 @@ import java.util.Map;
 import java.util.Optional;
 import jakarta.annotation.Generated;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-09-17T00:54:57.306825+09:00[Asia/Tokyo]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-09-17T20:19:28.272606656+09:00[Asia/Tokyo]")
 @Validated
 @Tag(name = "user", description = "ユーザに関するAPI")
 public interface LoginApi {

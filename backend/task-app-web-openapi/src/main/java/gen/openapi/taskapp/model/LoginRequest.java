@@ -19,7 +19,7 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "LoginRequest", description = "ログインリクエスト")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-09-17T00:54:57.306825+09:00[Asia/Tokyo]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-09-17T20:19:28.272606656+09:00[Asia/Tokyo]")
 public class LoginRequest {
 
   private String username;

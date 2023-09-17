@@ -1,0 +1,12 @@
+.openapi-generator-ignore
+README.md
+pom.xml
+src/main/java/gen/openapi/taskapp/api/ApiUtil.java
+src/main/java/gen/openapi/taskapp/api/LoginApi.java
+src/main/java/gen/openapi/taskapp/api/TaskApi.java
+src/main/java/gen/openapi/taskapp/model/CreateTaskInput.java
+src/main/java/gen/openapi/taskapp/model/DeleteTaskInput.java
+src/main/java/gen/openapi/taskapp/model/GetTasksResponse.java
+src/main/java/gen/openapi/taskapp/model/LoginRequest.java
+src/main/java/gen/openapi/taskapp/model/Task.java
+src/main/java/gen/openapi/taskapp/model/UpdateTaskInput.java
