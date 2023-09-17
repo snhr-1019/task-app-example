@@ -19,7 +19,7 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "CreateTaskInput", description = "タスク登録入力")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-09-17T20:19:28.272606656+09:00[Asia/Tokyo]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-09-17T22:57:38.803552812+09:00[Asia/Tokyo]")
 public class CreateTaskInput {
 
   private String title;

@@ -5,7 +5,6 @@
  */
 package gen.openapi.taskapp.api;
 
-import gen.openapi.taskapp.model.LoginRequest;
 import io.swagger.v3.oas.annotations.ExternalDocumentation;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -34,41 +33,47 @@ import jakarta.annotation.Generated;
 
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-09-17T22:57:38.803552812+09:00[Asia/Tokyo]")
 @Validated
-@Tag(name = "user", description = "ユーザに関するAPI")
-public interface LoginApi {
+@Tag(name = "hello", description = "the hello API")
+public interface HelloApi {
 
     default Optional<NativeWebRequest> getRequest() {
         return Optional.empty();
     }
 
     /**
-     * POST /login : ログイン
-     * ユーザ情報で認証を行い、認証に成功した場合はログインする 
+     * GET /hello : Hello
+     * 未ログインユーザでもアクセス可能なエンドポイント 
      *
-     * @param loginRequest  (required)
-     * @return No Content (status code 204)
-     *         or Bad Request (status code 400)
-     *         or Unauthorized (status code 401)
+     * @return OK (status code 200)
      */
     @Operation(
-        operationId = "login",
-        summary = "ログイン",
-        description = "ユーザ情報で認証を行い、認証に成功した場合はログインする ",
-        tags = { "user" },
+        operationId = "hello",
+        summary = "Hello",
+        description = "未ログインユーザでもアクセス可能なエンドポイント ",
+        tags = { "hello" },
         responses = {
-            @ApiResponse(responseCode = "204", description = "No Content"),
-            @ApiResponse(responseCode = "400", description = "Bad Request"),
-            @ApiResponse(responseCode = "401", description = "Unauthorized")
+            @ApiResponse(responseCode = "200", description = "OK", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))
+            })
         }
     )
     @RequestMapping(
-        method = RequestMethod.POST,
-        value = "/login",
-        consumes = { "application/json" }
+        method = RequestMethod.GET,
+        value = "/hello",
+        produces = { "application/json" }
     )
-    default ResponseEntity<Void> login(
-        @Parameter(name = "LoginRequest", description = "", required = true) @Valid @RequestBody LoginRequest loginRequest
+    default ResponseEntity<String> hello(
+        
     ) {
+        getRequest().ifPresent(request -> {
+            for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "\"hello!\"";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+            }
+        });
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
 
     }

@@ -8,6 +8,8 @@ tags:
     description: タスクに関するAPI
   - name: user
     description: ユーザに関するAPI
+  - name: public
+    description: 未ログインユーザにも公開するAPI（サンプル実装）
 servers:
   - url: 'http://localhost:8080/api'
 paths:
@@ -140,6 +142,22 @@ paths:
           description: Bad Request
         "401":
           description: Unauthorized
+  '/hello':
+    get:
+      summary: Hello
+      description: >
+        未ログインユーザでもアクセス可能なエンドポイント
+      tags:
+        - hello
+      operationId: hello
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+                example: hello!
 components:
   schemas:
     Task:

@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/")
 public class TaskController implements TaskApi {
 
     private final GetTaskUseCase getTaskUseCase;
