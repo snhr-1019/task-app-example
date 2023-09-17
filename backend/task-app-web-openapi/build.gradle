@@ -25,3 +25,9 @@ openApiGenerate {
             cleanStubs    : "true",
     ]
 }
+
+tasks.register('cleanOpenApiGenerate', Delete) {
+    delete "$projectDir/src/main/java/"
+}
+
+tasks.openApiGenerate.dependsOn cleanOpenApiGenerate
