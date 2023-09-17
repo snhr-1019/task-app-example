@@ -14,10 +14,10 @@ plugins {
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-jooq'
-    implementation 'org.flywaydb:flyway-core:9.16.3'
     implementation "mysql:mysql-connector-java:8.0.33"
     implementation project(':task-app-domain')
 
+    testImplementation 'org.flywaydb:flyway-core:9.16.3'
     testImplementation 'org.flywaydb:flyway-mysql:9.16.3'
     testImplementation "org.testcontainers:junit-jupiter:1.18.3"
     testImplementation "org.testcontainers:testcontainers:1.18.3"
