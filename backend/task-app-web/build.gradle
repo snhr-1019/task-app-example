@@ -37,6 +37,7 @@ openApiGenerate {
             useSpringBoot3: "true",
             interfaceOnly : "true",
             cleanStubs    : "true",
+            // jOOQと異なり、実行時に既存のコードを削除しないので、ディレクトリごと分ける必要はないが、jOOQの設定と合わせる
             sourceFolder  : "src/gen/java"
     ]
 }

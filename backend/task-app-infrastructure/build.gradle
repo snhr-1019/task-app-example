@@ -29,6 +29,7 @@ dependencies {
 
 sourceSets {
     main {
+        // generateJooqは実行時に出力先ディレクトリの中身をすべて削除する仕様のようなので、mainとはSourceSetごと分離する
         java.srcDirs += "$projectDir/src/gen/java"
     }
 }
