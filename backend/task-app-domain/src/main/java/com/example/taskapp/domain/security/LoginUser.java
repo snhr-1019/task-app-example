@@ -7,12 +7,19 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import java.util.Set;
 
 /**
- * EntityのUserとUserDetailをマッピングさせるクラス
+ * ドメイン層のUserEntityとUserDetailをマッピングさせるクラス
  */
 public class LoginUser extends org.springframework.security.core.userdetails.User {
+
+    private final UserEntity userEntity;
 
     public LoginUser(UserEntity userEntity) {
         super(userEntity.username(), userEntity.password(), true,
                 true, true, true, Set.of(new SimpleGrantedAuthority("USER")));
+        this.userEntity = userEntity;
+    }
+
+    public UserEntity getUserEntity() {
+        return userEntity;
     }
 }

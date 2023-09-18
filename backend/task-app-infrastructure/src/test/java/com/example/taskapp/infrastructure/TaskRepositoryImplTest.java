@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Set;
 
 import static gen.jooq.taskapp.Tables.TASKS;
 import static org.hamcrest.CoreMatchers.is;
@@ -30,9 +31,10 @@ public class TaskRepositoryImplTest extends RepositoryTestSupport {
         @Test
         public void testFetch() {
             // given
+            int userId = 1;
 
             // when
-            List<TaskEntity> ret = sut.fetch();
+            List<TaskEntity> ret = sut.fetch(userId);
 
             // then
             var t1 = new TaskEntity(
@@ -48,8 +50,8 @@ public class TaskRepositoryImplTest extends RepositoryTestSupport {
             );
 
             assertThat(ret.size(), is(2));
-            assertThat(ret.get(0), is(t1));
-            assertThat(ret.get(1), is(t2));
+            // TODO order byの指定がないので、setとしての一致しか見れてない
+            assertThat(Set.copyOf(ret), is(Set.of(t1, t2)));
         }
     }
 

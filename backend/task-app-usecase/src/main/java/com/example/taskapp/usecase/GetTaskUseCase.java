@@ -13,7 +13,7 @@ public class GetTaskUseCase {
 
     private final TaskRepository taskRepository;
 
-    public List<TaskEntity> fetch() {
-        return taskRepository.fetch();
+    public List<TaskEntity> fetch(int userId) {
+        return taskRepository.fetch(userId);
     }
 }

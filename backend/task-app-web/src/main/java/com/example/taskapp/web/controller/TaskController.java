@@ -6,8 +6,14 @@ import gen.openapi.taskapp.api.TaskApi;
 import gen.openapi.taskapp.model.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.RequestContext;
 
 @RestController
 @RequiredArgsConstructor
@@ -15,9 +21,16 @@ public class TaskController implements TaskApi {
 
     private final GetTaskUseCase getTaskUseCase;
 
+    private final UserDetailsService userDetailsService;
+
     @Override
     public ResponseEntity<GetTasksResponse> getTasks() {
-        var taskList = getTaskUseCase.fetch();
+        SecurityContext context = SecurityContextHolder.getContext();
+        var userDetails = context.getAuthentication().getPrincipal();
+
+        int userId = 1;
+
+        var taskList = getTaskUseCase.fetch(userId);
         return ResponseEntity.ok(
                 new GetTasksResponse().tasks(
                         taskList.stream()

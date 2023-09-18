@@ -21,10 +21,11 @@ public class TaskRepositoryImpl implements TaskRepository {
     private final DSLContext dsl;
 
     @Override
-    public List<TaskEntity> fetch() {
+    public List<TaskEntity> fetch(int userId) {
         Result<Record> result =
                 dsl.select()
                         .from(TASKS)
+                        .where(TASKS.USER_ID.eq(userId))
                         .fetch();
         return result.stream().map(this::fromRecord).toList();
     }

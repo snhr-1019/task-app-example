@@ -3,6 +3,8 @@ package com.example.taskapp.web.controller;
 import com.example.taskapp.TaskappApplication;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -34,15 +36,19 @@ public class TaskControllerTest {
             ;
         }
 
-        @Test
-        void testReturns200ResponseWithAuthenticatedUser() throws Exception {
+        @ParameterizedTest
+        @CsvSource({
+                "tanaka, 2",
+                "yamada, 1",
+        })
+        void testReturns200ResponseWithAuthenticatedUser(String username, int expectedTaskNum) throws Exception {
             mockMvc.perform(
                             get("/task")
-                                    .with(user("some_user").roles("ANY_ROLE"))
+                                    .with(user(username).roles("ANY_ROLE"))
                                     .accept(MediaType.APPLICATION_JSON)
                     )
                     .andExpect(status().isOk())
-                    .andExpect(jsonPath("$.tasks[0].id").value("1"))
+                    .andExpect(jsonPath("$.tasks.length()").value(expectedTaskNum))
             ;
         }
     }
