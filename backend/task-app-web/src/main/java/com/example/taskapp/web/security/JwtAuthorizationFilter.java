@@ -1,6 +1,5 @@
 package com.example.taskapp.web.security;
 
-import com.example.taskapp.web.common.CommonConstants;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.JwtException;

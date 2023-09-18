@@ -1,4 +1,4 @@
-package com.example.taskapp.web.common;
+package com.example.taskapp.web.security;
 
 public class CommonConstants {
 
