@@ -33,6 +33,7 @@ public class TaskRepositoryImpl implements TaskRepository {
     @Override
     public void create(TaskEntity taskEntity) {
         dsl.insertInto(TASKS)
+                .set(TASKS.USER_ID, taskEntity.userId())
                 .set(TASKS.TITLE, taskEntity.title().value())
                 .set(TASKS.COMPLETED, (byte) (taskEntity.completed() ? 1 : 0))
                 .execute();
@@ -63,6 +64,7 @@ public class TaskRepositoryImpl implements TaskRepository {
     private TaskEntity fromRecord(Record record) {
         return new TaskEntity(
                 new Id(record.get(TASKS.ID)),
+                record.get(TASKS.USER_ID),
                 new Title(record.get(TASKS.TITLE)),
                 record.get(TASKS.COMPLETED).equals(Byte.valueOf("1"))
         );

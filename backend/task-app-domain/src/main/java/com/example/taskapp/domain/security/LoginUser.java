@@ -7,7 +7,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import java.util.Set;
 
 /**
- * ドメイン層のUserEntityとUserDetailをマッピングさせるクラス
+ * ドメイン層のUserEntityとSpring SecurityのUserDetailをマッピング
  */
 public class LoginUser extends org.springframework.security.core.userdetails.User {
 

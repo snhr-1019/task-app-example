@@ -39,12 +39,14 @@ public class TaskRepositoryImplTest extends RepositoryTestSupport {
             // then
             var t1 = new TaskEntity(
                     new Id(1),
+                    userId,
                     new Title("牛乳を買う"),
                     false
             );
 
             var t2 = new TaskEntity(
                     new Id(2),
+                    userId,
                     new Title("掃除をする"),
                     true
             );
@@ -61,10 +63,12 @@ public class TaskRepositoryImplTest extends RepositoryTestSupport {
         @Transactional // test data will be rolled back
         public void testSave() {
             // given
+            int userId = 1;
             String title = "new task";
 
             var entity = new TaskEntity(
                     null, // id
+                    userId,
                     new Title(title),
                     true // TODO 使ってない。save用のクラスを作るべき
             );
@@ -75,6 +79,7 @@ public class TaskRepositoryImplTest extends RepositoryTestSupport {
             // then
             Record record = dsl.select().from(TASKS).where(TASKS.TITLE.eq(title)).fetchOne();
             assertThat(record, is(notNullValue()));
+            assertThat(record.get(TASKS.USER_ID), is(userId));
             assertThat(record.get(TASKS.TITLE), is(title));
             assertThat(record.get(TASKS.COMPLETED), is((byte) 1));
         }
