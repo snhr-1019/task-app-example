@@ -37,14 +37,14 @@ public class TaskRepositoryImplTest extends RepositoryTestSupport {
             List<TaskEntity> ret = sut.fetch(userId);
 
             // then
-            var t1 = new TaskEntity(
+            var t1 = TaskEntity.createTaskEntity(
                     new Id(1),
                     userId,
                     new Title("牛乳を買う"),
                     false
             );
 
-            var t2 = new TaskEntity(
+            var t2 = TaskEntity.createTaskEntity(
                     new Id(2),
                     userId,
                     new Title("掃除をする"),
@@ -58,7 +58,7 @@ public class TaskRepositoryImplTest extends RepositoryTestSupport {
     }
 
     @Nested
-    class SaveTest {
+    class TestSave {
         @Test
         @Transactional // test data will be rolled back
         public void testSave() {
@@ -66,12 +66,7 @@ public class TaskRepositoryImplTest extends RepositoryTestSupport {
             int userId = 1;
             String title = "new task";
 
-            var entity = new TaskEntity(
-                    null, // id
-                    userId,
-                    new Title(title),
-                    true // TODO 使ってない。save用のクラスを作るべき
-            );
+            var entity = TaskEntity.createNewTaskEntity(userId, new Title(title));
 
             // when
             sut.create(entity);
@@ -81,7 +76,7 @@ public class TaskRepositoryImplTest extends RepositoryTestSupport {
             assertThat(record, is(notNullValue()));
             assertThat(record.get(TASKS.USER_ID), is(userId));
             assertThat(record.get(TASKS.TITLE), is(title));
-            assertThat(record.get(TASKS.COMPLETED), is((byte) 1));
+            assertThat(record.get(TASKS.COMPLETED), is((byte) 0)); // 初期登録時は未完了で作成される
         }
     }
 
