@@ -35,7 +35,7 @@ import java.util.Map;
 import java.util.Optional;
 import jakarta.annotation.Generated;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-09-17T22:57:38.803552812+09:00[Asia/Tokyo]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-10-02T22:24:35.154537511+09:00[Asia/Tokyo]")
 @Validated
 @Tag(name = "task", description = "タスクに関するAPI")
 public interface TaskApi {
@@ -79,7 +79,7 @@ public interface TaskApi {
 
     /**
      * DELETE /task : タスクの削除
-     * 登録しているタスクを削除する。 
+     * タスクを削除する。 
      *
      * @param deleteTaskInput  (required)
      * @return OK (status code 204)
@@ -89,7 +89,7 @@ public interface TaskApi {
     @Operation(
         operationId = "deleteTask",
         summary = "タスクの削除",
-        description = "登録しているタスクを削除する。 ",
+        description = "タスクを削除する。 ",
         tags = { "task" },
         responses = {
             @ApiResponse(responseCode = "204", description = "OK"),
@@ -155,7 +155,7 @@ public interface TaskApi {
 
     /**
      * PUT /task : タスクの更新
-     * タスクのステータスを更新する。 
+     * タスクを更新する。 
      *
      * @param updateTaskInput  (required)
      * @return OK (status code 204)
@@ -165,7 +165,7 @@ public interface TaskApi {
     @Operation(
         operationId = "updateTask",
         summary = "タスクの更新",
-        description = "タスクのステータスを更新する。 ",
+        description = "タスクを更新する。 ",
         tags = { "task" },
         responses = {
             @ApiResponse(responseCode = "204", description = "OK"),
