@@ -69,7 +69,7 @@ paths:
     put:
       summary: タスクの更新
       description: >
-        タスクのステータスを更新する。
+        タスクを更新する。
       tags:
         - task
       operationId: updateTask
@@ -95,7 +95,7 @@ paths:
     delete:
       summary: タスクの削除
       description: >
-        登録しているタスクを削除する。
+        タスクを削除する。
       tags:
         - task
       operationId: deleteTask
@@ -142,7 +142,7 @@ paths:
           description: Bad Request
         "401":
           description: Unauthorized
-  '/hello':
+  /hello:
     get:
       summary: Hello
       description: >
