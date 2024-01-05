@@ -7,7 +7,7 @@ type GetTasksResponse = {
     tasks: Task[];
 };
 
-export const getTasks = async (): Promise<GetTasksResponse> => {
+export default async function getTasks(): Promise<GetTasksResponse> {
     try {
         const response = await axios.get(`${API_BASE_URL}/task`);
         return response.data;
@@ -15,4 +15,4 @@ export const getTasks = async (): Promise<GetTasksResponse> => {
         console.error('Error while fetching tasks:', error);
         throw error;
     }
-};
+}

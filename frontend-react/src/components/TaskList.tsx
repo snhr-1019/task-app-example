@@ -1,9 +1,9 @@
 import {useEffect, useState} from 'react';
-import {getTasks} from '../api/tasks';
+import getTasks from '../api/tasks';
 //import './TaskList.css';
 import {Task} from '../types/Task';
 
-const TaskList = () => {
+export default function TaskList() {
     // タスク一覧の初期値を空の配列とする
     const [tasks, setTasks] = useState<Task[]>([]);
 
@@ -32,5 +32,3 @@ const TaskList = () => {
         </div>
     );
 };
-
-export default TaskList;

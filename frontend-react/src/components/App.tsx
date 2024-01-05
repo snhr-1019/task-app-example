@@ -1,11 +1,9 @@
 import TaskList from "./TaskList";
 
-const App = () => {
+export default function App() {
     return (
         <div className="App">
-            <TaskList />
+            <TaskList/>
         </div>
     );
 };
-
-export default App;
