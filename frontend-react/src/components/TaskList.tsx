@@ -1,31 +1,15 @@
-import {useEffect, useState} from 'react';
-import getTasks from '../api/tasks';
 //import './TaskList.css';
 import {Task} from '../types/Task';
 
-export default function TaskList() {
-    // タスク一覧の初期値を空の配列とする
-    const [tasks, setTasks] = useState<Task[]>([]);
+type Props = {
+    tasks: Task[]
+}
 
-    // コンポーネント起動時に全タスクを取得する
-    useEffect(() => {
-        const fetchTasks = async () => {
-            try {
-                const getTasksResponse = await getTasks();
-                setTasks(getTasksResponse.tasks);
-            } catch (error) {
-                console.error('Error while fetching tasks:', error);
-            }
-        };
-
-        fetchTasks();
-    }, []);
-
+export default function TaskList(props: Props) {
     return (
         <div className="container">
-            <h1>ToDo List</h1>
             <ul>
-                {tasks.map((task: Task) => (
+                {props.tasks.map((task: Task) => (
                     <li key={task.id}>{task.title}</li>
                 ))}
             </ul>
