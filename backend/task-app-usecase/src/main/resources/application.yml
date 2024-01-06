@@ -1,0 +1,10 @@
+# this file is used for unittest of usecase module
+
+spring:
+  output:
+    ansi:
+      enabled: ALWAYS
+  # refer task-app-infrastructure/src/main/resources/application-db
+  profiles:
+    include:
+      - db
