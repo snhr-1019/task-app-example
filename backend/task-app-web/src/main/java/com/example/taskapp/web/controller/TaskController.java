@@ -1,6 +1,7 @@
 package com.example.taskapp.web.controller;
 
 import com.example.taskapp.domain.entity.TaskEntity;
+import com.example.taskapp.usecase.CreateTaskUseCase;
 import com.example.taskapp.usecase.GetTaskUseCase;
 import gen.openapi.taskapp.api.TaskApi;
 import gen.openapi.taskapp.model.*;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class TaskController implements TaskApi {
 
     private final GetTaskUseCase getTaskUseCase;
+    private final CreateTaskUseCase createTaskUseCase;
 
     private final UserDetailsService userDetailsService;
 
@@ -38,7 +40,14 @@ public class TaskController implements TaskApi {
 
     @Override
     public ResponseEntity<CreateTaskResponse> createTask(CreateTaskRequest createTaskRequest) {
-        return TaskApi.super.createTask(createTaskRequest);
+        int userId = 1;
+        TaskEntity taskEntity = createTaskUseCase.createTask(userId, createTaskRequest.getTitle());
+
+        return ResponseEntity.ok(
+                new CreateTaskResponse().task(
+                        fromTaskEntity(taskEntity)
+                )
+        );
     }
 
     @Override
