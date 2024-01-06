@@ -2,8 +2,7 @@ package com.example.taskapp.infrastructure;
 
 import com.example.taskapp.domain.entity.TaskEntity;
 import com.example.taskapp.domain.repository.TaskRepository;
-import com.example.taskapp.domain.vo.Id;
-import com.example.taskapp.domain.vo.Title;
+import gen.jooq.taskapp.tables.records.TasksRecord;
 import lombok.RequiredArgsConstructor;
 import org.jooq.DSLContext;
 import org.jooq.Record;
@@ -11,6 +10,7 @@ import org.jooq.Result;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import static gen.jooq.taskapp.Tables.TASKS;
 
@@ -31,12 +31,25 @@ public class TaskRepositoryImpl implements TaskRepository {
     }
 
     @Override
-    public void create(TaskEntity taskEntity) {
-        dsl.insertInto(TASKS)
+    public Optional<TaskEntity> fetchByTaskId(int taskId) {
+        Record record =
+                dsl.select()
+                        .from(TASKS)
+                        .where(TASKS.ID.eq(taskId))
+                        .fetchOne();
+        return record == null ? Optional.of(null) : Optional.of(fromRecord(record));
+    }
+
+    @Override
+    public TaskEntity create(TaskEntity taskEntity) {
+        Record record = dsl.insertInto(TASKS)
                 .set(TASKS.USER_ID, taskEntity.getUserId())
-                .set(TASKS.TITLE, taskEntity.getTitle().value())
+                .set(TASKS.TITLE, taskEntity.getTitle())
                 .set(TASKS.COMPLETED, (byte) (taskEntity.isCompleted() ? 1 : 0))
-                .execute();
+                .returningResult(TASKS.ID)
+                .fetchOne();
+        var taskId = record.get(TASKS.ID);
+        return fetchByTaskId(taskId).get();
     }
 
     //    @Override
@@ -63,9 +76,9 @@ public class TaskRepositoryImpl implements TaskRepository {
 
     private TaskEntity fromRecord(Record record) {
         return TaskEntity.createTaskEntity(
-                new Id(record.get(TASKS.ID)),
+                record.get(TASKS.ID),
                 record.get(TASKS.USER_ID),
-                new Title(record.get(TASKS.TITLE)),
+                record.get(TASKS.TITLE),
                 record.get(TASKS.COMPLETED).equals(Byte.valueOf("1"))
         );
     }

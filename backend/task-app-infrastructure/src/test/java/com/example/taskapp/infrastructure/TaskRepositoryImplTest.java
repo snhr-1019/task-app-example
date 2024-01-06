@@ -1,8 +1,6 @@
 package com.example.taskapp.infrastructure;
 
 import com.example.taskapp.domain.entity.TaskEntity;
-import com.example.taskapp.domain.vo.Id;
-import com.example.taskapp.domain.vo.Title;
 import org.jooq.DSLContext;
 import org.jooq.Record;
 import org.junit.jupiter.api.Nested;
@@ -38,16 +36,16 @@ public class TaskRepositoryImplTest extends RepositoryTestSupport {
 
             // then
             var t1 = TaskEntity.createTaskEntity(
-                    new Id(1),
+                    1,
                     userId,
-                    new Title("牛乳を買う"),
+                    "牛乳を買う",
                     false
             );
 
             var t2 = TaskEntity.createTaskEntity(
-                    new Id(2),
+                    2,
                     userId,
-                    new Title("掃除をする"),
+                    "掃除をする",
                     true
             );
 
@@ -66,7 +64,7 @@ public class TaskRepositoryImplTest extends RepositoryTestSupport {
             int userId = 1;
             String title = "new task";
 
-            var entity = TaskEntity.createNewTaskEntity(userId, new Title(title));
+            var entity = TaskEntity.createNewTaskEntity(userId, title);
 
             // when
             sut.create(entity);

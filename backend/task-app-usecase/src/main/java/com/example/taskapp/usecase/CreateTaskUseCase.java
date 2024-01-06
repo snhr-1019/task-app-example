@@ -1,5 +1,6 @@
 package com.example.taskapp.usecase;
 
+import com.example.taskapp.domain.entity.TaskEntity;
 import com.example.taskapp.domain.repository.TaskRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -9,8 +10,8 @@ import org.springframework.stereotype.Service;
 public class CreateTaskUseCase {
     private final TaskRepository taskRepository;
 
-    public void createTask() {
-//        taskRepository.create();
-        System.out.println("createTask");
+    public TaskEntity createTask(int userId, String title) {
+        var taskEntity = TaskEntity.createNewTaskEntity(userId, title);
+        return taskRepository.create(taskEntity);
     }
 }

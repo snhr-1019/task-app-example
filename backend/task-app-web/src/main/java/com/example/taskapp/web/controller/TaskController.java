@@ -53,8 +53,8 @@ public class TaskController implements TaskApi {
 
     public Task fromTaskEntity(TaskEntity taskEntity) {
         var task = new Task();
-        task.setId(taskEntity.getId().value());
-        task.setTitle(taskEntity.getTitle().value());
+        task.setId(taskEntity.getId());
+        task.setTitle(taskEntity.getTitle());
         task.setCompleted(taskEntity.isCompleted());
         return task;
     }
