@@ -1,7 +1,7 @@
 openapi: 3.0.3
 info:
   title: Task App REST API
-  version: '1.0.0'
+  version: "1.0.0"
   description: Task App for Educational Purpose
 tags:
   - name: task
@@ -11,7 +11,7 @@ tags:
   - name: public
     description: 未ログインユーザにも公開するAPI（サンプル実装）
 servers:
-  - url: 'http://localhost:8080/api'
+  - url: "http://localhost:8080/api"
 paths:
   /task:
     get:
@@ -27,7 +27,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/GetTasksResponse'
+                $ref: "#/components/schemas/GetTasksResponse"
               examples:
                 example1:
                   value:
@@ -54,14 +54,26 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CreateTaskInput'
+              $ref: "#/components/schemas/CreateTaskRequest"
             examples:
               example1:
                 value:
                   title: プログラミングを勉強する
       responses:
-        "204":
-          description: OK
+        "200":
+          description: OK. IDの採番をサーバサイドで行うため、登録後のtaskをレスポンスで返却する
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CreateTaskResponse"
+              examples:
+                example1:
+                  value:
+                    task:
+                      id: 1
+                      title: 牛乳を買う
+                      completed: false
+
         "400":
           description: Bad Request
         "403":
@@ -78,7 +90,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/UpdateTaskInput'
+              $ref: "#/components/schemas/UpdateTaskRequest"
             examples:
               example1:
                 value:
@@ -104,7 +116,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/DeleteTaskInput'
+              $ref: "#/components/schemas/DeleteTaskRequest"
             examples:
               example1:
                 value:
@@ -129,7 +141,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/LoginRequest'
+              $ref: "#/components/schemas/LoginRequest"
             examples:
               example1:
                 value:
@@ -186,8 +198,8 @@ components:
           type: array
           description: タスク一覧
           items:
-            $ref: '#/components/schemas/Task'
-    CreateTaskInput:
+            $ref: "#/components/schemas/Task"
+    CreateTaskRequest:
       type: object
       description: タスク登録入力
       properties:
@@ -197,9 +209,18 @@ components:
       required:
         - title
       additionalProperties: false
-    UpdateTaskInput:
+    CreateTaskResponse:
       type: object
-      description: タスク更新入力
+      description: タスク登録のリクエスト
+      properties:
+        task:
+          type: object
+          description: タスク登録のレスポンス
+          $ref: "#/components/schemas/Task"
+      additionalProperties: false
+    UpdateTaskRequest:
+      type: object
+      description: タスク更新のリクエスト
       properties:
         id:
           type: integer
@@ -213,9 +234,9 @@ components:
       required:
         - id
       additionalProperties: false
-    DeleteTaskInput:
+    DeleteTaskRequest:
       type: object
-      description: タスク削除入力
+      description: タスク削除のリクエスト
       properties:
         id:
           type: integer
