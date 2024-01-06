@@ -1,5 +1,6 @@
 import React, {useRef} from 'react';
 import {Task} from '../types/Task';
+import {createTask} from '../api/tasks';
 
 type Props = {
     tasks: Task[],
@@ -9,17 +10,18 @@ type Props = {
 export default function AddTask(props: Props) {
     const taskTitle = useRef<HTMLInputElement>(null);
 
-    const addTask = () => {
+    const addTask = async () => {
         if (taskTitle.current === null) return;
         if (taskTitle.current.value === "") return alert("タスク名を入力してください");
-        let task = {
-            id: 0,
-            title: taskTitle.current.value,
-            completed: false
-        };
-        const newTasks = props.tasks.concat(task);
-        props.setTasks(newTasks);
-        taskTitle.current.value = "";
+
+        try {
+            const createTaskResponse = await createTask(taskTitle.current.value)
+            const newTasks = props.tasks.concat(createTaskResponse.task);
+            props.setTasks(newTasks);
+            taskTitle.current.value = "";
+        } catch (error) {
+            console.error('Error while adding task:', error);
+        }
     }
 
     return (

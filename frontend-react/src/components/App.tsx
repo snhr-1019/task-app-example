@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import TaskList from "./TaskList";
 import AddTask from "./AddTask";
 import {Task} from "../types/Task";
-import getTasks from "../api/tasks";
+import {getTasks} from "../api/tasks";
 
 export default function App() {
     const [tasks, setTasks] = useState<Task[]>([]);
