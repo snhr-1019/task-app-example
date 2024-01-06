@@ -37,20 +37,19 @@ public class TaskController implements TaskApi {
     }
 
     @Override
-    public ResponseEntity<Void> createTask(CreateTaskInput createTaskInput) {
-        return TaskApi.super.createTask(createTaskInput);
+    public ResponseEntity<CreateTaskResponse> createTask(CreateTaskRequest createTaskRequest) {
+        return TaskApi.super.createTask(createTaskRequest);
     }
 
     @Override
-    public ResponseEntity<Void> deleteTask(DeleteTaskInput deleteTaskInput) {
-        return TaskApi.super.deleteTask(deleteTaskInput);
+    public ResponseEntity<Void> deleteTask(DeleteTaskRequest deleteTaskRequest) {
+        return TaskApi.super.deleteTask(deleteTaskRequest);
     }
 
     @Override
-    public ResponseEntity<Void> updateTask(UpdateTaskInput updateTaskInput) {
-        return TaskApi.super.updateTask(updateTaskInput);
+    public ResponseEntity<Void> updateTask(UpdateTaskRequest updateTaskRequest) {
+        return TaskApi.super.updateTask(updateTaskRequest);
     }
-
 
     public Task fromTaskEntity(TaskEntity taskEntity) {
         var task = new Task();
