@@ -5,10 +5,11 @@
  */
 package gen.openapi.taskapp.api;
 
-import gen.openapi.taskapp.model.CreateTaskInput;
-import gen.openapi.taskapp.model.DeleteTaskInput;
+import gen.openapi.taskapp.model.CreateTaskRequest;
+import gen.openapi.taskapp.model.CreateTaskResponse;
+import gen.openapi.taskapp.model.DeleteTaskRequest;
 import gen.openapi.taskapp.model.GetTasksResponse;
-import gen.openapi.taskapp.model.UpdateTaskInput;
+import gen.openapi.taskapp.model.UpdateTaskRequest;
 import io.swagger.v3.oas.annotations.ExternalDocumentation;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -35,7 +36,7 @@ import java.util.Map;
 import java.util.Optional;
 import jakarta.annotation.Generated;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-10-02T22:24:35.154537511+09:00[Asia/Tokyo]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-01-06T17:47:49.913801616+09:00[Asia/Tokyo]")
 @Validated
 @Tag(name = "task", description = "タスクに関するAPI")
 public interface TaskApi {
@@ -48,8 +49,8 @@ public interface TaskApi {
      * POST /task : タスクの登録
      * タスクを登録する 
      *
-     * @param createTaskInput  (required)
-     * @return OK (status code 204)
+     * @param createTaskRequest  (required)
+     * @return OK. IDの採番をサーバサイドで行うため、登録後のtaskをレスポンスで返却する (status code 200)
      *         or Bad Request (status code 400)
      *         or Forbidden (status code 403)
      */
@@ -59,7 +60,9 @@ public interface TaskApi {
         description = "タスクを登録する ",
         tags = { "task" },
         responses = {
-            @ApiResponse(responseCode = "204", description = "OK"),
+            @ApiResponse(responseCode = "200", description = "OK. IDの採番をサーバサイドで行うため、登録後のtaskをレスポンスで返却する", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = CreateTaskResponse.class))
+            }),
             @ApiResponse(responseCode = "400", description = "Bad Request"),
             @ApiResponse(responseCode = "403", description = "Forbidden")
         }
@@ -67,11 +70,21 @@ public interface TaskApi {
     @RequestMapping(
         method = RequestMethod.POST,
         value = "/task",
+        produces = { "application/json" },
         consumes = { "application/json" }
     )
-    default ResponseEntity<Void> createTask(
-        @Parameter(name = "CreateTaskInput", description = "", required = true) @Valid @RequestBody CreateTaskInput createTaskInput
+    default ResponseEntity<CreateTaskResponse> createTask(
+        @Parameter(name = "CreateTaskRequest", description = "", required = true) @Valid @RequestBody CreateTaskRequest createTaskRequest
     ) {
+        getRequest().ifPresent(request -> {
+            for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"task\" : { \"id\" : 0, \"completed\" : true, \"title\" : \"title\" } }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+            }
+        });
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
 
     }
@@ -81,7 +94,7 @@ public interface TaskApi {
      * DELETE /task : タスクの削除
      * タスクを削除する。 
      *
-     * @param deleteTaskInput  (required)
+     * @param deleteTaskRequest  (required)
      * @return OK (status code 204)
      *         or Bad Request (status code 400)
      *         or Forbidden (status code 403)
@@ -103,7 +116,7 @@ public interface TaskApi {
         consumes = { "application/json" }
     )
     default ResponseEntity<Void> deleteTask(
-        @Parameter(name = "DeleteTaskInput", description = "", required = true) @Valid @RequestBody DeleteTaskInput deleteTaskInput
+        @Parameter(name = "DeleteTaskRequest", description = "", required = true) @Valid @RequestBody DeleteTaskRequest deleteTaskRequest
     ) {
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
 
@@ -157,7 +170,7 @@ public interface TaskApi {
      * PUT /task : タスクの更新
      * タスクを更新する。 
      *
-     * @param updateTaskInput  (required)
+     * @param updateTaskRequest  (required)
      * @return OK (status code 204)
      *         or Bad Request (status code 400)
      *         or Forbidden (status code 403)
@@ -179,7 +192,7 @@ public interface TaskApi {
         consumes = { "application/json" }
     )
     default ResponseEntity<Void> updateTask(
-        @Parameter(name = "UpdateTaskInput", description = "", required = true) @Valid @RequestBody UpdateTaskInput updateTaskInput
+        @Parameter(name = "UpdateTaskRequest", description = "", required = true) @Valid @RequestBody UpdateTaskRequest updateTaskRequest
     ) {
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
 

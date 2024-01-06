@@ -5,8 +5,6 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import gen.openapi.taskapp.model.Task;
-import java.util.ArrayList;
-import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
 import jakarta.validation.Valid;
@@ -18,42 +16,33 @@ import java.util.*;
 import jakarta.annotation.Generated;
 
 /**
- * タスク一覧の取得レスポンス
+ * タスク登録のリクエスト
  */
 
-@Schema(name = "GetTasksResponse", description = "タスク一覧の取得レスポンス")
+@Schema(name = "CreateTaskResponse", description = "タスク登録のリクエスト")
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-01-06T17:47:49.913801616+09:00[Asia/Tokyo]")
-public class GetTasksResponse {
+public class CreateTaskResponse {
 
-  @Valid
-  private List<@Valid Task> tasks;
+  private Task task;
 
-  public GetTasksResponse tasks(List<@Valid Task> tasks) {
-    this.tasks = tasks;
-    return this;
-  }
-
-  public GetTasksResponse addTasksItem(Task tasksItem) {
-    if (this.tasks == null) {
-      this.tasks = new ArrayList<>();
-    }
-    this.tasks.add(tasksItem);
+  public CreateTaskResponse task(Task task) {
+    this.task = task;
     return this;
   }
 
   /**
-   * タスク一覧
-   * @return tasks
+   * Get task
+   * @return task
   */
   @Valid 
-  @Schema(name = "tasks", description = "タスク一覧", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("tasks")
-  public List<@Valid Task> getTasks() {
-    return tasks;
+  @Schema(name = "task", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("task")
+  public Task getTask() {
+    return task;
   }
 
-  public void setTasks(List<@Valid Task> tasks) {
-    this.tasks = tasks;
+  public void setTask(Task task) {
+    this.task = task;
   }
 
   @Override
@@ -64,20 +53,20 @@ public class GetTasksResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    GetTasksResponse getTasksResponse = (GetTasksResponse) o;
-    return Objects.equals(this.tasks, getTasksResponse.tasks);
+    CreateTaskResponse createTaskResponse = (CreateTaskResponse) o;
+    return Objects.equals(this.task, createTaskResponse.task);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(tasks);
+    return Objects.hash(task);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class GetTasksResponse {\n");
-    sb.append("    tasks: ").append(toIndentedString(tasks)).append("\n");
+    sb.append("class CreateTaskResponse {\n");
+    sb.append("    task: ").append(toIndentedString(task)).append("\n");
     sb.append("}");
     return sb.toString();
   }

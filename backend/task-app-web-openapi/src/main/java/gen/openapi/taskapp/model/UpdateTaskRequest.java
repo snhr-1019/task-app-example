@@ -15,12 +15,12 @@ import java.util.*;
 import jakarta.annotation.Generated;
 
 /**
- * タスク更新入力
+ * タスク更新のリクエスト
  */
 
-@Schema(name = "UpdateTaskInput", description = "タスク更新入力")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-10-02T22:24:35.154537511+09:00[Asia/Tokyo]")
-public class UpdateTaskInput {
+@Schema(name = "UpdateTaskRequest", description = "タスク更新のリクエスト")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-01-06T17:47:49.913801616+09:00[Asia/Tokyo]")
+public class UpdateTaskRequest {
 
   private Integer id;
 
@@ -30,21 +30,21 @@ public class UpdateTaskInput {
 
   /**
    * Default constructor
-   * @deprecated Use {@link UpdateTaskInput#UpdateTaskInput(Integer)}
+   * @deprecated Use {@link UpdateTaskRequest#UpdateTaskRequest(Integer)}
    */
   @Deprecated
-  public UpdateTaskInput() {
+  public UpdateTaskRequest() {
     super();
   }
 
   /**
    * Constructor with only required parameters
    */
-  public UpdateTaskInput(Integer id) {
+  public UpdateTaskRequest(Integer id) {
     this.id = id;
   }
 
-  public UpdateTaskInput id(Integer id) {
+  public UpdateTaskRequest id(Integer id) {
     this.id = id;
     return this;
   }
@@ -64,7 +64,7 @@ public class UpdateTaskInput {
     this.id = id;
   }
 
-  public UpdateTaskInput title(String title) {
+  public UpdateTaskRequest title(String title) {
     this.title = title;
     return this;
   }
@@ -84,7 +84,7 @@ public class UpdateTaskInput {
     this.title = title;
   }
 
-  public UpdateTaskInput completed(Boolean completed) {
+  public UpdateTaskRequest completed(Boolean completed) {
     this.completed = completed;
     return this;
   }
@@ -112,10 +112,10 @@ public class UpdateTaskInput {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    UpdateTaskInput updateTaskInput = (UpdateTaskInput) o;
-    return Objects.equals(this.id, updateTaskInput.id) &&
-        Objects.equals(this.title, updateTaskInput.title) &&
-        Objects.equals(this.completed, updateTaskInput.completed);
+    UpdateTaskRequest updateTaskRequest = (UpdateTaskRequest) o;
+    return Objects.equals(this.id, updateTaskRequest.id) &&
+        Objects.equals(this.title, updateTaskRequest.title) &&
+        Objects.equals(this.completed, updateTaskRequest.completed);
   }
 
   @Override
@@ -126,7 +126,7 @@ public class UpdateTaskInput {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class UpdateTaskInput {\n");
+    sb.append("class UpdateTaskRequest {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    completed: ").append(toIndentedString(completed)).append("\n");
