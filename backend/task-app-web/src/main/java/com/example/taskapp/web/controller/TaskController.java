@@ -1,6 +1,7 @@
 package com.example.taskapp.web.controller;
 
 import com.example.taskapp.domain.entity.TaskEntity;
+import com.example.taskapp.usecase.CreateTaskUseCase;
 import com.example.taskapp.usecase.GetTaskUseCase;
 import gen.openapi.taskapp.api.TaskApi;
 import gen.openapi.taskapp.model.*;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class TaskController implements TaskApi {
 
     private final GetTaskUseCase getTaskUseCase;
+    private final CreateTaskUseCase createTaskUseCase;
 
     private final UserDetailsService userDetailsService;
 
@@ -37,25 +39,31 @@ public class TaskController implements TaskApi {
     }
 
     @Override
-    public ResponseEntity<Void> createTask(CreateTaskInput createTaskInput) {
-        return TaskApi.super.createTask(createTaskInput);
+    public ResponseEntity<CreateTaskResponse> createTask(CreateTaskRequest createTaskRequest) {
+        int userId = 1;
+        TaskEntity taskEntity = createTaskUseCase.createTask(userId, createTaskRequest.getTitle());
+
+        return ResponseEntity.ok(
+                new CreateTaskResponse().task(
+                        fromTaskEntity(taskEntity)
+                )
+        );
     }
 
     @Override
-    public ResponseEntity<Void> deleteTask(DeleteTaskInput deleteTaskInput) {
-        return TaskApi.super.deleteTask(deleteTaskInput);
+    public ResponseEntity<Void> deleteTask(DeleteTaskRequest deleteTaskRequest) {
+        return TaskApi.super.deleteTask(deleteTaskRequest);
     }
 
     @Override
-    public ResponseEntity<Void> updateTask(UpdateTaskInput updateTaskInput) {
-        return TaskApi.super.updateTask(updateTaskInput);
+    public ResponseEntity<Void> updateTask(UpdateTaskRequest updateTaskRequest) {
+        return TaskApi.super.updateTask(updateTaskRequest);
     }
-
 
     public Task fromTaskEntity(TaskEntity taskEntity) {
         var task = new Task();
-        task.setId(taskEntity.getId().value());
-        task.setTitle(taskEntity.getTitle().value());
+        task.setId(taskEntity.getId());
+        task.setTitle(taskEntity.getTitle());
         task.setCompleted(taskEntity.isCompleted());
         return task;
     }

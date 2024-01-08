@@ -3,4 +3,5 @@ dependencies {
     implementation project(':task-app-domain')
     runtimeOnly project(':task-app-infrastructure')
     testImplementation 'org.springframework.security:spring-security-test'
+    testImplementation 'org.jooq:jooq'
 }

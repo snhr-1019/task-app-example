@@ -15,49 +15,49 @@ import java.util.*;
 import jakarta.annotation.Generated;
 
 /**
- * タスク削除入力
+ * タスク登録入力
  */
 
-@Schema(name = "DeleteTaskInput", description = "タスク削除入力")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-10-02T22:24:35.154537511+09:00[Asia/Tokyo]")
-public class DeleteTaskInput {
+@Schema(name = "CreateTaskRequest", description = "タスク登録入力")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-01-06T17:47:49.913801616+09:00[Asia/Tokyo]")
+public class CreateTaskRequest {
 
-  private Integer id;
+  private String title;
 
   /**
    * Default constructor
-   * @deprecated Use {@link DeleteTaskInput#DeleteTaskInput(Integer)}
+   * @deprecated Use {@link CreateTaskRequest#CreateTaskRequest(String)}
    */
   @Deprecated
-  public DeleteTaskInput() {
+  public CreateTaskRequest() {
     super();
   }
 
   /**
    * Constructor with only required parameters
    */
-  public DeleteTaskInput(Integer id) {
-    this.id = id;
+  public CreateTaskRequest(String title) {
+    this.title = title;
   }
 
-  public DeleteTaskInput id(Integer id) {
-    this.id = id;
+  public CreateTaskRequest title(String title) {
+    this.title = title;
     return this;
   }
 
   /**
-   * タスクのID
-   * @return id
+   * タスクのタイトル
+   * @return title
   */
   @NotNull 
-  @Schema(name = "id", description = "タスクのID", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("id")
-  public Integer getId() {
-    return id;
+  @Schema(name = "title", description = "タスクのタイトル", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("title")
+  public String getTitle() {
+    return title;
   }
 
-  public void setId(Integer id) {
-    this.id = id;
+  public void setTitle(String title) {
+    this.title = title;
   }
 
   @Override
@@ -68,20 +68,20 @@ public class DeleteTaskInput {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    DeleteTaskInput deleteTaskInput = (DeleteTaskInput) o;
-    return Objects.equals(this.id, deleteTaskInput.id);
+    CreateTaskRequest createTaskRequest = (CreateTaskRequest) o;
+    return Objects.equals(this.title, createTaskRequest.title);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id);
+    return Objects.hash(title);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class DeleteTaskInput {\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("class CreateTaskRequest {\n");
+    sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("}");
     return sb.toString();
   }

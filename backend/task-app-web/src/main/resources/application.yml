@@ -6,12 +6,10 @@ spring:
   output:
     ansi:
       enabled: ALWAYS
-
-  datasource:
-    url: jdbc:mysql://127.0.0.1:3306/taskapp?characterEncoding=utf8
-    username: root
-    password: root
-    driverClassName: com.mysql.cj.jdbc.Driver
+  # refer task-app-infrastructure/src/main/resources/application-db
+  profiles:
+    include:
+      - db
 
 # TODO separate to application-development.yml
 springdoc:
