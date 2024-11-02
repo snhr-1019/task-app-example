@@ -4,11 +4,20 @@
     "config:recommended"
   ],
   "dependencyDashboard": false,
+  "timezone": "Asia/Tokyo",
+  "schedule": "before 6am on monday",
+  "reviewers": ["@snhr-1019"],
   "packageRules": [
     {
       "matchPackagePatterns": ["*"],
       "matchUpdateTypes": ["patch", "minor"],
       "groupName": "dependencies non-major"
     }
-  ]
+  ],
+  "labels": [
+    "dependencies"
+  ],
+  "pre-commit": {
+    "enabled": true
+  }  
 }
