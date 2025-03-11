@@ -9,9 +9,14 @@
   "reviewers": ["@snhr-1019"],
   "packageRules": [
     {
-      "matchPackagePatterns": ["*"],
       "matchUpdateTypes": ["patch", "minor"],
-      "groupName": "dependencies non-major"
+      "groupName": "dependencies non-major",
+      "prPriority": 20
+    },
+    {
+      "matchManagers": ["pre-commit", "asdf"],
+      "groupName": "dev tools",
+      "prPriority": 10
     }
   ],
   "labels": [
