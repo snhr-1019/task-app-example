@@ -49,7 +49,7 @@ public class DeleteTaskRequest {
    * タスクのID
    * @return id
   */
-  @NotNull 
+  @NotNull
   @Schema(name = "id", description = "タスクのID", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("id")
   public Integer getId() {
@@ -97,4 +97,3 @@ public class DeleteTaskRequest {
     return o.toString().replace("\n", "\n    ");
   }
 }
-

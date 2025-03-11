@@ -34,7 +34,7 @@ public class CreateTaskResponse {
    * Get task
    * @return task
   */
-  @Valid 
+  @Valid
   @Schema(name = "task", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("task")
   public Task getTask() {
@@ -82,4 +82,3 @@ public class CreateTaskResponse {
     return o.toString().replace("\n", "\n    ");
   }
 }
-

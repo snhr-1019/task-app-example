@@ -49,7 +49,7 @@ public class CreateTaskRequest {
    * タスクのタイトル
    * @return title
   */
-  @NotNull 
+  @NotNull
   @Schema(name = "title", description = "タスクのタイトル", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("title")
   public String getTitle() {
@@ -97,4 +97,3 @@ public class CreateTaskRequest {
     return o.toString().replace("\n", "\n    ");
   }
 }
-

@@ -43,7 +43,7 @@ public interface LoginApi {
 
     /**
      * POST /login : ログイン
-     * ユーザ情報で認証を行い、認証に成功した場合はログインする 
+     * ユーザ情報で認証を行い、認証に成功した場合はログインする
      *
      * @param loginRequest  (required)
      * @return No Content (status code 204)

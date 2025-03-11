@@ -35,7 +35,7 @@ public class LoginRequest {
    * ユーザ名
    * @return username
   */
-  
+
   @Schema(name = "username", description = "ユーザ名", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("username")
   public String getUsername() {
@@ -55,7 +55,7 @@ public class LoginRequest {
    * パスワード
    * @return password
   */
-  
+
   @Schema(name = "password", description = "パスワード", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("password")
   public String getPassword() {
@@ -105,4 +105,3 @@ public class LoginRequest {
     return o.toString().replace("\n", "\n    ");
   }
 }
-

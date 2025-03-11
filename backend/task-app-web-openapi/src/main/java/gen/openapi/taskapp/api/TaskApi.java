@@ -47,7 +47,7 @@ public interface TaskApi {
 
     /**
      * POST /task : タスクの登録
-     * タスクを登録する 
+     * タスクを登録する
      *
      * @param createTaskRequest  (required)
      * @return OK. IDの採番をサーバサイドで行うため、登録後のtaskをレスポンスで返却する (status code 200)
@@ -92,7 +92,7 @@ public interface TaskApi {
 
     /**
      * DELETE /task : タスクの削除
-     * タスクを削除する。 
+     * タスクを削除する。
      *
      * @param deleteTaskRequest  (required)
      * @return OK (status code 204)
@@ -125,7 +125,7 @@ public interface TaskApi {
 
     /**
      * GET /task : タスク一覧の取得
-     * 登録しているタスクをすべて取得する 
+     * 登録しているタスクをすべて取得する
      *
      * @return OK (status code 200)
      *         or Bad Request (status code 400)
@@ -150,7 +150,7 @@ public interface TaskApi {
         produces = { "application/json" }
     )
     default ResponseEntity<GetTasksResponse> getTasks(
-        
+
     ) {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
@@ -168,7 +168,7 @@ public interface TaskApi {
 
     /**
      * PUT /task : タスクの更新
-     * タスクを更新する。 
+     * タスクを更新する。
      *
      * @param updateTaskRequest  (required)
      * @return OK (status code 204)

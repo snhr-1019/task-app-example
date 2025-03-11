@@ -55,7 +55,7 @@ public class Task {
    * タスクのID
    * @return id
   */
-  @NotNull 
+  @NotNull
   @Schema(name = "id", description = "タスクのID", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("id")
   public Integer getId() {
@@ -75,7 +75,7 @@ public class Task {
    * タスクのタイトル
    * @return title
   */
-  @NotNull 
+  @NotNull
   @Schema(name = "title", description = "タスクのタイトル", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("title")
   public String getTitle() {
@@ -95,7 +95,7 @@ public class Task {
    * タスクのステータス
    * @return completed
   */
-  @NotNull 
+  @NotNull
   @Schema(name = "completed", description = "タスクのステータス", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("completed")
   public Boolean getCompleted() {
@@ -147,4 +147,3 @@ public class Task {
     return o.toString().replace("\n", "\n    ");
   }
 }
-

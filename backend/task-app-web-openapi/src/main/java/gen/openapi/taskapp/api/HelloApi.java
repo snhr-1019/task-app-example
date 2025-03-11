@@ -42,7 +42,7 @@ public interface HelloApi {
 
     /**
      * GET /hello : Hello
-     * 未ログインユーザでもアクセス可能なエンドポイント 
+     * 未ログインユーザでもアクセス可能なエンドポイント
      *
      * @return OK (status code 200)
      */
@@ -63,7 +63,7 @@ public interface HelloApi {
         produces = { "application/json" }
     )
     default ResponseEntity<String> hello(
-        
+
     ) {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
