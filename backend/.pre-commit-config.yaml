@@ -1,0 +1,16 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: trailing-whitespace
+        files: .*\.(java|yaml|yml)$
+        exclude: ^.*/gen/jooq/.*/.*\.java$
+        args: [--markdown-linebreak-ext=md]
+      - id: end-of-file-fixer
+        exclude: ^.*/gen/jooq/.*/.*\.java$
+        files: .*\.(java|yaml|yml)$
+      - id: mixed-line-ending
+        files: .*\.(java|yaml|yml)$
+        exclude: ^.*/gen/jooq/.*/.*\.java$
+        args: [--fix=lf]
+      - id: check-xml
