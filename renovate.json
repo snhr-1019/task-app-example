@@ -9,14 +9,13 @@
   "reviewers": ["@snhr-1019"],
   "packageRules": [
     {
-      "matchUpdateTypes": ["patch", "minor"],
-      "groupName": "dependencies non-major",
+      "matchUpdateTypes": ["minor"],
+      "groupName": "dependencies minor",
       "prPriority": 30
     },
     {
-      "matchManagers": ["gradle"],
-      "matchDepTypes": ["testImplementation", "testCompileOnly", "testRuntimeOnly"],
-      "groupName": "gradle test dependencies",
+      "matchUpdateTypes": ["patch"],
+      "groupName": "dependencies patch",
       "prPriority": 20
     },
     {
