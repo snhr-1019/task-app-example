@@ -3,13 +3,13 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'org.flywaydb:flyway-mysql:9.16.3'
+        classpath 'org.flywaydb:flyway-mysql:9.22.3'
     }
 }
 
 plugins {
-    id 'nu.studer.jooq' version '8.2'
-    id "org.flywaydb.flyway" version "9.16.3"
+    id 'nu.studer.jooq' version '8.2.3'
+    id "org.flywaydb.flyway" version "9.22.3"
 }
 
 dependencies {
