@@ -11,6 +11,12 @@
     {
       "matchUpdateTypes": ["patch", "minor"],
       "groupName": "dependencies non-major",
+      "prPriority": 30
+    },
+    {
+      "matchManagers": ["gradle"],
+      "matchDepTypes": ["testImplementation", "testCompileOnly", "testRuntimeOnly"],
+      "groupName": "gradle test dependencies",
       "prPriority": 20
     },
     {
