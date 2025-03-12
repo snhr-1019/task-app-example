@@ -1,33 +1,6 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:recommended"
-  ],
-  "dependencyDashboard": false,
-  "timezone": "Asia/Tokyo",
-  "schedule": "before 6am on the 1st day of the month",
-  "reviewers": ["@snhr-1019"],
-  "packageRules": [
-    {
-      "matchUpdateTypes": ["minor"],
-      "groupName": "dependencies minor",
-      "prPriority": 30
-    },
-    {
-      "matchUpdateTypes": ["patch"],
-      "groupName": "dependencies patch",
-      "prPriority": 20
-    },
-    {
-      "matchManagers": ["pre-commit", "asdf"],
-      "groupName": "dev tools",
-      "prPriority": 10
-    }
-  ],
-  "labels": [
-    "dependencies"
-  ],
-  "pre-commit": {
-    "enabled": true
-  }  
+    "github>snhr-1019/renovate-config"
+  ]
 }
